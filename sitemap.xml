@@ -3,6 +3,111 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://d4rkn1gh7.github.io/authors/</loc>
+    <lastmod>2021-01-13T21:09:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://d4rkn1gh7.github.io/categories/</loc>
+    <lastmod>2021-01-13T21:09:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://d4rkn1gh7.github.io/posts/2021/01/chill-hack-tryhackme-writeup/</loc>
+    <lastmod>2021-01-13T21:09:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://d4rkn1gh7.github.io/tags/ctf/</loc>
+    <lastmod>2021-01-13T21:09:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://d4rkn1gh7.github.io/authors/d4rkn1gh7/</loc>
+    <lastmod>2021-01-13T21:09:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://d4rkn1gh7.github.io/</loc>
+    <lastmod>2021-01-13T21:09:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://d4rkn1gh7.github.io/tags/easy/</loc>
+    <lastmod>2021-01-13T21:09:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://d4rkn1gh7.github.io/posts/</loc>
+    <lastmod>2021-01-13T21:09:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://d4rkn1gh7.github.io/series/</loc>
+    <lastmod>2021-01-13T21:09:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://d4rkn1gh7.github.io/tags/</loc>
+    <lastmod>2021-01-13T21:09:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://d4rkn1gh7.github.io/series/tryhackme/</loc>
+    <lastmod>2021-01-13T21:09:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://d4rkn1gh7.github.io/categories/tryhackme/</loc>
+    <lastmod>2021-01-13T21:09:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://d4rkn1gh7.github.io/tags/tryhackme/</loc>
+    <lastmod>2021-01-13T21:09:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://d4rkn1gh7.github.io/posts/2021/01/basic-linux-commands/</loc>
+    <lastmod>2021-01-13T00:00:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://d4rkn1gh7.github.io/series/codinglinux/</loc>
+    <lastmod>2021-01-13T00:00:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://d4rkn1gh7.github.io/categories/codinglinux/</loc>
+    <lastmod>2021-01-13T00:00:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://d4rkn1gh7.github.io/posts/2021/01/doctor-hackthebox-writeup/</loc>
+    <lastmod>2021-01-13T00:00:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://d4rkn1gh7.github.io/series/hackthebox/</loc>
+    <lastmod>2021-01-13T00:00:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://d4rkn1gh7.github.io/categories/hackthebox/</loc>
+    <lastmod>2021-01-13T00:00:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://d4rkn1gh7.github.io/tags/hackthebox/</loc>
+    <lastmod>2021-01-13T00:00:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://d4rkn1gh7.github.io/tags/linux/</loc>
+    <lastmod>2021-01-13T00:00:00+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://d4rkn1gh7.github.io/content/coding/</loc>
     <lastmod>2021-01-12T17:25:19+05:30</lastmod>
   </url>
@@ -13,72 +118,17 @@
   </url>
   
   <url>
-    <loc>https://d4rkn1gh7.github.io/</loc>
-    <lastmod>2021-01-12T17:25:19+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://d4rkn1gh7.github.io/authors/</loc>
-    <lastmod>2021-01-12T16:48:02+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://d4rkn1gh7.github.io/categories/</loc>
-    <lastmod>2021-01-12T16:48:02+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://d4rkn1gh7.github.io/tags/ctf/</loc>
-    <lastmod>2021-01-12T16:48:02+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://d4rkn1gh7.github.io/authors/d4rkn1gh7/</loc>
-    <lastmod>2021-01-12T16:48:02+05:30</lastmod>
-  </url>
-  
-  <url>
     <loc>https://d4rkn1gh7.github.io/tags/medium_box/</loc>
     <lastmod>2021-01-12T16:48:02+05:30</lastmod>
   </url>
   
   <url>
-    <loc>https://d4rkn1gh7.github.io/posts/</loc>
+    <loc>https://d4rkn1gh7.github.io/posts/2021/01/unbaked-pie-tryhackme-writeup/</loc>
     <lastmod>2021-01-12T16:48:02+05:30</lastmod>
   </url>
   
   <url>
-    <loc>https://d4rkn1gh7.github.io/series/</loc>
-    <lastmod>2021-01-12T16:48:02+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://d4rkn1gh7.github.io/tags/</loc>
-    <lastmod>2021-01-12T16:48:02+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://d4rkn1gh7.github.io/series/tryhackme/</loc>
-    <lastmod>2021-01-12T16:48:02+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://d4rkn1gh7.github.io/categories/tryhackme/</loc>
-    <lastmod>2021-01-12T16:48:02+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://d4rkn1gh7.github.io/tags/tryhackme/</loc>
-    <lastmod>2021-01-12T16:48:02+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://d4rkn1gh7.github.io/posts/ctf/tryhackme/unbaked_pie/</loc>
-    <lastmod>2021-01-12T16:48:02+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://d4rkn1gh7.github.io/posts/ctf/tryhackme/all_in_one/</loc>
+    <loc>https://d4rkn1gh7.github.io/posts/2021/01/all-in-one-tryhackme-writeup/</loc>
     <lastmod>2021-01-12T16:08:20+05:30</lastmod>
   </url>
   
@@ -88,7 +138,7 @@
   </url>
   
   <url>
-    <loc>https://d4rkn1gh7.github.io/posts/ctf/tryhackme/c0lddbox/</loc>
+    <loc>https://d4rkn1gh7.github.io/posts/2021/01/colddbox-tryhackme-writeup/</loc>
     <lastmod>2021-01-12T14:04:07+05:30</lastmod>
   </url>
   
