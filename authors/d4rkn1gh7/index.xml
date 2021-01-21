@@ -6,7 +6,17 @@
     <description>Recent content in d4rkn1gh7 on d4rkn1gh7 | Tech Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 19 Jan 2021 17:27:15 +0530</lastBuildDate><atom:link href="https://d4rkn1gh7.github.io/authors/d4rkn1gh7/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 21 Jan 2021 23:29:18 +0530</lastBuildDate><atom:link href="https://d4rkn1gh7.github.io/authors/d4rkn1gh7/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Academy HacktheBox Writeup</title>
+      <link>https://d4rkn1gh7.github.io/posts/ctf/hackthebox/academy/</link>
+      <pubDate>Thu, 21 Jan 2021 23:29:18 +0530</pubDate>
+      
+      <guid>https://d4rkn1gh7.github.io/posts/ctf/hackthebox/academy/</guid>
+      <description>Academy HackTheBox Writeup First Stage : Enumeration Let&amp;rsquo;s fire up nmap.
+# Nmap 7.91 scan initiated Wed Jan 20 12:32:23 2021 as: nmap -sC -sV -T4 -vv -p- -oN nmapscan 10.10.10.215 Warning: 10.10.10.215 giving up on port because retransmission cap hit (6). Nmap scan report for 10.10.10.215 Host is up, received syn-ack (0.24s latency). Scanned at 2021-01-20 12:32:25 IST for 2473s Not shown: 64541 closed ports, 991 filtered ports Reason: 64541 conn-refused and 991 no-responses PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenSSH 8.</description>
+    </item>
+    
     <item>
       <title>ChocolateFactory TryHackMe Writeup</title>
       <link>https://d4rkn1gh7.github.io/posts/ctf/tryhackme/chocolatefactory/</link>
