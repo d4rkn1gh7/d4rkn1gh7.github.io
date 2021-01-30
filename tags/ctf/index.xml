@@ -6,7 +6,17 @@
     <description>Recent content in ctf on d4rkn1gh7 | Tech Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 21 Jan 2021 23:29:18 +0530</lastBuildDate><atom:link href="https://d4rkn1gh7.github.io/tags/ctf/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 30 Jan 2021 00:00:00 +0530</lastBuildDate><atom:link href="https://d4rkn1gh7.github.io/tags/ctf/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Doctor HacktheBox Writeup</title>
+      <link>https://d4rkn1gh7.github.io/posts/ctf/hackthebox/doctor/</link>
+      <pubDate>Sat, 30 Jan 2021 00:00:00 +0530</pubDate>
+      
+      <guid>https://d4rkn1gh7.github.io/posts/ctf/hackthebox/doctor/</guid>
+      <description>Doctor HackTheBox Writeup First Stage : Enumeration Let&amp;rsquo;s fire up nmap.
+# Nmap 7.91 scan initiated Fri Jan 22 10:15:43 2021 as: nmap -sC -sV -T4 -vv -p- -oN nmapscan 10.10.10.209 Nmap scan report for docotor.htb (10.10.10.209) Host is up, received syn-ack (0.24s latency). Scanned at 2021-01-22 10:15:47 IST for 332s Not shown: 65532 filtered ports Reason: 65532 no-responses PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenSSH 8.2p1 Ubuntu 4ubuntu0.</description>
+    </item>
+    
     <item>
       <title>Academy HacktheBox Writeup</title>
       <link>https://d4rkn1gh7.github.io/posts/ctf/hackthebox/academy/</link>
@@ -56,15 +66,6 @@ First Stage : Enumeration Let&amp;rsquo;s fire up nmap.
       <guid>https://d4rkn1gh7.github.io/posts/ctf/tryhackme/chill_hack/</guid>
       <description>Chill Hack Room Writeup First Stage : Enumeration Let&amp;rsquo;s start with a nmap scan.
 # Nmap 7.91 scan initiated Tue Dec 8 19:00:53 2020 as: nmap -sC -sV -vv -p- -oN nmapscan 10.10.232.26 Nmap scan report for 10.10.232.26 Host is up, received syn-ack (0.17s latency). Scanned at 2020-12-08 19:00:54 IST for 1431s Not shown: 65532 closed ports Reason: 65532 conn-refused PORT STATE SERVICE REASON VERSION 21/tcp open ftp syn-ack vsftpd 3.</description>
-    </item>
-    
-    <item>
-      <title>Doctor HacktheBox Writeup</title>
-      <link>https://d4rkn1gh7.github.io/posts/ctf/hackthebox/doctor/</link>
-      <pubDate>Wed, 13 Jan 2021 00:00:00 +0530</pubDate>
-      
-      <guid>https://d4rkn1gh7.github.io/posts/ctf/hackthebox/doctor/</guid>
-      <description>Sample Writeup </description>
     </item>
     
     <item>
