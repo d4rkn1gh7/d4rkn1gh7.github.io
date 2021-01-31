@@ -6,7 +6,18 @@
     <description>Recent content in ctf on d4rkn1gh7 | Tech Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 30 Jan 2021 00:00:00 +0530</lastBuildDate><atom:link href="https://d4rkn1gh7.github.io/tags/ctf/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 31 Jan 2021 18:53:23 +0530</lastBuildDate><atom:link href="https://d4rkn1gh7.github.io/tags/ctf/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cyborg TryHackMe Writeup</title>
+      <link>https://d4rkn1gh7.github.io/posts/ctf/tryhackme/cyborg/</link>
+      <pubDate>Sun, 31 Jan 2021 18:53:23 +0530</pubDate>
+      
+      <guid>https://d4rkn1gh7.github.io/posts/ctf/tryhackme/cyborg/</guid>
+      <description>Cyborg TryHackMe Writeup So this was a very different box from others and also an interesting concept is used on initial foothold.
+First Stage : Enumeration Let&amp;rsquo;s fireup nmap.
+# Nmap 7.91 scan initiated Sun Jan 31 16:51:47 2021 as: nmap -sC -sV -T4 -vv -p- -oN nmapscan 10.10.143.35 Warning: 10.10.143.35 giving up on port because retransmission cap hit (6). Nmap scan report for 10.10.143.35 Host is up, received syn-ack (0.</description>
+    </item>
+    
     <item>
       <title>Doctor HacktheBox Writeup</title>
       <link>https://d4rkn1gh7.github.io/posts/ctf/hackthebox/doctor/</link>
