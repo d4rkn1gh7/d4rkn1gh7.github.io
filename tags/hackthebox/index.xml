@@ -6,7 +6,18 @@
     <description>Recent content in hackthebox on d4rkn1gh7 | Tech Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 30 Jan 2021 00:00:00 +0530</lastBuildDate><atom:link href="https://d4rkn1gh7.github.io/tags/hackthebox/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 01 Feb 2021 17:12:22 +0530</lastBuildDate><atom:link href="https://d4rkn1gh7.github.io/tags/hackthebox/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Delivery HackTheBox Writeup</title>
+      <link>https://d4rkn1gh7.github.io/posts/ctf/hackthebox/delivery/</link>
+      <pubDate>Mon, 01 Feb 2021 17:12:22 +0530</pubDate>
+      
+      <guid>https://d4rkn1gh7.github.io/posts/ctf/hackthebox/delivery/</guid>
+      <description>Delivery HackTheBox Writeup This was a very interesting and a different box .
+First Stage : Enumeration Hence as usual we fire up nmap.
+# Nmap 7.91 scan initiated Sun Jan 31 19:38:00 2021 as: nmap -sC -sV -T4 -vv -p- -oN nmapscan 10.10.10.222 Nmap scan report for 10.10.10.222 Host is up, received syn-ack (0.24s latency). Scanned at 2021-01-31 19:38:02 IST for 1456s Not shown: 65532 closed ports Reason: 65532 conn-refused PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenSSH 7.</description>
+    </item>
+    
     <item>
       <title>Doctor HacktheBox Writeup</title>
       <link>https://d4rkn1gh7.github.io/posts/ctf/hackthebox/doctor/</link>

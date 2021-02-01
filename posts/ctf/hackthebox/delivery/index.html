@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+
+    <meta name="author" content="d4rkn1gh7 | Balaji Anandhan">
+    <meta name="description" content="Writeup for Delivery from HackTheBox">
+    <meta name="keywords" content="blog,ctf,hacking,coding">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Delivery HackTheBox Writeup"/>
+<meta name="twitter:description" content="Writeup for Delivery from HackTheBox"/>
+
+    <meta property="og:title" content="Delivery HackTheBox Writeup" />
+<meta property="og:description" content="Writeup for Delivery from HackTheBox" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://d4rkn1gh7.github.io/posts/ctf/hackthebox/delivery/" />
+<meta property="article:published_time" content="2021-02-01T17:12:22+05:30" />
+<meta property="article:modified_time" content="2021-02-01T17:12:22+05:30" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/hackthebox/doctor/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/hackthebox/academy/" />
+
+
+
+    <title>
+  Delivery HackTheBox Writeup · d4rkn1gh7 | Tech Blog
+</title>
+
+    
+      <link rel="canonical" href="https://d4rkn1gh7.github.io/posts/ctf/hackthebox/delivery/">
+    
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css"
+      integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8/normalize.min.css">
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.f01c647a0d25b40da992a37c3376291185eed8a50ced8c26cc2c0bcfe38c97df.css" integrity="sha256-8Bxkeg0ltA2pkqN8M3YpEYXu2KUM7YwmzCwLz&#43;OMl98=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.126ad3988d46bdae6217a11105b53c9662bca05f39d42d3c0fb366919d334620.css" integrity="sha256-EmrTmI1Gva5iF6ERBbU8lmK8oF851C08D7NmkZ0zRiA=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    
+      <script defer src="https://twemoji.maxcdn.com/v/13.0.1/twemoji.min.js"
+        integrity="sha384-5f4X0lBluNY/Ib4VhGx0Pf6iDCF99VGXJIyYy7dDLY5QlEd7Ap0hICSSZA1XYbc4" crossorigin="anonymous"></script>
+    
+
+    <meta name="generator" content="Hugo 0.80.0" />
+  </head>
+
+  
+  
+    
+  
+  <body class="colorscheme-auto"
+        onload=" twemoji.parse(document.body); "
+  >
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      d4rkn1gh7 | Tech Blog
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Posts</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/tryhackme">TryHackMe</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/hackthebox">HackTheBox</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/codinglinux">Coding | Linux</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/tags/">Tags</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">Delivery HackTheBox Writeup</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2021-02-01T17:12:22&#43;05:30'>
+                February 1, 2021
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              3-minute read
+            </span>
+          </div>
+          <div class="authors">
+    <i class="fa fa-user" aria-hidden="true"></i>
+      <a href="/authors/d4rkn1gh7/">d4rkn1gh7</a></div>
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/hackthebox/">HackTheBox</a></div>
+
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <a href="/tags/ctf/">ctf</a>
+      <span class="separator">•</span>
+    <a href="/tags/hackthebox/">hackthebox</a>
+      <span class="separator">•</span>
+    <a href="/tags/easy_box/">easy_box</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <h1 id="deliveryhttpsapphacktheboxeumachines308-hackthebox-writeup"><a href="https://app.hackthebox.eu/machines/308">Delivery</a> HackTheBox Writeup</h1>
+<p><img src="/HackTheBox/Delivery/BoxImage.webp" alt=""></p>
+<p>This was a very interesting and a different box .</p>
+<h2 id="__first-stage--enumeration__"><strong>First Stage : Enumeration</strong></h2>
+<p>Hence as usual we fire up nmap.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># Nmap 7.91 scan initiated Sun Jan 31 19:38:00 2021 as: nmap -sC -sV -T4 -vv -p- -oN nmapscan 10.10.10.222
+Nmap scan report for 10.10.10.222
+Host is up, received syn-ack (0.24s latency).
+Scanned at 2021-01-31 19:38:02 IST for 1456s
+Not shown: 65532 closed ports
+Reason: 65532 conn-refused
+PORT     STATE SERVICE REASON  VERSION
+22/tcp   open  ssh     syn-ack OpenSSH 7.9p1 Debian 10+deb10u2 (protocol 2.0)
+| ssh-hostkey: 
+|   2048 9c:40:fa:85:9b:01:ac:ac:0e:bc:0c:19:51:8a:ee:27 (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCq549E025Q9FR27LDR6WZRQ52ikKjKUQLmE9ndEKjB0i1qOoL+WzkvqTdqEU6fFW6AqUIdSEd7GMNSMOk66otFgSoerK6MmH5IZjy4JqMoNVPDdWfmEiagBlG3H7IZ7yAO8gcg0RRrIQjE7XTMV09GmxEUtjojoLoqudUvbUi8COHCO6baVmyjZRlXRCQ6qTKIxRZbUAo0GOY8bYmf9sMLf70w6u/xbE2EYDFH+w60ES2K906x7lyfEPe73NfAIEhHNL8DBAUfQWzQjVjYNOLqGp/WdlKA1RLAOklpIdJQ9iehsH0q6nqjeTUv47mIHUiqaM+vlkCEAN3AAQH5mB/1
+|   256 5a:0c:c0:3b:9b:76:55:2e:6e:c4:f4:b9:5d:76:17:09 (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBAiAKnk2lw0GxzzqMXNsPQ1bTk35WwxCa3ED5H34T1yYMiXnRlfssJwso60D34/IM8vYXH0rznR9tHvjdN7R3hY=
+|   256 b7:9d:f7:48:9d:a2:f2:76:30:fd:42:d3:35:3a:80:8c (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEV5D6eYjySqfhW4l4IF1SZkZHxIRihnY6Mn6D8mLEW7
+80/tcp   open  http    syn-ack nginx 1.14.2
+| http-methods: 
+|_  Supported Methods: GET HEAD
+|_http-server-header: nginx/1.14.2
+|_http-title: Welcome
+8065/tcp open  unknown syn-ack
+| fingerprint-strings: 
+|   GenericLines, Help, RTSPRequest, SSLSessionReq, TerminalServerCookie: 
+|     HTTP/1.1 400 Bad Request
+|     Content-Type: text/plain; charset=utf-8
+|     Connection: close
+|     Request
+|   GetRequest: 
+|     HTTP/1.0 200 OK
+|     Accept-Ranges: bytes
+|     Cache-Control: no-cache, max-age=31556926, public
+|     Content-Length: 3108
+|     Content-Security-Policy: frame-ancestors &#39;self&#39;; script-src &#39;self&#39; cdn.rudderlabs.com
+|     Content-Type: text/html; charset=utf-8
+|     Last-Modified: Sat, 30 Jan 2021 22:46:39 GMT
+|     X-Frame-Options: SAMEORIGIN
+|     X-Request-Id: qhy3etdhgt8k5pyka1789dqomr
+|     X-Version-Id: 5.30.0.5.30.1.57fb31b889bf81d99d8af8176d4bbaaa.false
+|     Date: Sun, 31 Jan 2021 14:38:27 GMT
+|     &lt;!doctype html&gt;&lt;html lang=&#34;en&#34;&gt;&lt;head&gt;&lt;meta charset=&#34;utf-8&#34;&gt;&lt;meta name=&#34;viewport&#34; content=&#34;width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0&#34;&gt;&lt;meta name=&#34;robots&#34; content=&#34;noindex, nofollow&#34;&gt;&lt;meta name=&#34;referrer&#34; content=&#34;no-referrer&#34;&gt;&lt;title&gt;Mattermost&lt;/title&gt;&lt;meta name=&#34;mobile-web-app-capable&#34; content=&#34;yes&#34;&gt;&lt;meta name=&#34;application-name&#34; content=&#34;Mattermost&#34;&gt;&lt;meta name=&#34;format-detection&#34; content=&#34;telephone=no&#34;&gt;&lt;link re
+|   HTTPOptions: 
+|     HTTP/1.0 405 Method Not Allowed
+|     Date: Sun, 31 Jan 2021 14:38:27 GMT
+|_    Content-Length: 0
+
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Sun Jan 31 20:02:18 2021 -- 1 IP address (1 host up) scanned in 1458.01 seconds
+</code></pre></div><p>So open ports are :</p>
+<ul>
+<li>22</li>
+<li>80</li>
+<li>8065</li>
+</ul>
+<blockquote>
+<p>Note : add <strong>delivery.htb</strong> in /etc/hosts</p>
+</blockquote>
+<p>So let&rsquo;s visit port 80.</p>
+<p><img src="/HackTheBox/Delivery/port80.png" alt=""></p>
+<p>So the page provides link to Helpdesk which is <strong>helpdesk.delivery.htb</strong> , so add this in <strong>/etc/hosts</strong>.</p>
+<p>So let&rsquo;s visit helpdesk.</p>
+<p><img src="/HackTheBox/Delivery/helpdesk.png" alt="">.</p>
+<p>If we go to contact us page we can see they have given link to another service which is at port 8065 , the <strong>MatterMost</strong>.</p>
+<p><img src="/HackTheBox/Delivery/contactus.png" alt=""></p>
+<h2 id="__second-stage--initial-access-as-maildeliverer__"><strong>Second Stage : Initial access as maildeliverer</strong></h2>
+<p>Steps to follow :</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">1.So first open a ticket in helpdesk
+2. You will be provided with a ticket and mail id.
+3. Go to MatterMost and create an account with the given mail id.
+4. The verification email will be sent to you
+5. Go to helpdesk and check ticket status and go to the url provided in the mail .
+6. Ur email is verified , now login to the MatterMost server with email id and password given .
+7. U will get the password for **maildeliverer** .
+</code></pre></div><p><img src="/HackTheBox/Delivery/ticketopen.png" alt=""></p>
+<p><img src="/HackTheBox/Delivery/matteraccount.png" alt=""></p>
+<p><img src="/HackTheBox/Delivery/checkstatus.png" alt=""></p>
+<p><img src="/HackTheBox/Delivery/verifymail.png" alt=""></p>
+<p><img src="/HackTheBox/Delivery/gotpass.png" alt=""></p>
+<h2 id="__third-stage--maildeliverer-to-root__"><strong>Third Stage : maildeliverer to root</strong></h2>
+<p>So we can ssh into the machine and get <strong>user.txt</strong>.</p>
+<p>I ran linpeas found mysql server running in port 3306 and started searching for passwords in config files.</p>
+<p>With the hint from a friend I looked in <strong>/opt</strong> .</p>
+<p>And found it.</p>
+<p><img src="/HackTheBox/Delivery/sqlpass.png" alt=""></p>
+<p>So I logged in to mysql .</p>
+<p><img src="/HackTheBox/Delivery/mysql.png" alt=""></p>
+<p>So after that I saw a table got users.</p>
+<blockquote>
+<p>select Username,Password from Users;</p>
+</blockquote>
+<p><img src="/HackTheBox/Delivery/hashes.png" alt=""></p>
+<p>So I started cracking root&rsquo;s password blindly . But It took too long , after that I understood the mistake I was making . In mattermost server <strong>root</strong> has messaged that change password and don&rsquo;t use passwords like <strong>PleaseSubscribe!</strong>.</p>
+<p>So I created a wordlist with only one password and that was <strong>&ldquo;PleaseSubscribe!&quot;</strong>.</p>
+<p>Then I used best64 rule from <a href="https://github.com/hashcat/hashcat/blob/master/rules/best64.rule">https://github.com/hashcat/hashcat/blob/master/rules/best64.rule</a></p>
+<p>And used hashcat to crack . It cracked within seconds!!!.</p>
+<p><img src="/HackTheBox/Delivery/cracked.png" alt=""></p>
+<p>And got root flag.</p>
+<p><img src="/HackTheBox/Delivery/root.png" alt=""></p>
+
+      </div>
+
+
+      <footer>
+        
+
+<section class="see-also">
+  
+    
+    
+    
+      <h3>See also in HackTheBox</h3>
+      <nav>
+        <ul>
+        
+        
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/hackthebox/doctor/">Doctor HacktheBox Writeup</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/hackthebox/academy/">Academy HacktheBox Writeup</a>
+            </li>
+          
+        
+        </ul>
+      </nav>
+    
+  
+</section>
+
+
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yourdiscussshortname" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      
+  <footer class="footer">
+    <section class="container">
+      
+        <p>Hack The Planet!</p>
+      
+      
+        ©
+        
+          2019 -
+        
+        2021
+         d4rkn1gh7 | Balaji Anandhan 
+      
+      
+      
+        
+      
+    </section>
+  </footer>
+
+
+    </main>
+
+    
+      
+        
+        <script src="/js/dark-mode.min.0213e1773e6d1c5a644f847c67a6f8abac49a3776e2976f6008038af8c5b76a1.js"></script>
+      
+    
+
+    
+
+    
+
+    <script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//analytics.example.com/tracker.js', 'fathom');
+fathom('set', 'siteId', 'ABCDE');
+fathom('trackPageview');
+</script>
+
+
+    <script async defer data-domain="example.com" src="https://analytics.example.com/js/plausible.js"></script>
+
+
+    <script data-goatcounter="https://code.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+
+    
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js'
+        data-cf-beacon='{"token": "token"}'></script>
+
+
+  </body>
+
+</html>
