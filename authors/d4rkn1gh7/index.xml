@@ -6,7 +6,17 @@
     <description>Recent content in d4rkn1gh7 on d4rkn1gh7 | Tech Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 06 Feb 2021 01:06:04 +0530</lastBuildDate><atom:link href="https://d4rkn1gh7.github.io/authors/d4rkn1gh7/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 11 Feb 2021 16:52:33 +0530</lastBuildDate><atom:link href="https://d4rkn1gh7.github.io/authors/d4rkn1gh7/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Luanne HackTheBox Writeup</title>
+      <link>https://d4rkn1gh7.github.io/posts/ctf/hackthebox/luanne/</link>
+      <pubDate>Thu, 11 Feb 2021 16:52:33 +0530</pubDate>
+      
+      <guid>https://d4rkn1gh7.github.io/posts/ctf/hackthebox/luanne/</guid>
+      <description>Luanne HackTheBox Writeup Pathway This is the first BSD box I have done , hence through this process I learned more about BSD . I recommend learning BSD which is similar to linux but it has it&amp;rsquo;s own commands also . Hence in this box we gain foothold using command injection(lua) vulnerability and then we get user&amp;rsquo;s ssh private key and decrypt a file and get root password .
+First Stage : Enumeration Nmap scan results.</description>
+    </item>
+    
     <item>
       <title>Archangel TryHackMe Writeup</title>
       <link>https://d4rkn1gh7.github.io/posts/ctf/tryhackme/archangel/</link>

