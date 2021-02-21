@@ -6,7 +6,19 @@
     <description>Recent content in thm on d4rkn1gh7 | Tech Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 15 Feb 2021 18:56:50 +0530</lastBuildDate><atom:link href="https://d4rkn1gh7.github.io/tags/thm/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 21 Feb 2021 17:41:36 +0530</lastBuildDate><atom:link href="https://d4rkn1gh7.github.io/tags/thm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Inferno TryHackMe Writeup</title>
+      <link>https://d4rkn1gh7.github.io/posts/ctf/tryhackme/inferno/</link>
+      <pubDate>Sun, 21 Feb 2021 17:41:36 +0530</pubDate>
+      
+      <guid>https://d4rkn1gh7.github.io/posts/ctf/tryhackme/inferno/</guid>
+      <description>Inferno TryHackMe Writeup  Room link : https://tryhackme.com/room/inferno
+ Pathway In this room first we bruteforce http login , then we find a public rce exploit and gain foothold and then with the help of a hidden file we gain user acccess. Then with sudo rights we gain root access.
+First Stage : Enumeration Let&amp;rsquo;s start with nmap scan.
+# Nmap 7.91 scan initiated Fri Feb 19 21:53:19 2021 as: nmap -sC -sV -T4 -vv -p- -oN nmapscan 10.</description>
+    </item>
+    
     <item>
       <title>Enpass TryHackMe Writeup</title>
       <link>https://d4rkn1gh7.github.io/posts/ctf/tryhackme/enpass/</link>

