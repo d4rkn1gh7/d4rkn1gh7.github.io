@@ -6,7 +6,19 @@
     <description>Recent content in thm on d4rkn1gh7 | Tech Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 22 Feb 2021 17:43:36 +0530</lastBuildDate><atom:link href="https://d4rkn1gh7.github.io/tags/thm/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 23 Feb 2021 16:24:54 +0530</lastBuildDate><atom:link href="https://d4rkn1gh7.github.io/tags/thm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Magician TryHackMe Writeup</title>
+      <link>https://d4rkn1gh7.github.io/posts/ctf/tryhackme/magician/</link>
+      <pubDate>Tue, 23 Feb 2021 16:24:54 +0530</pubDate>
+      
+      <guid>https://d4rkn1gh7.github.io/posts/ctf/tryhackme/magician/</guid>
+      <description>Magician TryHackMe Writeup  Room Link : https://tryhackme.com/room/magician
+ Pathway In this room we exploit a vulnerability in ImageMagick and gain foothold and find a service running internally , we portforward it to our local machine and get root flag.
+First Stage : Enumeration So as usual we start with our fav nmap.
+# Nmap 7.91 scan initiated Mon Feb 22 18:22:51 2021 as: nmap -sC -sV -T4 -vv -p- -oN nmapscan magician Warning: 10.</description>
+    </item>
+    
     <item>
       <title>Watcher TryHackMe Writeup</title>
       <link>https://d4rkn1gh7.github.io/posts/ctf/tryhackme/watcher/</link>
