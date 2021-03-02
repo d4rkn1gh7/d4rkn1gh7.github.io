@@ -6,7 +6,17 @@
     <description>Recent content in HackTheBox on d4rkn1gh7 | Tech Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 11 Feb 2021 16:52:33 +0530</lastBuildDate><atom:link href="https://d4rkn1gh7.github.io/categories/hackthebox/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 02 Mar 2021 16:32:34 +0530</lastBuildDate><atom:link href="https://d4rkn1gh7.github.io/categories/hackthebox/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ScriptKiddie HacktheBox Writeup</title>
+      <link>https://d4rkn1gh7.github.io/posts/ctf/hackthebox/scriptkiddie/</link>
+      <pubDate>Tue, 02 Mar 2021 16:32:34 +0530</pubDate>
+      
+      <guid>https://d4rkn1gh7.github.io/posts/ctf/hackthebox/scriptkiddie/</guid>
+      <description>ScriptKiddie HacktheBox Writeup First Stage : Enumeration As usual we start with nmap .
+# Nmap 7.91 scan initiated Wed Feb 10 20:50:05 2021 as: nmap -sC -sV -T4 -vv -p- -oN nmapscan 10.129.76.93 Warning: 10.129.76.93 giving up on port because retransmission cap hit (6). Nmap scan report for 10.129.76.93 Host is up, received conn-refused (0.23s latency). Scanned at 2021-02-10 20:50:06 IST for 977s Not shown: 65345 closed ports, 188 filtered ports Reason: 65345 conn-refused and 188 no-responses PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack OpenSSH 8.</description>
+    </item>
+    
     <item>
       <title>Luanne HackTheBox Writeup</title>
       <link>https://d4rkn1gh7.github.io/posts/ctf/hackthebox/luanne/</link>

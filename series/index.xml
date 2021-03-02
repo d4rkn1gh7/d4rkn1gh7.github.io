@@ -6,22 +6,22 @@
     <description>Recent content in Series on d4rkn1gh7 | Tech Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 01 Mar 2021 17:55:12 +0530</lastBuildDate><atom:link href="https://d4rkn1gh7.github.io/series/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 02 Mar 2021 16:32:34 +0530</lastBuildDate><atom:link href="https://d4rkn1gh7.github.io/series/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HackTheBox</title>
+      <link>https://d4rkn1gh7.github.io/series/hackthebox/</link>
+      <pubDate>Tue, 02 Mar 2021 16:32:34 +0530</pubDate>
+      
+      <guid>https://d4rkn1gh7.github.io/series/hackthebox/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>TryHackMe</title>
       <link>https://d4rkn1gh7.github.io/series/tryhackme/</link>
       <pubDate>Mon, 01 Mar 2021 17:55:12 +0530</pubDate>
       
       <guid>https://d4rkn1gh7.github.io/series/tryhackme/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>HackTheBox</title>
-      <link>https://d4rkn1gh7.github.io/series/hackthebox/</link>
-      <pubDate>Thu, 11 Feb 2021 16:52:33 +0530</pubDate>
-      
-      <guid>https://d4rkn1gh7.github.io/series/hackthebox/</guid>
       <description></description>
     </item>
     
