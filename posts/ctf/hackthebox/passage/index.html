@@ -7,28 +7,28 @@
     <meta http-equiv="Content-Language" content="en">
 
     <meta name="author" content="d4rkn1gh7 | Balaji Anandhan">
-    <meta name="description" content="ScripKiddie HTB Writeup">
+    <meta name="description" content="Passage HTB Writeup">
     <meta name="keywords" content="blog,ctf,hacking,coding">
 
     <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="ScriptKiddie HacktheBox Writeup"/>
-<meta name="twitter:description" content="ScripKiddie HTB Writeup"/>
+<meta name="twitter:title" content="Passage HackTheBox Writeup"/>
+<meta name="twitter:description" content="Passage HTB Writeup"/>
 
-    <meta property="og:title" content="ScriptKiddie HacktheBox Writeup" />
-<meta property="og:description" content="ScripKiddie HTB Writeup" />
+    <meta property="og:title" content="Passage HackTheBox Writeup" />
+<meta property="og:description" content="Passage HTB Writeup" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://d4rkn1gh7.github.io/posts/ctf/hackthebox/scriptkiddie/" />
-<meta property="article:published_time" content="2021-03-02T16:32:34+05:30" />
-<meta property="article:modified_time" content="2021-03-02T16:32:34+05:30" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/hackthebox/passage/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/hackthebox/luanne/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/hackthebox/delivery/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/hackthebox/doctor/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/hackthebox/academy/" />
+<meta property="og:url" content="https://d4rkn1gh7.github.io/posts/ctf/hackthebox/passage/" />
+<meta property="article:published_time" content="2021-03-03T21:29:19+05:30" />
+<meta property="article:modified_time" content="2021-03-03T21:29:19+05:30" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/hackthebox/scriptkiddie/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/hackthebox/luanne/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/hackthebox/delivery/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/hackthebox/doctor/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/hackthebox/academy/" />
 
 
 
     <title>
-  ScriptKiddie HacktheBox Writeup · d4rkn1gh7 | Tech Blog
+  Passage HackTheBox Writeup · d4rkn1gh7 | Tech Blog
 </title>
 
     
-      <link rel="canonical" href="https://d4rkn1gh7.github.io/posts/ctf/hackthebox/scriptkiddie/">
+      <link rel="canonical" href="https://d4rkn1gh7.github.io/posts/ctf/hackthebox/passage/">
     
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -137,19 +137,19 @@
     <article>
       <header>
         <div class="post-title">
-          <h1 class="title">ScriptKiddie HacktheBox Writeup</h1>
+          <h1 class="title">Passage HackTheBox Writeup</h1>
         </div>
         <div class="post-meta">
           <div class="date">
             <span class="posted-on">
               <i class="fa fa-calendar" aria-hidden="true"></i>
-              <time datetime='2021-03-02T16:32:34&#43;05:30'>
-                March 2, 2021
+              <time datetime='2021-03-03T21:29:19&#43;05:30'>
+                March 3, 2021
               </time>
             </span>
             <span class="reading-time">
               <i class="fa fa-clock-o" aria-hidden="true"></i>
-              2-minute read
+              3-minute read
             </span>
           </div>
           <div class="authors">
@@ -163,82 +163,88 @@
   <i class="fa fa-tag" aria-hidden="true"></i>
     <a href="/tags/ctf/">ctf</a>
       <span class="separator">•</span>
-    <a href="/tags/easy_box/">easy_box</a>
+    <a href="/tags/htb/">htb</a>
       <span class="separator">•</span>
-    <a href="/tags/htb/">htb</a></div>
+    <a href="/tags/medium_box/">medium_box</a></div>
 
         </div>
       </header>
 
       <div>
         
-        <h1 id="scriptkiddie-hackthebox-writeup">ScriptKiddie HacktheBox Writeup</h1>
-<p><img src="/HackTheBox/ScriptKiddie/BoxImage.webp" alt=""></p>
+        <h1 id="passage-hackthebox-writeup">Passage HackTheBox Writeup</h1>
+<p><img src="/HackTheBox/Passage/BoxImage.webp" alt=""></p>
 <h2 id="__first-stage--enumeration__"><strong>First Stage : Enumeration</strong></h2>
-<p>As usual we start with nmap .</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># Nmap 7.91 scan initiated Wed Feb 10 20:50:05 2021 as: nmap -sC -sV -T4 -vv -p- -oN nmapscan 10.129.76.93
-Warning: 10.129.76.93 giving up on port because retransmission cap hit (6).
-Nmap scan report for 10.129.76.93
-Host is up, received conn-refused (0.23s latency).
-Scanned at 2021-02-10 20:50:06 IST for 977s
-Not shown: 65345 closed ports, 188 filtered ports
-Reason: 65345 conn-refused and 188 no-responses
-PORT     STATE SERVICE REASON  VERSION
-22/tcp   open  ssh     syn-ack OpenSSH 8.2p1 Ubuntu 4ubuntu0.1 (Ubuntu Linux; protocol 2.0)
+<p>As usual we start with nmap scan.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># Nmap 7.91 scan initiated Wed Mar  3 20:20:14 2021 as: nmap -sC -sV -T4 -vv -p- -oN nmapscan 10.10.10.206
+Nmap scan report for 10.10.10.206
+Host is up, received syn-ack (0.23s latency).
+Scanned at 2021-03-03 20:20:16 IST for 771s
+Not shown: 65533 closed ports
+Reason: 65533 conn-refused
+PORT   STATE SERVICE REASON  VERSION
+22/tcp open  ssh     syn-ack OpenSSH 7.2p2 Ubuntu 4 (Ubuntu Linux; protocol 2.0)
 | ssh-hostkey: 
-|   3072 3c:65:6b:c2:df:b9:9d:62:74:27:a7:b8:a9:d3:25:2c (RSA)
-| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC/YB1g/YHwZNvTzj8lysM+SzX6dZzRbfF24y3ywkhai4pViGEwUklIPkEvuLSGH97NJ4y8r9uUXzyoq3iuVJ/vGXiFlPCrg+QDp7UnwANBmDqbVLucKdor+JkWHJJ1h3ftpEHgol54tj+6J7ftmaOR29Iwg+FKtcyNG6PY434cfA0Pwshw6kKgFa+HWljNl+41H3WVua4QItPmrh+CrSoaA5kCe0FAP3c2uHcv2JyDjgCQxmN1GoLtlAsEznHlHI1wycNZGcHDnqxEmovPTN4qisOKEbYfy2mu1Eqq3Phv8UfybV8c60wUqGtClj3YOO1apDZKEe8eZZqy5eXU8mIO+uXcp5zxJ/Wrgng7WTguXGzQJiBHSFq52fHFvIYSuJOYEusLWkGhiyvITYLWZgnNL+qAVxZtP80ZTq+lm4cJHJZKl0OYsmqO0LjlMOMTPFyA+W2IOgAmnM+miSmSZ6n6pnSA+LE2Pj01egIhHw5+duAYxUHYOnKLVak1WWk/C68=
-|   256 b9:a1:78:5d:3c:1b:25:e0:3c:ef:67:8d:71:d3:a3:ec (ECDSA)
-| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBJA31QhiIbYQMUwn/n3+qcrLiiJpYIia8HdgtwkI8JkCDm2n+j6dB3u5I17IOPXE7n5iPiW9tPF3Nb0aXmVJmlo=
-|   256 8b:cf:41:82:c6:ac:ef:91:80:37:7c:c9:45:11:e8:43 (ED25519)
-|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOWjCdxetuUPIPnEGrowvR7qRAR7nuhUbfFraZFmbIr4
-5000/tcp open  http    syn-ack Werkzeug httpd 0.16.1 (Python 3.8.5)
+|   2048 17:eb:9e:23:ea:23:b6:b1:bc:c6:4f:db:98:d3:d4:a1 (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDVnCUEEK8NK4naCBGc9im6v6c67d5w/z/i72QIXW9JPJ6bv/rdc45FOdiOSovmWW6onhKbdUje+8NKX1LvHIiotFhc66Jih+AW8aeK6pIsywDxtoUwBcKcaPkVFIiFUZ3UWOsWMi+qYTFGg2DEi3OHHWSMSPzVTh+YIsCzkRCHwcecTBNipHK645LwdaBLESJBUieIwuIh8icoESGaNcirD/DkJjjQ3xKSc4nbMnD7D6C1tIgF9TGZadvQNqMgSmJJRFk/hVeA/PReo4Z+WrWTvPuFiTFr8RW+yY/nHWrG6LfldCUwpz0jj/kDFGUDYHLBEN7nsFZx4boP8+p52D8F
+|   256 71:64:51:50:c3:7f:18:47:03:98:3e:5e:b8:10:19:fc (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBCdB2wKcMmurynbHuHifOk3OGwNcZ1/7kTJM67u+Cm/6np9tRhyFrjnhcsmydEtLwGiiY5+tUjr2qeTLsrgvzsY=
+|   256 fd:56:2a:f8:d0:60:a7:f1:a0:a1:47:a4:38:d6:a8:a1 (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGRIhMr/zUartoStYphvYD6kVzr7TDo+gIQfS2WwhSBd
+80/tcp open  http    syn-ack Apache httpd 2.4.18 ((Ubuntu))
 | http-methods: 
-|_  Supported Methods: GET POST HEAD OPTIONS
-|_http-server-header: Werkzeug/0.16.1 Python/3.8.5
-|_http-title: k1d&#39;5 h4ck3r t00l5
+|_  Supported Methods: GET HEAD POST OPTIONS
+|_http-server-header: Apache/2.4.18 (Ubuntu)
+|_http-title: Passage News
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
-</code></pre></div><p>So open ports are :</p>
+
+</code></pre></div><p>So the open ports are</p>
 <ul>
-<li>5000</li>
+<li>80</li>
 <li>22</li>
 </ul>
-<p>Let&rsquo;s visit port 5000</p>
-<p><img src="/HackTheBox/ScriptKiddie/port5000.png" alt=""></p>
-<h2 id="__second-stage--initial-access__"><strong>Second Stage : Initial access</strong></h2>
-<p>So there are 3 tools nmap, msfpayload generator , searchsploit.</p>
-<p>Initially I tried command injection , RFI but got nothing.
-But this one caught my eyes</p>
-<p><a href="https://www.rapid7.com/db/modules/exploit/unix/fileformat/metasploit_msfvenom_apk_template_cmd_injection/">Msfvenom APK Template Cmnd Injection</a>.</p>
-<p>So I created a payload. Named in msf.apk .</p>
-<p>So select os as Android and upload the payload as the template.</p>
-<p><img src="/HackTheBox/ScriptKiddie/expl.png" alt=""></p>
-<p><img src="/HackTheBox/ScriptKiddie/initialexp.png" alt=""></p>
-<p><img src="/HackTheBox/ScriptKiddie/kid.png" alt=""></p>
-<p>So we get the user flag . And we can see that there is another user called pwn .</p>
-<h2 id="__third-stage--kid-to-pwn__"><strong>Third Stage : kid to pwn</strong></h2>
-<p>And in the pwn user&rsquo;s home directory we can see that there is a file called scanlosers.sh .</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#0f0;font-weight:bold">#!/bin/bash
-</span><span style="color:#0f0;font-weight:bold"></span>
-log=/home/kid/logs/hackers
-
-<span style="color:#fff;font-weight:bold">cd</span> /home/pwn/
-cat $log | cut -d<span style="color:#0ff;font-weight:bold">&#39; &#39;</span> -f3- | sort -u | <span style="color:#fff;font-weight:bold">while</span> <span style="color:#fff;font-weight:bold">read</span> ip; <span style="color:#fff;font-weight:bold">do</span>
-    sh -c <span style="color:#0ff;font-weight:bold">&#34;nmap --top-ports 10 -oN recon/</span><span style="color:#0ff;font-weight:bold">${</span>ip<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">.nmap </span><span style="color:#0ff;font-weight:bold">${</span>ip<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold"> 2&gt;&amp;1 &gt;/dev/null&#34;</span> &amp;
-<span style="color:#fff;font-weight:bold">done</span>
-
-<span style="color:#fff;font-weight:bold">if</span> [[ <span style="color:#fff;font-weight:bold">$(</span>wc -l &lt; $log<span style="color:#fff;font-weight:bold">)</span> -gt <span style="color:#ff0;font-weight:bold">0</span> ]]; <span style="color:#fff;font-weight:bold">then</span> <span style="color:#fff;font-weight:bold">echo</span> -n &gt; $log; <span style="color:#fff;font-weight:bold">fi</span>
-</code></pre></div><p>Hence in the place of ${ip} we can insert our command and get shell , if there exists a cronjob run by user pwn.</p>
-<p>And hackers file is owned by kid and pwn. So we can edit the file and insert our payload and get shell.</p>
-<p><img src="/HackTheBox/ScriptKiddie/pwn.png" alt=""></p>
-<h2 id="__fourth-stage--pwn-to-root__"><strong>Fourth Stage : pwn to root</strong></h2>
-<p>When I tried sudo -l I got this interesting output.</p>
-<p><img src="/HackTheBox/ScriptKiddie/perms.png" alt=""></p>
-<p>So I typed <strong>sudo msfconsole</strong></p>
-<p>And did this</p>
-<p><img src="/HackTheBox/ScriptKiddie/expl2.png" alt=""></p>
-<p>Hence we get shell as root.</p>
-<p><img src="/HackTheBox/ScriptKiddie/root.png" alt=""></p>
+<p>Hence I visited port 80.</p>
+<p><img src="/HackTheBox/Passage/port80.png" alt="">
+So in the first post we can see that they have implemented <strong>Fail2Ban</strong> which blocks IP addresses if the server recieves repeated or malicious requests. Hence I know that gobuster wont work. But in the bottom of the page was something interesting.</p>
+<p><img src="/HackTheBox/Passage/cutenews.png" alt=""></p>
+<p>Hence I searched for exploits using searchsploit.</p>
+<p><img src="/HackTheBox/Passage/searchsploit.png" alt=""></p>
+<p>The RCE exploit caught my eye. Hence I copied the exploit to current directory and analysed the code . So the code registers with a random username and password . And then tries to upload a php reverse shell in place of the avatar image. And executes the php file and gives you a shell in the box as www-data.</p>
+<h2 id="__second-stage--initial-access-as-www-data__"><strong>Second Stage : Initial Access as www-data</strong></h2>
+<p>Hence if we run the exploit.py and enter url.</p>
+<p><img src="/HackTheBox/Passage/exploitw.png" alt=""></p>
+<p>So using this I got a netcat shell in my local machine becuase it is comfortable than this one.</p>
+<h2 id="__third-stage--www-data-to-paul__"><strong>Third Stage : www-data to paul</strong></h2>
+<p>Linpeas didn&rsquo;t gave anything useful , so while searching manually I found this file .</p>
+<blockquote>
+<p>/var/www/html/CuteNews/cdata/users/lines</p>
+</blockquote>
+<p>Which had base64 encoded hashes . Upon using CyberChef we can get the hashes.</p>
+<p><img src="/HackTheBox/Passage/hash.png" alt=""></p>
+<p>So cracking the SHA-256 hash we get the password and we can su as paul</p>
+<p><img src="/HackTheBox/Passage/paul.png" alt=""></p>
+<h2 id="__fourth-stage--paul-to-nadav__"><strong>Fourth Stage : paul to nadav</strong></h2>
+<p>After getting the private key of paul we can ssh into the machine as paul. After running linpeas I got nothing.</p>
+<p>I tried searching for privesc manually , then I found nadav&rsquo;s public key in authorized_keys.</p>
+<p><img src="/HackTheBox/Passage/keys.png" alt=""></p>
+<p>Hence I thought maybe paul&rsquo;s public key is stored in nadav&rsquo;s authorized keys.</p>
+<p>So I tried this.</p>
+<blockquote>
+<p>ssh -i  id_rsa  nadav@passage</p>
+</blockquote>
+<p><img src="/HackTheBox/Passage/nadav.png" alt=""></p>
+<h2 id="__fourth-stage--nadav-to-root__"><strong>Fourth Stage : nadav to root</strong></h2>
+<p>After learning that nadav is in sudo group and adm group I started trying privlege escalation using those methods.</p>
+<p>But after many rabbit holes , I ran  <code>ps aux </code></p>
+<p><img src="/HackTheBox/Passage/process.png" alt=""></p>
+<p>Hence when I searched for the exploit using the usb-creator I found this article.</p>
+<p>Article Link : <a href="https://unit42.paloaltonetworks.com/usbcreator-d-bus-privilege-escalation-in-ubuntu-desktop/">https://unit42.paloaltonetworks.com/usbcreator-d-bus-privilege-escalation-in-ubuntu-desktop/</a></p>
+<p>Please read this article to understand how does this exploit work.</p>
+<blockquote>
+<p>gdbus call &ndash;system &ndash;dest com.ubuntu.USBCreator &ndash;object-path /com/ubuntu/USBCreator &ndash;method com.ubuntu.USBCreator.Image /root/root.txt /dev/shm/.flag.txt true</p>
+</blockquote>
+<p>Hence we get the root flag.</p>
+<p><img src="/HackTheBox/Passage/root.png" alt=""></p>
 
       </div>
 
@@ -257,11 +263,11 @@ cat $log | cut -d<span style="color:#0ff;font-weight:bold">&#39; &#39;</span> -f
         
         
           
-            <li>
-              <a href="/posts/ctf/hackthebox/passage/">Passage HackTheBox Writeup</a>
-            </li>
-          
         
+          
+            <li>
+              <a href="/posts/ctf/hackthebox/scriptkiddie/">ScriptKiddie HacktheBox Writeup</a>
+            </li>
           
         
           
