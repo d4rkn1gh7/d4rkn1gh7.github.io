@@ -6,7 +6,17 @@
     <description>Recent content on d4rkn1gh7 | Tech Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 08 Mar 2021 18:26:11 +0530</lastBuildDate><atom:link href="https://d4rkn1gh7.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 11 Mar 2021 17:23:30 +0530</lastBuildDate><atom:link href="https://d4rkn1gh7.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Team TryHackMe Writeup</title>
+      <link>https://d4rkn1gh7.github.io/posts/ctf/tryhackme/team/</link>
+      <pubDate>Thu, 11 Mar 2021 17:23:30 +0530</pubDate>
+      
+      <guid>https://d4rkn1gh7.github.io/posts/ctf/tryhackme/team/</guid>
+      <description>Team TryHackMe Writeup First Stage : Enumeration As usual we start with nmap scan to find open ports.
+# Nmap 7.91 scan initiated Mon Mar 8 19:59:25 2021 as: nmap -sC -sV -T4 -vv -p- -oN nmapscan 10.10.65.7 Nmap scan report for 10.10.65.7 Host is up, received syn-ack (0.15s latency). Scanned at 2021-03-08 19:59:26 IST for 225s Not shown: 65532 filtered ports Reason: 65532 no-responses PORT STATE SERVICE REASON VERSION 21/tcp open ftp syn-ack vsftpd 3.</description>
+    </item>
+    
     <item>
       <title>Bucket HacktheBox Writeup</title>
       <link>https://d4rkn1gh7.github.io/posts/ctf/hackthebox/bucket/</link>
